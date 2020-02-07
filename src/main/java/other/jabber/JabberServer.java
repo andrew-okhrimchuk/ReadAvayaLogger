@@ -1,11 +1,10 @@
-package jabber;
+package other.jabber;
 //: c15:JabberServer.java
 // Очень простой сервер, который просто отсылает
 // назад все, что посылает клиент.
 // {RunByHand}
 import java.io.*;
 import java.net.*;
-import java.util.Arrays;
 
 public class JabberServer {
     // Выбираем порт вне пределов 1-1024:

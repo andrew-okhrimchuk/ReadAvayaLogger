@@ -1,3 +1,5 @@
+package other;
+
 import com.typesafe.config.Config;
 import config.Configs;
 
@@ -7,7 +9,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 class Test2 {
-    private static Config path_to_save_files = Configs.getConfig("config.conf","path_to_save_files");
+    private static Config path_to_save_files = Configs.getConfig("common.config","path_to_save_files");
     public static void main(String[] args) throws IOException {
         //Path testFilePath = Paths.get("./Test");
 

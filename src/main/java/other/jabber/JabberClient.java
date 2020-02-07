@@ -1,4 +1,4 @@
-package jabber;
+package other.jabber;
 
 //: c15:JabberClient.java
 // Очень простой клиент, который просто посылает
