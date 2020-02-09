@@ -33,7 +33,7 @@ public class JabberServerDataTest extends Thread {
                 try {
                     System.out.println("Connection accepted: " + socket);
                     DataOutputStream out = new DataOutputStream((socket.getOutputStream()));
-                    while (count < 100) {
+                    while (count < 10) {
                         out.writeUTF("JabberServerDataTest, count = " + count);
                         out.flush();
                         log.info("JabberServerDataTest, count =  " + count);
