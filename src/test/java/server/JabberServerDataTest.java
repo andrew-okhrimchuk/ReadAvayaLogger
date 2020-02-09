@@ -5,7 +5,7 @@ package server;
 // {RunByHand}
 
 import com.typesafe.config.Config;
-import config.Configs;
+import readAvayaLogger.config.Configs;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
@@ -14,8 +14,6 @@ import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
 @Data
-@RequiredArgsConstructor
-@EqualsAndHashCode
 @AllArgsConstructor
 @Slf4j
 public class JabberServerDataTest extends Thread {
@@ -39,7 +37,7 @@ public class JabberServerDataTest extends Thread {
                         out.writeUTF("JabberServerDataTest, count = " + count);
                         out.flush();
                         log.info("JabberServerDataTest, count =  " + count);
-                        Thread.sleep(100);
+                        Thread.sleep(10);
                         count++;
                     }
 

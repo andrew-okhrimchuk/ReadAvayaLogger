@@ -1,4 +1,4 @@
-package config;
+package readAvayaLogger.config;
 
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
