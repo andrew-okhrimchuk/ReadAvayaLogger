@@ -7,6 +7,7 @@ import lombok.extern.slf4j.Slf4j;
 import java.io.*;
 import java.net.ConnectException;
 import java.net.Socket;
+import java.net.SocketException;
 import java.net.UnknownHostException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -66,10 +67,17 @@ public class ListenerAvayaClient extends Thread{
                     log.error(ex.toString());
                 }
             }
-        } catch (IOException e) {
+
+        }
+        catch (SocketException e) {
             // TODO Auto-generated catch block
-            e.printStackTrace();
-            log.error("catch IOException in startConnection " + e.getMessage());
+            //e.printStackTrace();
+            log.error("Сервер отвалился. (" + e.toString() + ")");
+        }
+        catch (IOException e) {
+            // TODO Auto-generated catch block
+            //e.printStackTrace();
+            log.error("catch IOException in startConnection " + e.toString());
         }
     }
 
