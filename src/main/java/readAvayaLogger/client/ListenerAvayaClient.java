@@ -5,10 +5,7 @@ import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 
 import java.io.*;
-import java.net.ConnectException;
-import java.net.Socket;
-import java.net.SocketException;
-import java.net.UnknownHostException;
+import java.net.*;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -28,7 +25,14 @@ public class ListenerAvayaClient extends Thread{
         log.info("run method startConnection");
         StringBuilder sb = new StringBuilder();
 // запускаем подключение сокета по известным координатам и нициализируем приём сообщений с консоли клиента
-        try(Socket socket = new Socket(date.getString("host"), Integer.parseInt(date.getString("port")));
+
+        String host = date.getString("host");
+        int port = Integer.parseInt(date.getString("port"));
+        log.info("host = " + host);
+        log.info("port = " + port);
+
+        try(Socket socket = new Socket(host, port);
+
             DataInputStream in = new DataInputStream(socket.getInputStream()); )
         {
             log.info("Client connected to socket.");
@@ -40,7 +44,7 @@ public class ListenerAvayaClient extends Thread{
             while(!socket.isOutputShutdown()  ){
                 String str = in.readUTF();
                 System.out.println(" ");
-                log.info("Echoing = " + str);
+           //     log.info("Echoing = " + str);
 // если накопилось count сообщений - сохраняем в файл.
                 if(count == length){
                     saveFile(sb.toString());
@@ -58,6 +62,7 @@ public class ListenerAvayaClient extends Thread{
         catch (ConnectException | EOFException | UnknownHostException e) {
             // TODO Auto-generated catch block
             log.error(e.toString());
+            e.printStackTrace();
 
             if(sb.length() > 0){
                 try {

@@ -27,14 +27,17 @@ public class JabberServerDataTest extends Thread {
         try (ServerSocket s = new ServerSocket(Integer.parseInt(date.getString("port")))) {
             System.out.println("Started: " + s);
             try {
+                System.out.println("getLocalSocketAddress = " + s.getLocalSocketAddress());
+                System.out.println("getInetAddress = " + s.getInetAddress());
                 // Блокирует до тех пор, пока не возникнет соединение:
                 Socket socket = s.accept();
+
                 int count = 0;
                 try {
                     System.out.println("Connection accepted: " + socket);
                     DataOutputStream out = new DataOutputStream((socket.getOutputStream()));
-                    while (count < 10) {
-                        out.writeUTF("JabberServerDataTest, count = " + count);
+                    while (count < 1000) {
+                        out.writeUTF("Ну очень нужная информация, count = " + count);
                         out.flush();
                         log.info("JabberServerDataTest, count =  " + count);
                         Thread.sleep(10);
