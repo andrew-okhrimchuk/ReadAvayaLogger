@@ -1,11 +1,20 @@
-package readAvayaLogger.client;
+package readAvayaLogger.server;
 
 import com.typesafe.config.Config;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import readAvayaLogger.config.Configs;
 
-import java.io.*;
-import java.net.*;
+import java.io.DataInputStream;
+import java.io.EOFException;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.net.ConnectException;
+import java.net.Socket;
+import java.net.SocketException;
+import java.net.UnknownHostException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -14,36 +23,25 @@ import java.time.format.DateTimeFormatter;
 
 @Data
 @RequiredArgsConstructor
-@AllArgsConstructor
+//@AllArgsConstructor
 @Slf4j
-public class ListenerAvayaClient extends Thread{
-    private Config date;
-    private Config path_to_save_files;
-    private int length;
+public class ListenerAvayaServer extends Thread{
+    private final static Config date = Configs.getConfig("common.config","work_date");
+    private final static Config path_to_save_files = Configs.getConfig("common.config","path_to_save_files");
+    private final static int length = Configs.getConfig("common.config","length_lines_in_one_file").getInt("length");
+    private final Socket socket;
 
     public void run()  {
-        log.info("run method startConnection");
+        log.info("run method startReading");
         StringBuilder sb = new StringBuilder();
-// запускаем подключение сокета по известным координатам и нициализируем приём сообщений с консоли клиента
 
-        String host = date.getString("host");
-        int port = Integer.parseInt(date.getString("port"));
-        log.info("host = " + host);
-        log.info("port = " + port);
-
-        try(Socket socket = new Socket(host, port);
-
-            DataInputStream in = new DataInputStream(socket.getInputStream()); )
+        try(DataInputStream in = new DataInputStream(socket.getInputStream()))
         {
-            log.info("Client connected to socket.");
-            log.info("Client writing channel = oos & reading channel = ois initialized.");
-
             int count = 0;
-            log.info("Socket = " + socket);
 //считываем в цикле с сервера
-            while(!socket.isOutputShutdown()  ){
+            while(!socket.isOutputShutdown()){
                 String str = in.readUTF();
-                System.out.println(" ");
+                System.out.println(count);
            //     log.info("Echoing = " + str);
 // если накопилось count сообщений - сохраняем в файл.
                 if(count == length){
