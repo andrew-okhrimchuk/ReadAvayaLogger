@@ -7,10 +7,7 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import readAvayaLogger.config.Configs;
 
-import java.io.DataInputStream;
-import java.io.EOFException;
-import java.io.FileWriter;
-import java.io.IOException;
+import java.io.*;
 import java.net.ConnectException;
 import java.net.Socket;
 import java.net.SocketException;
@@ -30,32 +27,25 @@ public class ListenerAvayaServer extends Thread{
     private final static Config path_to_save_files = Configs.getConfig("common.config","path_to_save_files");
     private final static int length = Configs.getConfig("common.config","length_lines_in_one_file").getInt("length");
     private final Socket socket;
-
+    private StringBuilder sb = new StringBuilder();
     public void run()  {
         log.info("run method startReading");
-        StringBuilder sb = new StringBuilder();
 
-        try(DataInputStream in = new DataInputStream(socket.getInputStream()))
+        try(//DataInputStream in = new DataInputStream(socket.getInputStream());
+            InputStream input = socket.getInputStream();
+            BufferedReader reader = new BufferedReader(new InputStreamReader(input));
+        )
         {
-            int count = 0;
-//считываем в цикле с сервера
-            while(!socket.isOutputShutdown()){
-                String str = in.readUTF();
-                System.out.println(count);
-           //     log.info("Echoing = " + str);
-// если накопилось count сообщений - сохраняем в файл.
-                if(count == length){
-                    saveFile(sb.toString());
-                    sb =  new StringBuilder();
-                    count = 0;
-                }
-                count++;
-                sb.append(str).append(System.getProperty("line.separator"));
+            log.info("Crated new DataInputStream");
+           // temp (reader);
+            //readsText(in);
+            String str;
+            while((str = reader.readLine()) != null){ // reads a line of text
+                sb.append(str);
+                sb.append('\n');
+                // sb.append(System.getProperty("line.separator"));
             }
-            if(sb.length() > 0){
-                saveFile(sb.toString());
-            }
-
+            saveFile(sb.toString());
         }
         catch (ConnectException | EOFException | UnknownHostException e) {
             // TODO Auto-generated catch block
@@ -108,4 +98,37 @@ public class ListenerAvayaServer extends Thread{
         log.info("writed in: "  + testFile1.toString());
         log.info("End successful method saveFile" );
     }
+    private void temp (BufferedReader reader) throws IOException {
+        log.info("Start method temp" );
+        String str;
+        while((str = reader.readLine()) != null){ // reads a line of text
+            sb.append(str);
+            sb.append('\n');
+           // sb.append(System.getProperty("line.separator"));
+        }
+        saveFile(sb.toString());
+        sb = new StringBuilder();
+    }
+ /*   private void readsText(DataInputStream in) throws IOException {
+        log.info("Run readsText");
+        int count = 0;
+//считываем в цикле с сервера
+        while(!socket.isOutputShutdown()){
+            String str = in.readUTF();
+            System.out.println(count);
+            //     log.info("Echoing = " + str);
+// если накопилось count сообщений - сохраняем в файл.
+            if(count == length){
+                saveFile(sb.toString());
+                sb =  new StringBuilder();
+                count = 0;
+            }
+            count++;
+            sb.append(str).append(System.getProperty("line.separator"));
+        }
+        log.info("End cycle");
+        if(sb.length() > 0){
+            saveFile(sb.toString());
+        }
+    }*/
 }

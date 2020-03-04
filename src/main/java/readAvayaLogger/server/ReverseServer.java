@@ -30,10 +30,18 @@ public class ReverseServer extends Thread {
 
             while (true) {
                 System.out.println("Start of cycle");
+                log.info("Start of cycle");
                 Socket socket = serverSocket.accept();
                 System.out.println("New client connected");
+                log.info("New client connected");
 
+                if (socket!=null){
                 new ListenerAvayaServer(socket).start();
+                }
+                else {
+                    log.info("socket = null!!!");
+                    break;
+                }
             }
 
         } catch (IOException ex) {
