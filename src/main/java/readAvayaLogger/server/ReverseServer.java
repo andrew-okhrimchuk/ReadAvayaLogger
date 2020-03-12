@@ -8,17 +8,23 @@ import readAvayaLogger.config.Configs;
 import java.io.IOException;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 
-@Data
+
 @RequiredArgsConstructor
 //@AllArgsConstructor
 //@NoArgsConstructor
 @Slf4j
 //@Основной цикл прослушки порта и запуска исполнителя чтения
 public class ReverseServer extends Thread {
-    private final static Config date = Configs.getConfig("common.config","work_date");
+    private static boolean stoping = true;
+    public  static Config date = Configs.getConfig("common.config","work_date");
+    public static Config path_to_save_files = Configs.getConfig("common.config","path_to_save_files");
 
     public void run() {
+        crateFolder();
         log.info("run method startConnection");
         log.info("Get port = " + Integer.parseInt(date.getString("port")));
        /* String number = "10A";
@@ -28,7 +34,7 @@ public class ReverseServer extends Thread {
         log.info("Server is listening on port  = " + Integer.parseInt(date.getString("port")));
 
 
-            while (true) {
+            while (stoping) {
                 System.out.println("Start of cycle");
                 log.info("Start of cycle");
                 Socket socket = serverSocket.accept();
@@ -48,5 +54,21 @@ public class ReverseServer extends Thread {
             log.error("Server exception: " + ex.toString());
             ex.printStackTrace();
         }
+    }
+    private static void crateFolder(){
+        String folder_name = path_to_save_files.getString("folder_name");
+
+        Path filePath = Paths.get(".\\" + folder_name);
+        if(!Files.exists(Paths.get(filePath.toString()))){
+            try {
+                Files.createDirectory(filePath);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            log.info("createDirectory: "  + filePath.toString());
+        }
+    }
+    public static void stoping(){
+        stoping = false;
     }
 }

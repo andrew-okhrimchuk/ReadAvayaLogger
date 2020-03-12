@@ -43,7 +43,7 @@ public class ListenerAvayaClientTest extends Thread{
             log.info("Socket = " + socket);
 //считываем в цикле с сервера
             while(count < 3  ){
-                out.writeUTF("Ну очень нужная информация, count = " + count);
+                out.writeUTF("String, count = " + count);
               //  out.writeUTF("\n");
                 System.out.println("count ");
                 count++;
