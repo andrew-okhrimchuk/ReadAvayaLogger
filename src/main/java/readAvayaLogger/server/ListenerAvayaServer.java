@@ -45,7 +45,9 @@ public class ListenerAvayaServer extends Thread{
                 sb.append('\n');
                 // sb.append(System.getProperty("line.separator"));
             }
-            saveFile(sb.toString());
+            if(sb.length() > 0) {
+                saveFile(sb.toString());
+            }
         }
         catch (ConnectException | EOFException | UnknownHostException e) {
             // TODO Auto-generated catch block
