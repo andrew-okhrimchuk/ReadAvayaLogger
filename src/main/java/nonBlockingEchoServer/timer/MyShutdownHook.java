@@ -1,4 +1,4 @@
-package readAvayaLogger.timer;
+package nonBlockingEchoServer.timer;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

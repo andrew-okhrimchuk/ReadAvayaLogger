@@ -1,9 +1,9 @@
-package readAvayaLogger.server;
+package nonBlockingEchoServer.server;
 
 import com.typesafe.config.Config;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
-import readAvayaLogger.config.Configs;
+import nonBlockingEchoServer.config.Configs;
 
 import java.io.IOException;
 import java.net.ServerSocket;
@@ -24,7 +24,7 @@ public class ReverseServer extends Thread {
     private static boolean stoping = true;
     public  static Config date = Configs.getConfig("common.config","work_date");
     public static Config path_to_save_files = Configs.getConfig("common.config","path_to_save_files");
-    private ExecutorService executorService = Executors.newFixedThreadPool(30);
+    private ExecutorService executorService = Executors.newFixedThreadPool(35);
 
     public void run() {
         crateFolder();

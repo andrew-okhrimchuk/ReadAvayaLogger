@@ -1,11 +1,10 @@
-package readAvayaLogger.server;
+package nonBlockingEchoServer.server;
 
 import com.typesafe.config.Config;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import readAvayaLogger.config.Configs;
+import nonBlockingEchoServer.config.Configs;
 
 import java.io.*;
 import java.net.ConnectException;

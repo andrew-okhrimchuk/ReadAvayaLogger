@@ -1,13 +1,10 @@
-package readAvayaLogger.timer;
+package nonBlockingEchoServer.timer;
 
-import com.typesafe.config.Config;
-import readAvayaLogger.server.ListenerAvayaServer;
-import readAvayaLogger.config.Configs;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import readAvayaLogger.server.ReverseServer;
+import nonBlockingEchoServer.server.ReverseServer;
 
 import java.util.TimerTask;
 

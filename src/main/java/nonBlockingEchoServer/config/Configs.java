@@ -1,4 +1,4 @@
-package readAvayaLogger.config;
+package nonBlockingEchoServer.config;
 
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;
