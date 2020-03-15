@@ -2,9 +2,7 @@ package nonBlockingEchoServer.server;
 //https://github.com/teocci/NioSocketCodeSample/blob/master/src/com/github/teocci/nio/socket/nio/NonBlockingEchoServer.java
 
 import com.typesafe.config.Config;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import lombok.RequiredArgsConstructor;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import nonBlockingEchoServer.config.Configs;
 
@@ -16,23 +14,30 @@ import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
 import java.nio.channels.SocketChannel;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Iterator;
 import java.util.Set;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
+@Data
+@Setter
 @RequiredArgsConstructor
 @Slf4j
 public class NonBlockingEchoServer extends Thread
 {
+    public static Config path_to_save_files = Configs.getConfig("common.config","path_to_save_files");
+    private static Config date = Configs.getConfig("common.config","work_date");
     private static boolean stoping = true;
-    public  static Config date = Configs.getConfig("common.config","work_date");
+
+    private InetSocketAddress listenAddress = new InetSocketAddress(Integer.parseInt(date.getString("port")));
     private ExecutorService executorService = Executors.newFixedThreadPool(30);
-    private final static int PORT = Integer.parseInt(date.getString("port"));
     private Selector selector;
-    private InetSocketAddress listenAddress = new InetSocketAddress(PORT);
 
     public void run() {
+        crateFolder();
         ServerSocketChannel serverChannel = null;
         try {
             serverChannel = ServerSocketChannel.open();
@@ -41,7 +46,7 @@ public class NonBlockingEchoServer extends Thread
 
             this.selector = Selector.open();
             serverChannel.register(this.selector, SelectionKey.OP_ACCEPT);
-            log.info("Server started on port >> " + PORT);
+            log.info("Server started on port >> " + listenAddress.getPort());
 
             cycle();
         } catch (IOException e) {
@@ -99,6 +104,20 @@ public class NonBlockingEchoServer extends Thread
         System.out.println("Connected to: " + remoteAddr);
 
         channel.register(this.selector, SelectionKey.OP_READ);
+    }
+
+    private static void crateFolder(){
+        String folder_name = path_to_save_files.getString("folder_name");
+
+        Path filePath = Paths.get(".\\" + folder_name);
+        if(!Files.exists(Paths.get(filePath.toString()))){
+            try {
+                Files.createDirectory(filePath);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            log.info("createDirectory: "  + filePath.toString());
+        }
     }
     public static void stoping(){
         stoping = false;

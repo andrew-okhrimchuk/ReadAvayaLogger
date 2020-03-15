@@ -1,6 +1,7 @@
 package nonBlockingEchoServer.server;
 
 import com.typesafe.config.Config;
+import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import nonBlockingEchoServer.config.Configs;
@@ -15,12 +16,11 @@ import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+
 @RequiredArgsConstructor
 @Slf4j
 public class ListenerAvayaReadNIO extends Thread{
-    private final static Config date = Configs.getConfig("common.config","work_date");
-    private final static Config path_to_save_files = Configs.getConfig("common.config","path_to_save_files");
-    private final static int length = Configs.getConfig("common.config","length_lines_in_one_file").getInt("length");
+    public static Config path_to_save_files = Configs.getConfig("common.config","path_to_save_files");
     public final SocketChannel channel;
     private StringBuilder sb = new StringBuilder();
 
@@ -91,5 +91,6 @@ public class ListenerAvayaReadNIO extends Thread{
             }
         }
         log.info("Got: " + sb.toString());
+        log.info("Got: " + new String(data));
     }
 }
