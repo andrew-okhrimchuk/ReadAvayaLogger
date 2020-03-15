@@ -11,6 +11,8 @@ import java.net.Socket;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 
 @RequiredArgsConstructor
@@ -22,28 +24,25 @@ public class ReverseServer extends Thread {
     private static boolean stoping = true;
     public  static Config date = Configs.getConfig("common.config","work_date");
     public static Config path_to_save_files = Configs.getConfig("common.config","path_to_save_files");
+    private ExecutorService executorService = Executors.newFixedThreadPool(30);
 
     public void run() {
         crateFolder();
         log.info("run method startConnection");
         log.info("Get port = " + Integer.parseInt(date.getString("port")));
-       /* String number = "10A";
-        val result = Integer.parseInt(number);*/
 
-        try (ServerSocket serverSocket = new ServerSocket(Integer.parseInt(date.getString("port")))) {
+
+         try (ServerSocket serverSocket = new ServerSocket(Integer.parseInt(date.getString("port")))) {
         log.info("Server is listening on port  = " + Integer.parseInt(date.getString("port")));
 
 
             while (stoping) {
-                System.out.println("Start of cycle");
                 log.info("Start of cycle");
                 Socket socket = serverSocket.accept();
-                System.out.println("New client connected");
                 log.info("New client connected");
 
                 if (socket!=null){
-                new ListenerAvayaServer(socket).start();
-                }
+                    executorService.execute(new ListenerAvayaServer(socket));                }
                 else {
                     log.info("socket = null!!!");
                     break;
@@ -53,7 +52,12 @@ public class ReverseServer extends Thread {
         } catch (IOException ex) {
             log.error("Server exception: " + ex.toString());
             ex.printStackTrace();
+             executorService.shutdown();
         }
+         finally {
+             executorService.shutdown();
+         }
+        executorService.shutdownNow();
     }
     private static void crateFolder(){
         String folder_name = path_to_save_files.getString("folder_name");
