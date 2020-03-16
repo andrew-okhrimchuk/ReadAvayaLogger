@@ -12,7 +12,9 @@ _Инструкция по установке:_
 5.1 если не запустился или работает с проблемами, попробуйте запустить классически, как это делаю я в консоли CMD:
 
 "C:\Program Files\Java\jdk1.8.0_144\bin\java.exe" -Dfile.encoding=windows-1251 -jar D:\Stajirovka\ReadAvayaLogger\target\nonBlockingEchoServer.jar
-или   
+
+или  
+ 
 java -Dfile.encoding=windows-1251 -jar D:\Stajirovka\ReadAvayaLogger\target\nonBlockingEchoServer.jar
 где "C:\Program Files\Java\jdk1.8.0_144\bin\java.exe" - путь к Вашей джаве.
 а  - D:\Stajirovka\ReadAvayaLogger\target\nonBlockingEchoServer.jar  соответственно путь к приложению.
