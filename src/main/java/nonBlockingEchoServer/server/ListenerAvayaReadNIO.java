@@ -8,6 +8,7 @@ import nonBlockingEchoServer.config.Configs;
 import java.io.*;
 import java.net.*;
 import java.nio.ByteBuffer;
+import java.nio.channels.SelectionKey;
 import java.nio.channels.SocketChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -20,34 +21,18 @@ import java.time.format.DateTimeFormatter;
 @Slf4j
 public class ListenerAvayaReadNIO extends Thread{
     public static Config path_to_save_files = Configs.getConfig("common.config","path_to_save_files");
-    public final SocketChannel channel;
+    public final SelectionKey key;
     private StringBuilder sb = new StringBuilder();
 
-
     public void run()  {
+        SocketChannel channel = (SocketChannel) key.channel();
+
         log.info("run method startReading");
 
         try {
-            readData();
+            readData(channel);
             sbToLog(sb.toString());
             saveFileToFileWriter(new String(sb));
-           /* if (numRead == -1) {
-                Socket socket = channel.socket();
-                SocketAddress remoteAddress = socket.getRemoteSocketAddress();
-                log.info("Connection closed by client: " + remoteAddress);
-                channel.close();
-                return;
-            }
-
-            byte[] data = new byte[numRead];
-            System.arraycopy(buffer.array(), 0, data, 0, numRead);
-            intToLog(data);
-
-            if (data.length > 0) {
-                log.info("data.length > 0. data.length = " + data.length);
-                saveFileToFileWriter(new String(data));
-            }
-            else { log.info("Data.length = 0. Can't save anything.");}*/
         }
         catch (ConnectException | EOFException | UnknownHostException e) {
             // TODO Auto-generated catch block
@@ -84,7 +69,7 @@ public class ListenerAvayaReadNIO extends Thread{
         log.info("End successful method saveFile" );
     }
 
-    private void readData() throws Exception {
+    private void readData(SocketChannel channel) throws Exception {
         ByteBuffer buffer = ByteBuffer.allocate(1024);
         int count = -1;
 
@@ -101,6 +86,7 @@ public class ListenerAvayaReadNIO extends Thread{
             SocketAddress remoteAddress = socket.getRemoteSocketAddress();
             log.info("Connection closed by client: " + remoteAddress);
             channel.close();
+            key.cancel();
         }
     }
 

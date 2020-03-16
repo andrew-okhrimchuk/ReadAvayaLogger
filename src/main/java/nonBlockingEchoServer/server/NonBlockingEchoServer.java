@@ -51,6 +51,23 @@ public class NonBlockingEchoServer extends Thread
             cycle();
         } catch (IOException e) {
             e.printStackTrace();
+            log.error("catch IOException in run " + e.toString());
+            try {
+                serverChannel.close();
+            } catch (IOException | NullPointerException ex) {
+                ex.printStackTrace();
+                log.error("catch IOException in serverChannel.close() " + ex.toString());
+
+            }
+        }
+        finally {
+            try {
+                serverChannel.close();
+            } catch (IOException | NullPointerException ex) {
+                ex.printStackTrace();
+                log.error("catch IOException in finally serverChannel.close() " + ex.toString());
+
+            }
         }
     }
 
@@ -79,12 +96,13 @@ public class NonBlockingEchoServer extends Thread
                 if (key.isAcceptable()) {
                     // Accept client connections
                     this.accept(key);
-                } else if (key.isReadable()) {
+                }
+                else if (key.isReadable()) {
                     SocketChannel channel = (SocketChannel) key.channel();
 
                     if(channel.isOpen()){
                         log.info("Read from client");
-                        executorService.execute(new ListenerAvayaReadNIO(channel));
+                        executorService.execute(new ListenerAvayaReadNIO(key));
                         key.cancel();
                     }
                 }

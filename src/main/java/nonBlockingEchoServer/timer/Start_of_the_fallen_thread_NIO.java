@@ -26,7 +26,7 @@ public class Start_of_the_fallen_thread_NIO extends TimerTask {
             nonBlockingEchoServer();
             lac.start();
         }
-       // else log.info("Not run new thread of ReverseServer: ReverseServer.isAlive");
+      // else log.info("Not run new thread of NonBlockingEchoServer: NonBlockingEchoServer.isAlive");
      //   log.info("End run");
     }
 
