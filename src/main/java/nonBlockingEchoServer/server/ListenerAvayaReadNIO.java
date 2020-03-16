@@ -1,7 +1,6 @@
 package nonBlockingEchoServer.server;
 
 import com.typesafe.config.Config;
-import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import nonBlockingEchoServer.config.Configs;
@@ -29,10 +28,10 @@ public class ListenerAvayaReadNIO extends Thread{
         log.info("run method startReading");
 
         try {
-            ByteBuffer buffer = ByteBuffer.allocate(1024);
-            int numRead = channel.read(buffer);
-
-            if (numRead == -1) {
+            readData();
+            sbToLog(sb.toString());
+            saveFileToFileWriter(new String(sb));
+           /* if (numRead == -1) {
                 Socket socket = channel.socket();
                 SocketAddress remoteAddress = socket.getRemoteSocketAddress();
                 log.info("Connection closed by client: " + remoteAddress);
@@ -48,7 +47,7 @@ public class ListenerAvayaReadNIO extends Thread{
                 log.info("data.length > 0. data.length = " + data.length);
                 saveFileToFileWriter(new String(data));
             }
-            else { log.info("Data.length = 0. Can't save anything.");}
+            else { log.info("Data.length = 0. Can't save anything.");}*/
         }
         catch (ConnectException | EOFException | UnknownHostException e) {
             // TODO Auto-generated catch block
@@ -64,8 +63,12 @@ public class ListenerAvayaReadNIO extends Thread{
             log.error("catch IOException in startConnection " + e.toString());
             e.printStackTrace();
         }
-    }
+        catch (Exception e) {
+            e.printStackTrace();
+            log.error("catch Exception in startConnection " + e.toString());
 
+        }
+    }
 
     private void saveFileToFileWriter(String text) throws IOException {
         log.info("Start method saveFileToFileWriter" );
@@ -81,16 +84,29 @@ public class ListenerAvayaReadNIO extends Thread{
         log.info("End successful method saveFile" );
     }
 
+    private void readData() throws Exception {
+        ByteBuffer buffer = ByteBuffer.allocate(1024);
+        int count = -1;
 
-    private void intToLog(byte[] data){
-        for (int x: data) {
-
-            if (x > 0) {
-            this.sb.append(x);
-            this.sb.append(" , ");
-            }
+        while ((count = channel.read(buffer)) > 0) {
+            // TODO - in the future pass this to a "listener" which will do something useful with this buffer
+            byte[] data = new byte[count];
+            System.arraycopy(buffer.array(), 0, data, 0, count);
+            buffer.clear();
+            sb.append(new String(data));
         }
-        log.info("Got: " + sb.toString());
-        log.info("Got: " + new String(data));
+
+        if (count < 0) {
+            Socket socket = channel.socket();
+            SocketAddress remoteAddress = socket.getRemoteSocketAddress();
+            log.info("Connection closed by client: " + remoteAddress);
+            channel.close();
+        }
+    }
+
+    private void sbToLog(String data){
+        log.info("Got: " + data);
+        log.info("Got: data.length() = " + data.length());
     }
 }
+
