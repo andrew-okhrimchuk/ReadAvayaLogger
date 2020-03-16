@@ -17,9 +17,9 @@ _Инструкция по установке:_
  
 java -Dfile.encoding=windows-1251 -jar D:\Stajirovka\ReadAvayaLogger\target\nonBlockingEchoServer.jar
 
-где "C:\Program Files\Java\jdk1.8.0_144\bin\java.exe" - путь к Вашей джаве.
+где "C:\Program Files\Java\jdk1.8.0_144\bin\java.exe" - путь к Вашей джаве.(кавычки тоже тут нужны!)
 
-ну а - D:\Stajirovka\ReadAvayaLogger\target\nonBlockingEchoServer.jar соответственно путь к приложению.
+ну а - D:\Stajirovka\ReadAvayaLogger\target\nonBlockingEchoServer.jar (тут без кавычек) соответственно путь к приложению.
 остальное просто повторяем как есть. 
 
 6. Если у Вас ОС Винда, то в каталоге D:\apps\nonBlockingEchoServer\logs должны появиться логи работающей программы и сообщения об ошибках.
