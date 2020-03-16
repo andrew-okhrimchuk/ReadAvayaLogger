@@ -73,7 +73,7 @@ public class NonBlockingEchoServer extends Thread
 
     private void cycle() throws IOException{
         log.info("Start cycle in NonBlockingEchoServer");
-        while (stoping) {
+        while (true) {
             // Wait for events
             int readyCount = selector.select();
             if (readyCount == 0) {
@@ -109,6 +109,7 @@ public class NonBlockingEchoServer extends Thread
                 else {log.info("key.is NOT Readable()");}
             }
         }
+
     }
 
     private void accept(SelectionKey key) throws IOException
@@ -119,7 +120,7 @@ public class NonBlockingEchoServer extends Thread
         channel.configureBlocking(false);
         Socket socket = channel.socket();
         SocketAddress remoteAddr = socket.getRemoteSocketAddress();
-        System.out.println("Connected to: " + remoteAddr);
+        log.info("Connected to: " + remoteAddr);
 
         channel.register(this.selector, SelectionKey.OP_READ);
     }

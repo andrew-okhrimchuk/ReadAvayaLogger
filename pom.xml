@@ -100,7 +100,7 @@
                         <manifest>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
-                            <mainClass>nonBlockingEchoServer.Main</mainClass>
+                            <mainClass>nonBlockingEchoServer.server.NonBlockingEchoServer</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

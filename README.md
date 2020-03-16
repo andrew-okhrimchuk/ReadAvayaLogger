@@ -8,6 +8,15 @@ _Инструкция по установке:_
 3. Скомпилировать файлы. (не умеете: могу выслать готовые, это сложно, дорого потому и платно ;))
 4. Зайти в файл \target\classes\common.config и настроить порт который Вы будете слушать.
 5. Дважды кликнуть мышкой по файлу  nonBlockingEchoServer.JAR
+
+5.1 если не запустился или работает с проблемами, попробуйте запустить классически, как это делаю я в консоли CMD:
+
+"C:\Program Files\Java\jdk1.8.0_144\bin\java.exe" -Dfile.encoding=windows-1251 -jar D:\Stajirovka\ReadAvayaLogger\target\nonBlockingEchoServer.jar
+или   
+java -Dfile.encoding=windows-1251 -jar D:\Stajirovka\ReadAvayaLogger\target\nonBlockingEchoServer.jar
+где "C:\Program Files\Java\jdk1.8.0_144\bin\java.exe" - путь к Вашей джаве.
+а  - D:\Stajirovka\ReadAvayaLogger\target\nonBlockingEchoServer.jar  соответственно путь к приложению.
+остальное просто повторяем как есть. 
 6. Если у Вас ОС Винда, то в каталоге D:\apps\nonBlockingEchoServer\logs должны появиться логи работающей программы и сообщения об ошибках.
    Просьба их переслать по адресу a0972103356@gmail.com
 7. Если у Вас линух, то Вам не повезло. Пишите по адресу, я допилю проект под мультиплатформу и вышлю скомиленные файлы  в ответ.

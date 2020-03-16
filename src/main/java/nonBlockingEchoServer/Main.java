@@ -19,7 +19,7 @@ public class Main {
         Start_of_the_fallen_thread_NIO start_of_the_fallen_thread = new Start_of_the_fallen_thread_NIO();
         ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
          executor.scheduleAtFixedRate(start_of_the_fallen_thread, delay, time, TimeUnit.MILLISECONDS);
-        Runtime.getRuntime().addShutdownHook(new MyShutdownHook(executor));
+        //Runtime.getRuntime().addShutdownHook(new MyShutdownHook(executor));
         log.info("End main");
     }
 }

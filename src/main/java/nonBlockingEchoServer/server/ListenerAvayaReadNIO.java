@@ -25,10 +25,8 @@ public class ListenerAvayaReadNIO extends Thread{
     private StringBuilder sb = new StringBuilder();
 
     public void run()  {
+        log.info("Start method run" );
         SocketChannel channel = (SocketChannel) key.channel();
-
-        log.info("run method startReading");
-
         try {
             readData(channel);
             sbToLog(sb.toString());
@@ -38,6 +36,8 @@ public class ListenerAvayaReadNIO extends Thread{
             // TODO Auto-generated catch block
             log.error(e.toString());
             e.printStackTrace();
+            log.error("Catch exception. = " + e.toString() + ")");
+
         }
         catch (SocketException e) {
             // TODO Auto-generated catch block
@@ -51,8 +51,9 @@ public class ListenerAvayaReadNIO extends Thread{
         catch (Exception e) {
             e.printStackTrace();
             log.error("catch Exception in startConnection " + e.toString());
-
         }
+        log.info("End successful method run" );
+
     }
 
     private void saveFileToFileWriter(String text) throws IOException {
@@ -70,6 +71,8 @@ public class ListenerAvayaReadNIO extends Thread{
     }
 
     private void readData(SocketChannel channel) throws Exception {
+        log.info("Start method readData" );
+
         ByteBuffer buffer = ByteBuffer.allocate(1024);
         int count = -1;
 
@@ -88,6 +91,8 @@ public class ListenerAvayaReadNIO extends Thread{
             channel.close();
             key.cancel();
         }
+        log.info("End successful method readData" );
+
     }
 
     private void sbToLog(String data){
