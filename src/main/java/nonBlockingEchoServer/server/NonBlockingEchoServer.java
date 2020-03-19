@@ -5,6 +5,8 @@ import com.typesafe.config.Config;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import nonBlockingEchoServer.config.Configs;
+import nonBlockingEchoServer.tester.OneTimeIn15Min;
+import nonBlockingEchoServer.tester.OneTimeIn5Min;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -44,8 +46,9 @@ public class NonBlockingEchoServer extends Thread
             serverChannel.socket().bind(listenAddress);
             serverChannel.configureBlocking(false);
 
+            int ops = serverChannel.validOps();
             this.selector = Selector.open();
-            serverChannel.register(this.selector, SelectionKey.OP_ACCEPT);
+            serverChannel.register(this.selector, ops, null);
             log.info("Server started on port >> " + listenAddress.getPort());
 
             cycle();
@@ -72,10 +75,10 @@ public class NonBlockingEchoServer extends Thread
     }
 
     private void cycle() throws IOException{
-        log.info("Start cycle in NonBlockingEchoServer");
+        log.info("Start cycle in NonBlockingEchoServer" + "\n");
         while (true) {
             // Wait for events
-            int readyCount = selector.select();
+            int readyCount = selector.select(1000L);
             if (readyCount == 0) {
                 continue;
             }
@@ -145,6 +148,8 @@ public class NonBlockingEchoServer extends Thread
     public static void main(String[] args)
     {
         new NonBlockingEchoServer().start();
+        OneTimeIn5Min.push();
+       // OneTimeIn15Min.push();
 
     }
 }

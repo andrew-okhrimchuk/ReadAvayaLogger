@@ -1,6 +1,8 @@
 package nonBlockingEchoServer;
 
 import lombok.extern.slf4j.Slf4j;
+import nonBlockingEchoServer.tester.OneTimeIn15Min;
+import nonBlockingEchoServer.tester.OneTimeIn5Min;
 import nonBlockingEchoServer.timer.MyShutdownHook;
 import nonBlockingEchoServer.timer.Start_of_the_fallen_thread_NIO;
 import nonBlockingEchoServer.config.Configs;
@@ -20,6 +22,8 @@ public class Main {
         ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
          executor.scheduleAtFixedRate(start_of_the_fallen_thread, delay, time, TimeUnit.MILLISECONDS);
         //Runtime.getRuntime().addShutdownHook(new MyShutdownHook(executor));
+        OneTimeIn5Min.push();
+        OneTimeIn15Min.push();
         log.info("End main");
     }
 }

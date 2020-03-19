@@ -27,10 +27,13 @@ public class ListenerAvayaReadNIO extends Thread{
     public void run()  {
         log.info("Start method run" );
         SocketChannel channel = (SocketChannel) key.channel();
+
         try {
             readData(channel);
             sbToLog(sb.toString());
-            saveFileToFileWriter(new String(sb));
+            if (!checkTestText(sb)) {
+                saveFileToFileWriter(new String(sb));
+            }
         }
         catch (ConnectException | EOFException | UnknownHostException e) {
             // TODO Auto-generated catch block
@@ -52,7 +55,8 @@ public class ListenerAvayaReadNIO extends Thread{
             e.printStackTrace();
             log.error("catch Exception in startConnection " + e.toString());
         }
-        log.info("End successful method run" );
+        log.info("End successful method run");
+        log.info("Сережа, я все еще работаю не отключай меня, дай набрать статистику..." + "\n");
 
     }
 
@@ -96,8 +100,25 @@ public class ListenerAvayaReadNIO extends Thread{
     }
 
     private void sbToLog(String data){
-        log.info("Got: " + data);
-        log.info("Got: data.length() = " + data.length());
+        log.info("Result: " + data);
+        log.info("Result: Long text is = " + data.length());
+    }
+    private boolean checkTestText(StringBuilder sb){
+        boolean chek = sb.toString().contains("@ TEST");
+        boolean chek2 = sb.toString().contains("@ TEST LONG TEXT");
+        int textLengths = sb.toString().length();
+        if(chek) {
+            log.info("CheckTestText = " + chek +  ". Not save test's text in file!" );
+        }
+        else {log.info("CheckTestText = " + chek);}
+
+        if(chek && chek2){
+            if(textLengths == 5161){
+                log.info("Full text long.");
+            }else log.info("Not full text long! Something wants wrong!" + "Long text must be = 5161, but find text = " + textLengths);
+        }
+
+        return chek;
     }
 }
 
