@@ -12,6 +12,8 @@ import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketAddress;
+import java.net.StandardSocketOptions;
+import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
@@ -21,6 +23,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Iterator;
 import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -37,6 +40,8 @@ public class NonBlockingEchoServer extends Thread
     private InetSocketAddress listenAddress = new InetSocketAddress(Integer.parseInt(date.getString("port")));
     private ExecutorService executorService = Executors.newFixedThreadPool(30);
     private Selector selector;
+    private Set<SocketChannel> myConcurrentSet = ConcurrentHashMap.newKeySet();
+    public static Set<Integer> countText = ConcurrentHashMap.newKeySet();
 
     public void run() {
         crateFolder();
@@ -46,12 +51,14 @@ public class NonBlockingEchoServer extends Thread
             serverChannel.socket().bind(listenAddress);
             serverChannel.configureBlocking(false);
 
+
             int ops = serverChannel.validOps();
             this.selector = Selector.open();
             serverChannel.register(this.selector, ops, null);
             log.info("Server started on port >> " + listenAddress.getPort());
 
-            cycle();
+            cycle(serverChannel);
+
         } catch (IOException e) {
             e.printStackTrace();
             log.error("catch IOException in run " + e.toString());
@@ -74,58 +81,103 @@ public class NonBlockingEchoServer extends Thread
         }
     }
 
-    private void cycle() throws IOException{
+    private void cycle(ServerSocketChannel serverChannel) throws IOException{
         log.info("Start cycle in NonBlockingEchoServer" + "\n");
         while (true) {
             // Wait for events
-            int readyCount = selector.select(1000L);
+            int readyCount = selector.select(1000);
             if (readyCount == 0) {
+                closeAllChannels();
                 continue;
             }
-
             // Process selected keys...
             Set<SelectionKey> readyKeys = selector.selectedKeys();
             Iterator iterator = readyKeys.iterator();
             while (iterator.hasNext()) {
                 SelectionKey key = (SelectionKey) iterator.next();
 
-                // Remove key from set so we don't process it twice
-                iterator.remove();
-
-                if (!key.isValid()) {
-                    continue;
+                if (key.isConnectable())
+                {
+                    ((SocketChannel)key.channel()).finishConnect();
+                    log.info("key.isConnectable");
                 }
 
-                if (key.isAcceptable()) {
+                else if (key.isAcceptable()) {
                     // Accept client connections
                     this.accept(key);
+                    log.info("key.isAcceptable");
+
                 }
                 else if (key.isReadable()) {
+                    log.info("key.isReadable");
                     SocketChannel channel = (SocketChannel) key.channel();
-
-                    if(channel.isOpen()){
-                        log.info("Read from client");
-                        executorService.execute(new ListenerAvayaReadNIO(key));
+                    String channelName = channel.socket().getRemoteSocketAddress().toString();
+                    StringBuilder sb = new StringBuilder();
+                    try {
+                        log.info("Read from client.");
+                        sb = readData(channel);
+                    } catch (Exception e) {
+                       log.error("What i catch? " + e.toString());
                         key.cancel();
                     }
+                    executorService.execute(new ListenerAvayaReadNIO_2(sb, channelName));
+                        key.cancel();
                 }
-                else {log.info("key.is NOT Readable()");}
+                else {
+                    log.info("key.is NOT Readable()");
+                }
+                iterator.remove();
             }
+            selector.selectedKeys().clear();
         }
-
     }
 
     private void accept(SelectionKey key) throws IOException
     {
-        // Accept client connection
-        ServerSocketChannel serverChannel = (ServerSocketChannel) key.channel();
-        SocketChannel channel = serverChannel.accept();
+        ServerSocketChannel serverSocketChannel = (ServerSocketChannel) key.channel();
+        SocketChannel channel = serverSocketChannel.accept();
+
+        if (channel != null) {
+        channel.setOption(StandardSocketOptions.SO_KEEPALIVE, true);
         channel.configureBlocking(false);
+        myConcurrentSet.add(channel);
         Socket socket = channel.socket();
         SocketAddress remoteAddr = socket.getRemoteSocketAddress();
         log.info("Connected to: " + remoteAddr);
 
-        channel.register(this.selector, SelectionKey.OP_READ);
+        channel.register(selector, SelectionKey.OP_READ);
+        } else {
+            key.cancel();
+        }
+    }
+    private StringBuilder readData(SocketChannel channel) throws Exception {
+        log.info("Start method readData" );
+        StringBuilder sb = new StringBuilder();
+
+        ByteBuffer buffer = ByteBuffer.allocate(1024);
+        int count = -1;
+
+
+        while ((count = channel.read(buffer)) > 0) {
+            // TODO - in the future pass this to a "listener" which will do something useful with this buffer
+            byte[] data = new byte[count];
+            System.arraycopy(buffer.array(), 0, data, 0, count);
+            buffer.clear();
+            sb.append(new String(data));
+        }
+
+        if (count < 0) {
+            Socket socket = channel.socket();
+            SocketAddress remoteAddress = socket.getRemoteSocketAddress();
+            log.info("Connection closed by client: " + remoteAddress);
+            socket.close();//может убрать????? по документации канал закрывает сокет. Оставлю на всякий случ.
+            log.info("socket.close() " +  socket.isClosed() );
+            channel.close();
+            log.info("channel.isOpen() " +  channel.isOpen());
+        }
+        log.info("End successful method readData" );
+
+        return sb;
     }
 
     private static void crateFolder(){
@@ -144,11 +196,35 @@ public class NonBlockingEchoServer extends Thread
     public static void stoping(){
         stoping = false;
     }
+    public void closeAllChannels(){
+        Iterator<SocketChannel> iterator = myConcurrentSet.iterator();
+        boolean check = false;
+        while (iterator.hasNext())
+        {
+            try {
+                SocketChannel channel = iterator.next();
+                SocketAddress socketName = channel.socket().getRemoteSocketAddress();
+                if (channel.isOpen()) {
+                    channel.close();
+                    if(!check){check = true;}
+                    if(!channel.isOpen()){log.info("CloseAllChannels: socket close by timeout " + socketName.toString());}
+                }
+
+
+            } catch (IOException e) {
+                log.error("Catch IOException in iterator.next().close()" + e.toString() );
+            }
+            iterator.remove();
+
+        }
+        if (check){log.info("End successful CloseAllChannels." );}
+    }
+
 
     public static void main(String[] args)
     {
         new NonBlockingEchoServer().start();
-        OneTimeIn5Min.push();
+      //  OneTimeIn5Min.push();
        // OneTimeIn15Min.push();
 
     }

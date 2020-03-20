@@ -18,7 +18,7 @@ import java.util.concurrent.TimeUnit;
 @Data
 public class OneTimeIn5Min extends Thread {
     private final static long delay  = 1000L;
-    private final static long time  = 5*1000*60;
+    private final static long time  = 5 * 1000 * 60;
 
     private static Config date = Configs.getConfig("common.config","work_date");
     private final InetSocketAddress listenAddress = new InetSocketAddress(Integer.parseInt(date.getString("port")));
