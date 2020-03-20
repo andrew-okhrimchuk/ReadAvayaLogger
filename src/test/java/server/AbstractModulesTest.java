@@ -28,5 +28,6 @@ public abstract class AbstractModulesTest {
     @AfterClass
     public static void stop(){
         NonBlockingEchoServer.stoping();
+        nonBlockingEchoServer.interrupt();
     }
 }
