@@ -5,14 +5,11 @@ import com.typesafe.config.Config;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import nonBlockingEchoServer.config.Configs;
-import nonBlockingEchoServer.tester.OneTimeIn15Min;
-import nonBlockingEchoServer.tester.OneTimeIn5Min;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketAddress;
-import java.net.StandardSocketOptions;
 import java.nio.ByteBuffer;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
@@ -21,7 +18,6 @@ import java.nio.channels.SocketChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.time.LocalDateTime;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
@@ -39,12 +35,11 @@ public class NonBlockingEchoServer extends Thread
     private static boolean stoping = true;
 
     private InetSocketAddress listenAddress = new InetSocketAddress(Integer.parseInt(date.getString("port")));
- //   private ExecutorService executorService = Executors.newFixedThreadPool(30);
-    private ThreadPoolExecutor executorService = new ThreadPoolExecutor(9, 30, 20L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue<>(100));
+    private ThreadPoolExecutor executorService = new ThreadPoolExecutor(4, 30, 20L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue<>(100));
 
     private Selector selector;
     private Map<SocketChannel, Long> myConcurrentSet = new ConcurrentHashMap<>();
-    public static AtomicInteger countTextTest = new AtomicInteger();// for tests
+//    public static AtomicInteger countTextTest = new AtomicInteger();// for tests
 
     public void run() {
         crateFolder();
@@ -88,9 +83,10 @@ public class NonBlockingEchoServer extends Thread
         log.info("Start cycle in NonBlockingEchoServer" + "\n");
         while (true) {
             // Wait for events
-            int readyCount = selector.select(2000L);
+            int readyCount = selector.select(500L);
             if (readyCount == 0) {
-                closeAllChannels();
+       //         System.out.println("readyCount == 0");
+                closeAllChannelsByTimeOut();
                 continue;
             }
             // Process selected keys...
@@ -98,7 +94,7 @@ public class NonBlockingEchoServer extends Thread
             Iterator iterator = readyKeys.iterator();
             while (iterator.hasNext()) {
                 SelectionKey key = (SelectionKey) iterator.next();
-
+                if (!key.isValid()) continue;
                 if (key.isConnectable())
                 {
                     ((SocketChannel)key.channel()).finishConnect();
@@ -148,7 +144,8 @@ public class NonBlockingEchoServer extends Thread
         String channelName = channel.socket().getRemoteSocketAddress().toString();
         StringBuilder sb = new StringBuilder();
 
-        ByteBuffer buffer = ByteBuffer.allocate(1024);
+        ByteBuffer buffer = ByteBuffer.allocate(4*1024);
+        buffer.clear();
         int count = -1;
 
         while (true) {
@@ -165,9 +162,14 @@ public class NonBlockingEchoServer extends Thread
             sb.append(new String(data));
         }
 
+        if (count == 0) {
+            log.info("Non-blocking IO can read 0 bytes, this data should be discarded manually");
+            closeChannel(channel);
+        }
+
         if (count < 0) {
             closeChannel(channel);
-            log.info("channel.isOpen() " +  channel.isOpen());
+            log.info("Client closed the link, " + channel.toString());
         }
         log.info("End successful method readData" );
 
@@ -191,10 +193,10 @@ public class NonBlockingEchoServer extends Thread
     public static void stoping(){
         stoping = false;
     }
-    public void closeAllChannels(){
+    public void closeAllChannelsByTimeOut(){
         Set<Map.Entry<SocketChannel, Long>> entrySet = myConcurrentSet.entrySet();
         Iterator<Map.Entry<SocketChannel, Long>> itr = entrySet.iterator();
-        int seconds = 4;
+        int seconds = 2;
 
         while (itr.hasNext())
         {
@@ -209,16 +211,15 @@ public class NonBlockingEchoServer extends Thread
                 }
                 itr.remove();
             }
-
+            log.info("End method closeAllChannelsByTimeOut." );
         }
-        log.info("End method CloseAllChannels." );
+
     }
     private boolean checkTimeout(Long value, int seconds ){
         long diffrents = System.currentTimeMillis() - value;
         log.info("Timeout is "+seconds+" seconds. Idle = " + (double)diffrents/1000 + " Seconds." );
         return diffrents > (seconds*1000);
     }
-
     public void closeChannel(SocketChannel channel){
         boolean check = false;
         String socketName = null;

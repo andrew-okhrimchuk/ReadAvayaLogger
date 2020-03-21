@@ -15,7 +15,7 @@ import java.nio.file.Paths;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
-import static nonBlockingEchoServer.server.NonBlockingEchoServer.countTextTest;
+//import static nonBlockingEchoServer.server.NonBlockingEchoServer.countTextTest;
 
 
 @RequiredArgsConstructor
@@ -29,7 +29,6 @@ public class ListenerAvayaReadNIO_2 extends Thread{
         log.info("Start method run" );
         log.info("Working with socket = " + channelName);
         try {
-            //readData(channel);
             sbToLog(sb.toString());
             if (!checkTestText(sb)) {
                 saveFileToFileWriter(new String(sb));
@@ -55,9 +54,7 @@ public class ListenerAvayaReadNIO_2 extends Thread{
             e.printStackTrace();
             log.error("catch Exception in startConnection " + e.toString());
         }
-        log.info("End successful method run");
-        log.info("Сережа, я все еще работаю не отключай меня, дай набрать статистику..." + "\n");
-
+        log.info("End successful method run"+ "\n");
     }
 
     private void saveFileToFileWriter(String text) throws IOException {
@@ -75,9 +72,9 @@ public class ListenerAvayaReadNIO_2 extends Thread{
     }
 
     private void sbToLog(String data){
- //       log.info("Result: " + data);
+        log.info("Result: " + data);
         log.info("Result: Long text is = " + data.length());
-        countTextTest.addAndGet(data.length());
+//        countTextTest.addAndGet(data.length());
     }
     private boolean checkTestText(StringBuilder sb){
         boolean chek = sb.toString().contains("@ TEST");
@@ -93,7 +90,6 @@ public class ListenerAvayaReadNIO_2 extends Thread{
                 log.info("Full text long.");
             }else log.info("Not full text long! Something wants wrong!" + "Long text must be = 5161, but find text = " + textLengths);
         }
-
         return chek;
     }
 }
