@@ -2,10 +2,11 @@ package nonBlockingEchoServer.server;
 //https://github.com/teocci/NioSocketCodeSample/blob/master/src/com/github/teocci/nio/socket/nio/NonBlockingEchoServer.java
 
 import com.typesafe.config.Config;
-import lombok.*;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import nonBlockingEchoServer.config.Configs;
-import nonBlockingEchoServer.tester.OneTimeIn15Min;
 import nonBlockingEchoServer.tester.OneTimeIn5Min;
 
 import java.io.IOException;
@@ -23,26 +24,25 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Iterator;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Data
 @Setter
 @RequiredArgsConstructor
 @Slf4j
-public class NonBlockingEchoServer extends Thread
+public class NonBlockingEchoServer_2 extends Thread
 {
     public static Config path_to_save_files = Configs.getConfig("common.config","path_to_save_files");
     private static Config date = Configs.getConfig("common.config","work_date");
     private static boolean stoping = true;
 
     private InetSocketAddress listenAddress = new InetSocketAddress(Integer.parseInt(date.getString("port")));
-    private ExecutorService executorService = Executors.newFixedThreadPool(30);
+   // private ExecutorService executorService = Executors.newFixedThreadPool(30);
+    private ThreadPoolExecutor executorService = new ThreadPoolExecutor(5, 30, 20L,TimeUnit.MILLISECONDS, new ArrayBlockingQueue<>(100));
     private Selector selector;
     private Set<SocketChannel> myConcurrentSet = ConcurrentHashMap.newKeySet();
-    public static volatile AtomicInteger countTextTest = new AtomicInteger();// for tests
+    public static AtomicInteger countTextTest = new AtomicInteger();// for tests
 
     public void run() {
         crateFolder();
@@ -58,7 +58,7 @@ public class NonBlockingEchoServer extends Thread
             serverChannel.register(this.selector, ops, null);
             log.info("Server started on port >> " + listenAddress.getPort());
 
-            cycle(serverChannel);
+            cycle();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -82,12 +82,14 @@ public class NonBlockingEchoServer extends Thread
         }
     }
 
-    private void cycle(ServerSocketChannel serverChannel) throws IOException{
+    private void cycle() throws IOException{
         log.info("Start cycle in NonBlockingEchoServer" + "\n");
         while (true) {
             // Wait for events
-            int readyCount = selector.select();
+            int readyCount = selector.select(3000L);
             if (readyCount == 0) {
+                log.info("readyCount == 0" );
+
                 closeAllChannels();
                 continue;
             }
@@ -102,13 +104,21 @@ public class NonBlockingEchoServer extends Thread
                     ((SocketChannel)key.channel()).finishConnect();
                     log.info("key.isConnectable");
                 }
+
                 else if (key.isAcceptable()) {
+                    // Accept client connections
                     this.accept(key);
                     log.info("key.isAcceptable");
+
                 }
                 else if (key.isReadable()) {
                     log.info("key.isReadable");
-                    read( key);
+                    SocketChannel channel = (SocketChannel) key.channel();
+                    //String channelName = channel.socket().getRemoteSocketAddress().toString();
+                    //StringBuilder sb = new StringBuilder();
+
+                    executorService.execute(new ListenerAvayaReadNIO_3(channel));
+                        key.cancel();
                 }
                 else {
                     log.info("key.is NOT Readable()");
@@ -125,11 +135,9 @@ public class NonBlockingEchoServer extends Thread
         SocketChannel channel = serverSocketChannel.accept();
 
         if (channel != null) {
-        //channel.setOption(StandardSocketOptions.SO_KEEPALIVE, true);
+        channel.setOption(StandardSocketOptions.SO_KEEPALIVE, true);
         channel.configureBlocking(false);
-
         myConcurrentSet.add(channel);
-
         Socket socket = channel.socket();
         SocketAddress remoteAddr = socket.getRemoteSocketAddress();
         log.info("Connected to: " + remoteAddr);
@@ -138,39 +146,6 @@ public class NonBlockingEchoServer extends Thread
         } else {
             key.cancel();
         }
-    }
-    private void read(SelectionKey key)  {
-        log.info("Start method readData" );
-
-        SocketChannel channel = (SocketChannel) key.channel();
-        String channelName = channel.socket().getRemoteSocketAddress().toString();
-        StringBuilder sb = new StringBuilder();
-
-        ByteBuffer buffer = ByteBuffer.allocate(1024);
-        int count = -1;
-
-        while (true) {
-            try {
-                if (!((count = channel.read(buffer)) > 0)) break;
-            } catch (IOException e) {
-                e.printStackTrace();
-                log.error("End error channel.read(buffer), "  + e.toString());
-            }
-            // TODO - in the future pass this to a "listener" which will do something useful with this buffer
-            byte[] data = new byte[count];
-            System.arraycopy(buffer.array(), 0, data, 0, count);
-            buffer.clear();
-            sb.append(new String(data));
-        }
-
-        if (count < 0) {
-            closeChannel(channel);
-            log.info("channel.isOpen() " +  channel.isOpen());
-        }
-        log.info("End successful method readData" );
-
-        executorService.execute(new ListenerAvayaReadNIO_2(sb, channelName));
-        key.cancel();
     }
 
     private static void crateFolder(){
@@ -191,33 +166,31 @@ public class NonBlockingEchoServer extends Thread
     }
     public void closeAllChannels(){
         Iterator<SocketChannel> iterator = myConcurrentSet.iterator();
+        boolean check = false;
         while (iterator.hasNext())
         {
-            SocketChannel channel = iterator.next();
-            closeChannel(channel);
-            iterator.remove();
-        }
-        log.info("End successful CloseAllChannels." );
-    }
-    public void closeChannel(SocketChannel channel){
-        boolean check = false;
             try {
+                SocketChannel channel = iterator.next();
                 SocketAddress socketName = channel.socket().getRemoteSocketAddress();
                 if (channel.isOpen()) {
                     channel.close();
-                    check = true;
-                    if(!channel.isOpen()){log.info("closeChannel: socket close " + socketName.toString());}
+                    if(!check){check = true;}
+                    if(!channel.isOpen()){log.info("CloseAllChannels: socket close by timeout " + socketName.toString());}
                 }
             } catch (IOException e) {
-                log.error("Catch IOException in closeChannel" + e.toString() );
+                log.error("Catch IOException in iterator.next().close()" + e.toString() );
             }
-        if (check){log.info("End successful closeChannel." );}
+            iterator.remove();
+
+        }
+        if (check){log.info("End successful CloseAllChannels." );}
     }
+
 
     public static void main(String[] args)
     {
-        new NonBlockingEchoServer().start();
-        OneTimeIn5Min.push();
+        new NonBlockingEchoServer_2().start();
+       // OneTimeIn5Min.push();
        // OneTimeIn15Min.push();
 
     }
