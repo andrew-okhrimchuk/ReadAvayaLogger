@@ -21,11 +21,11 @@ import java.nio.channels.SocketChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.time.LocalDateTime;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.util.concurrent.*;
 import java.util.concurrent.atomic.AtomicInteger;
 
 @Data
@@ -39,10 +39,12 @@ public class NonBlockingEchoServer extends Thread
     private static boolean stoping = true;
 
     private InetSocketAddress listenAddress = new InetSocketAddress(Integer.parseInt(date.getString("port")));
-    private ExecutorService executorService = Executors.newFixedThreadPool(30);
+ //   private ExecutorService executorService = Executors.newFixedThreadPool(30);
+    private ThreadPoolExecutor executorService = new ThreadPoolExecutor(9, 30, 20L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue<>(100));
+
     private Selector selector;
-    private Set<SocketChannel> myConcurrentSet = ConcurrentHashMap.newKeySet();
-    public static volatile AtomicInteger countTextTest = new AtomicInteger();// for tests
+    private Map<SocketChannel, Long> myConcurrentSet = new ConcurrentHashMap<>();
+    public static AtomicInteger countTextTest = new AtomicInteger();// for tests
 
     public void run() {
         crateFolder();
@@ -86,7 +88,7 @@ public class NonBlockingEchoServer extends Thread
         log.info("Start cycle in NonBlockingEchoServer" + "\n");
         while (true) {
             // Wait for events
-            int readyCount = selector.select();
+            int readyCount = selector.select(2000L);
             if (readyCount == 0) {
                 closeAllChannels();
                 continue;
@@ -128,7 +130,7 @@ public class NonBlockingEchoServer extends Thread
         //channel.setOption(StandardSocketOptions.SO_KEEPALIVE, true);
         channel.configureBlocking(false);
 
-        myConcurrentSet.add(channel);
+        myConcurrentSet.put(channel,  System.currentTimeMillis());
 
         Socket socket = channel.socket();
         SocketAddress remoteAddr = socket.getRemoteSocketAddress();
@@ -190,34 +192,54 @@ public class NonBlockingEchoServer extends Thread
         stoping = false;
     }
     public void closeAllChannels(){
-        Iterator<SocketChannel> iterator = myConcurrentSet.iterator();
-        while (iterator.hasNext())
+        Set<Map.Entry<SocketChannel, Long>> entrySet = myConcurrentSet.entrySet();
+        Iterator<Map.Entry<SocketChannel, Long>> itr = entrySet.iterator();
+        int seconds = 4;
+
+        while (itr.hasNext())
         {
-            SocketChannel channel = iterator.next();
-            closeChannel(channel);
-            iterator.remove();
+            Map.Entry<SocketChannel, Long> entry = itr.next();
+            SocketChannel channel = entry.getKey();
+            Long value = entry.getValue();
+
+            if (checkTimeout(value, seconds)) {
+                if (channel.isOpen()) {
+                    log.info("Try close channel by TIMEOUT." + channel.toString() );
+                    closeChannel(channel);
+                }
+                itr.remove();
+            }
+
         }
-        log.info("End successful CloseAllChannels." );
+        log.info("End method CloseAllChannels." );
     }
+    private boolean checkTimeout(Long value, int seconds ){
+        long diffrents = System.currentTimeMillis() - value;
+        log.info("Timeout is "+seconds+" seconds. Idle = " + (double)diffrents/1000 + " Seconds." );
+        return diffrents > (seconds*1000);
+    }
+
     public void closeChannel(SocketChannel channel){
         boolean check = false;
+        String socketName = null;
             try {
-                SocketAddress socketName = channel.socket().getRemoteSocketAddress();
+                socketName = channel.socket().getRemoteSocketAddress().toString();
                 if (channel.isOpen()) {
                     channel.close();
                     check = true;
-                    if(!channel.isOpen()){log.info("closeChannel: socket close " + socketName.toString());}
+                    if(!channel.isOpen()){log.info("closeChannel: socket close " + socketName);}
                 }
-            } catch (IOException e) {
+            } catch (NullPointerException | IOException e) {
                 log.error("Catch IOException in closeChannel" + e.toString() );
             }
-        if (check){log.info("End successful closeChannel." );}
+        if (!check){log.info("The " + socketName + " can't close. It is not open." );}
+
     }
 
     public static void main(String[] args)
     {
         new NonBlockingEchoServer().start();
-        OneTimeIn5Min.push();
+       // OneTimeIn5Min.push();
        // OneTimeIn15Min.push();
 
     }

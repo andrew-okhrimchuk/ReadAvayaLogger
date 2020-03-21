@@ -75,7 +75,7 @@ public class ListenerAvayaReadNIO_2 extends Thread{
     }
 
     private void sbToLog(String data){
-        log.info("Result: " + data);
+ //       log.info("Result: " + data);
         log.info("Result: Long text is = " + data.length());
         countTextTest.addAndGet(data.length());
     }
