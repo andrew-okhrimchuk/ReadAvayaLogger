@@ -1,17 +1,13 @@
 package server;
 
-import org.junit.After;
 import org.junit.Assert;
 import org.junit.Test;
 import nonBlockingEchoServer.config.Configs;
 
-import java.io.IOException;
-import java.net.SocketAddress;
-import java.nio.channels.SocketChannel;
-import java.util.Iterator;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicInteger;
 
-import static nonBlockingEchoServer.server.NonBlockingEchoServer.countTextTest;
-import static org.hamcrest.CoreMatchers.is;
+//import static nonBlockingEchoServer.server.NonBlockingEchoServer.countTextTest;
 
 
 public class ModulesTests extends AbstractModulesTest {
@@ -24,31 +20,44 @@ public class ModulesTests extends AbstractModulesTest {
     public void simple () throws Exception {
         if(!nonBlockingEchoServer.isAlive()){nonBlockingEchoServer.start();}
 
-        //   Thread.sleep(2000);
+        Thread.sleep(2000);
         ListenerAvayaClientTest jt = new ListenerAvayaClientTest(date, length);
         ListenerAvayaClientTest jt1 = new ListenerAvayaClientTest(date, length);
         ListenerAvayaClientTest jt2 = new ListenerAvayaClientTest(date, length);
+        ListenerAvayaClientTest jt3 = new ListenerAvayaClientTest(date, length);
+        ListenerAvayaClientTest jt4 = new ListenerAvayaClientTest(date, length);
+        ListenerAvayaClientTest jt5 = new ListenerAvayaClientTest(date, length);
+        ListenerAvayaClientTest jt6 = new ListenerAvayaClientTest(date, length);
+        ListenerAvayaClientTest jt7 = new ListenerAvayaClientTest(date, length);
         jt.start();
-                jt1.start();
+        jt1.start();
         jt2.start();
-        //Thread.sleep(2000);
+        jt3.start();
+        jt4.start();
+        jt5.start();
+        jt6.start();
+        jt7.start();
+
     }
     @Test
     public void notSimple () throws Exception {
+        Thread.sleep(2000);
         if(!nonBlockingEchoServer.isAlive()){nonBlockingEchoServer.start();}
-        countTextTest.clear();
+//        countTextTest = new AtomicInteger();
 
-        ListenerAvayaClientTest_2 jt = new ListenerAvayaClientTest_2(date, length);
-        jt.start();
-        int sum = 0;
-        Thread.sleep(2500);
+        ListenerAvayaClientTest_2 jt1 = new ListenerAvayaClientTest_2(date, length);
+        ListenerAvayaClientTest_2 jt2 = new ListenerAvayaClientTest_2(date, length);
+        ListenerAvayaClientTest_2 jt3 = new ListenerAvayaClientTest_2(date, length);
+        jt1.start();
+        Thread.sleep(150);
+        jt2.start();
+        Thread.sleep(150);
+        jt3.start();
+        Thread.sleep(2*1000);
 
-        Iterator<Integer> iterator = countTextTest.iterator();
-        while (iterator.hasNext())
-        {
-            sum +=iterator.next();
-        }
-        System.out.println("sum = " + sum);
-        Assert.assertThat(sum , is(76680)); // = 15 * 5112
+
+//        System.out.println("countTextTest = " + countTextTest);
+//       System.out.println("countTextTest / 5112 = " + (countTextTest.get()/5112));
+ //       Assert.assertThat(countTextTest.get() , is(92016)); // = 15 * 5112
     }
 }

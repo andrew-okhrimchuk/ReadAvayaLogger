@@ -45,10 +45,18 @@ public class ListenerAvayaClientTest_2 extends Thread{
 
             int count = 0;
             log.info("Socket = " + socket);
-            while(count < 15  ){
+
+            while(count < 3  ){
+                out.writeUTF(longText);
                 out.writeUTF(longText);
                 out.flush();
                 count++;
+            }
+            log.info("count = " + count);
+            try {
+                Thread.sleep(10000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
             }
 
 
@@ -63,7 +71,7 @@ public class ListenerAvayaClientTest_2 extends Thread{
         catch (SocketException e) {
             // TODO Auto-generated catch block
             //e.printStackTrace();
-            log.error("Сервер отвалился. (" + e.toString() + ")");
+            log.error("Server is get out" + e.toString() + ")");
         }
         catch (IOException e) {
             // TODO Auto-generated catch block

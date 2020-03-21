@@ -8,6 +8,7 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
+import static nonBlockingEchoServer.util.Texts.longText;
 
 public class UtilText {
 
@@ -37,7 +38,7 @@ public class UtilText {
     }
 
     public static void main(String args[]) {
-        List<String> Str = split("longText");
+        List<String> Str = split(longText);
         List<String> l7 = new ArrayList<>();
         List<String> l9 = new ArrayList<>();
         //  System.out.println(split(longText));
