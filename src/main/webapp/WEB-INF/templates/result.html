@@ -1,14 +1,60 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Failed users</title>
+    <title>Report</title>
 </head>
 <body>
-<h4><a href="">Upload XML</a></h4>
-<h3>Failed users</h3>
-<ul>
-    <!--/*@thymesVar id="users" type="java.util.List<ru.javaops.masterjava.upload.UserProcessor.FailedMails>"*/-->
-    <li th:each="user: ${users}" th:text="${user}"></li>
-</ul>
+<!--<h4><a href="">Upload XML</a></h4>-->
+<h3>НЛО прилетело и написало эту надпись.</h3>
+<form action="" method="get">
+    <p>
+        <label class="control-label col-sm-3" for="end">Enter start date and time:</label>
+        <input type="datetime-local" name="start" id="start" th:value="${default_start}"><br/>
+    </p>
+    <p>
+        <label class="control-label col-sm-3" for="end">Enter end date and time:</label>
+        <input type="datetime-local" name="end" id="end" th:value="${default_end}"><br/>
+    </p>
+    <p>
+        <input type="submit" value="Update report" name="submit">
+    </p>
+</form>
+
+<table border="1" cellpadding="8" cellspacing="0" width="50%">
+    <thead>
+    <tr>
+      <!--  <th width="5%">Date start</th>
+        <th width="5%">Date end</th>-->
+        <th>#</th>
+        <th width="8%">cond_code</th>
+        <th width="8%">sec_dur</th>
+        <th width="8%">code_dial</th>
+        <th width="8%">code_used</th>
+        <th width="8%">dialed_num</th>
+        <th width="8%">calling_num</th>
+        <th width="8%">acct_code</th>
+        <th width="8%">out_crt_id</th>
+        <th width="8%">in_crt_idd</th>
+        <th width="8%">in_trk_code</th>
+    </tr>
+    </thead>
+    <tbody>
+    <!--/*@thymesVar id="users" type="java.util.List<ru.javaops.masterjava.model.User>"*/-->
+    <tr th:each="user, iter : ${report}" align="center">
+        <td th:text="${iter.count}"></td>
+        <td th:text="${report.request.get(0)}"></td>
+        <td th:text="${report.request.get(1)}"></td>
+        <td th:text="${report.request.get(2)}"></td>
+        <td th:text="${report.request.get(3)}"></td>
+        <td th:text="${report.request.get(4)}"></td>
+        <td th:text="${report.request.get(5)}"></td>
+        <td th:text="${report.request.get(6)}"></td>
+        <td th:text="${report.request.get(7)}"></td>
+        <td th:text="${report.request.get(8)}"></td>
+        <td th:text="${report.request.get(9)}"></td>
+    </tr>
+    </tbody>
+</table>
+
 </body>
 </html>

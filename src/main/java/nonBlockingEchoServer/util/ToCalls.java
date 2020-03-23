@@ -67,37 +67,5 @@ public class ToCalls {
         this.in_crt_id = in_crt_id;
         this.in_trk_code = in_trk_code;
     }
-/*    @BsonCreator
-    public ToCalls(
-            @BsonProperty("cond-code") int cond_code,
-            @BsonProperty("day") int day,
-            @BsonProperty("month") int month,
-            @BsonProperty("years") int years,
-            @BsonProperty("time") int time,
-            @BsonProperty("sec-dur") String sec_dur,
-            @BsonProperty("code-dial") String code_dial,
-            @BsonProperty("code-used") String code_used,
-            @BsonProperty("dialed-num") String dialed_num,
-            @BsonProperty("calling-num") String calling_num,
-            @BsonProperty("acct-code") String acct_code,
-            @BsonProperty("out-crt-id") String out_crt_id,
-            @BsonProperty("in-crt-idd") String in_crt_id,
-            @BsonProperty("in-trk-code") String in_trk_code
-    ) {
-        this.id = 0;
-        this.cond_code = cond_code;
-        this.day = day;
-        this.month = month;
-        this.years = years;
-        this.time = time;
-        this.sec_dur = sec_dur;
-        this.code_dial = code_dial;
-        this.code_used = code_used;
-        this.dialed_num = dialed_num;
-        this.calling_num = calling_num;
-        this.acct_code = acct_code;
-        this.out_crt_id = out_crt_id;
-        this.in_crt_id = in_crt_id;
-        this.in_trk_code = in_trk_code;
-    }*/
+
 }
