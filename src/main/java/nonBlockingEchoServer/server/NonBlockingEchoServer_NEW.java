@@ -2,15 +2,18 @@ package nonBlockingEchoServer.server;
 //https://github.com/teocci/NioSocketCodeSample/blob/master/src/com/github/teocci/nio/socket/nio/NonBlockingEchoServer.java
 
 import com.typesafe.config.Config;
-import lombok.*;
+import lombok.Data;
+import lombok.RequiredArgsConstructor;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import nonBlockingEchoServer.config.Configs;
+import nonBlockingEchoServer.tester.OneTimeIn5Min;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
 import java.net.Socket;
 import java.net.SocketAddress;
-import java.nio.ByteBuffer;
+import java.net.StandardSocketOptions;
 import java.nio.channels.SelectionKey;
 import java.nio.channels.Selector;
 import java.nio.channels.ServerSocketChannel;
@@ -22,23 +25,24 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.*;
+import java.util.concurrent.atomic.AtomicInteger;
 
 @Data
 @Setter
 @RequiredArgsConstructor
 @Slf4j
-public class NonBlockingEchoServer extends Thread
+public class NonBlockingEchoServer_NEW extends Thread
 {
     public static Config path_to_save_files = Configs.getConfig("common.config","path_to_save_files");
     private static Config date = Configs.getConfig("common.config","work_date");
     private static boolean stoping = true;
 
     private InetSocketAddress listenAddress = new InetSocketAddress(Integer.parseInt(date.getString("port")));
-    private ThreadPoolExecutor executorService = new ThreadPoolExecutor(4, 30, 20L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue<>(100));
-
+   // private ExecutorService executorService = Executors.newFixedThreadPool(30);
+    private ThreadPoolExecutor executorService = new ThreadPoolExecutor(1, 5, 20L,TimeUnit.MILLISECONDS, new ArrayBlockingQueue<>(100));
     private Selector selector;
     private Map<SocketChannel, Long> myConcurrentSet = new ConcurrentHashMap<>();
-//    public static AtomicInteger countTextTest = new AtomicInteger();// for tests
+    public static AtomicInteger countTextTest = new AtomicInteger();// for tests
 
     public void run() {
         crateFolder();
@@ -54,7 +58,7 @@ public class NonBlockingEchoServer extends Thread
             serverChannel.register(this.selector, ops, null);
             log.info("Server started on port >> " + listenAddress.getPort());
 
-            cycle(serverChannel);
+            cycle();
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -78,13 +82,14 @@ public class NonBlockingEchoServer extends Thread
         }
     }
 
-    private void cycle(ServerSocketChannel serverChannel) throws IOException{
+    private void cycle() throws IOException{
         log.info("Start cycle in NonBlockingEchoServer" + "\n");
         while (true) {
             // Wait for events
-            int readyCount = selector.select(500L);
+            int readyCount = selector.select(12*60*60*1000L);
             if (readyCount == 0) {
-       //         System.out.println("readyCount == 0");
+                log.info("readyCount == 0" );
+
                 closeAllChannelsByTimeOut();
                 continue;
             }
@@ -93,19 +98,27 @@ public class NonBlockingEchoServer extends Thread
             Iterator iterator = readyKeys.iterator();
             while (iterator.hasNext()) {
                 SelectionKey key = (SelectionKey) iterator.next();
-                if (!key.isValid()) continue;
+
                 if (key.isConnectable())
                 {
                     ((SocketChannel)key.channel()).finishConnect();
                     log.info("key.isConnectable");
                 }
+
                 else if (key.isAcceptable()) {
+                    // Accept client connections
                     this.accept(key);
                     log.info("key.isAcceptable");
+
                 }
                 else if (key.isReadable()) {
                     log.info("key.isReadable");
-                    read( key);
+                    SocketChannel channel = (SocketChannel) key.channel();
+                    //String channelName = channel.socket().getRemoteSocketAddress().toString();
+                    //StringBuilder sb = new StringBuilder();
+
+                    executorService.execute(new ListenerAvayaReadNIO_NEW(channel));
+                        key.cancel();
                 }
                 else {
                     log.info("key.is NOT Readable()");
@@ -122,11 +135,9 @@ public class NonBlockingEchoServer extends Thread
         SocketChannel channel = serverSocketChannel.accept();
 
         if (channel != null) {
-        //channel.setOption(StandardSocketOptions.SO_KEEPALIVE, true);
+        channel.setOption(StandardSocketOptions.SO_KEEPALIVE, true);
         channel.configureBlocking(false);
-
         myConcurrentSet.put(channel,  System.currentTimeMillis());
-
         Socket socket = channel.socket();
         SocketAddress remoteAddr = socket.getRemoteSocketAddress();
         log.info("Connected to: " + remoteAddr);
@@ -135,45 +146,6 @@ public class NonBlockingEchoServer extends Thread
         } else {
             key.cancel();
         }
-    }
-    private void read(SelectionKey key)  {
-        log.info("Start method readData" );
-
-        SocketChannel channel = (SocketChannel) key.channel();
-        String channelName = channel.socket().getRemoteSocketAddress().toString();
-        StringBuilder sb = new StringBuilder();
-
-        ByteBuffer buffer = ByteBuffer.allocate(4*1024);
-        buffer.clear();
-        int count = -1;
-
-        while (true) {
-            try {
-                if (!((count = channel.read(buffer)) > 0)) break;
-            } catch (IOException e) {
-                e.printStackTrace();
-                log.error("End error channel.read(buffer), "  + e.toString());
-            }
-            // TODO - in the future pass this to a "listener" which will do something useful with this buffer
-            byte[] data = new byte[count];
-            System.arraycopy(buffer.array(), 0, data, 0, count);
-            buffer.clear();
-            sb.append(new String(data));
-        }
-
-        if (count == 0) {
-            log.info("Non-blocking IO can read 0 bytes, this data should be discarded manually");
-            closeChannel(channel);
-        }
-
-        if (count < 0) {
-            closeChannel(channel);
-            log.info("Client closed the link, " + channel.toString());
-        }
-        log.info("End successful method readData" );
-
-        executorService.execute(new ListenerAvayaReadNIO(sb, channelName));
-        key.cancel();
     }
 
     private static void crateFolder(){
@@ -222,24 +194,25 @@ public class NonBlockingEchoServer extends Thread
     public void closeChannel(SocketChannel channel){
         boolean check = false;
         String socketName = null;
-            try {
-                socketName = channel.socket().getRemoteSocketAddress().toString();
-                if (channel.isOpen()) {
-                    channel.close();
-                    check = true;
-                    if(!channel.isOpen()){log.info("closeChannel: socket close " + socketName);}
-                }
-            } catch (NullPointerException | IOException e) {
-                log.error("Catch IOException in closeChannel" + e.toString() );
+        try {
+            socketName = channel.socket().getRemoteSocketAddress().toString();
+            if (channel.isOpen()) {
+                channel.close();
+                check = true;
+                if(!channel.isOpen()){log.info("closeChannel: socket close " + socketName);}
             }
+        } catch (NullPointerException | IOException e) {
+            log.error("Catch IOException in closeChannel" + e.toString() );
+        }
         if (!check){log.info("The " + socketName + " can't close. It is not open." );}
 
     }
 
+
     public static void main(String[] args)
     {
-        new NonBlockingEchoServer().start();
-       // OneTimeIn5Min.push();
+        new NonBlockingEchoServer_NEW().start();
+      //  OneTimeIn5Min.push();
        // OneTimeIn15Min.push();
 
     }

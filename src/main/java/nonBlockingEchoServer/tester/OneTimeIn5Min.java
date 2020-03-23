@@ -10,6 +10,7 @@ import java.io.DataOutputStream;
 import java.io.EOFException;
 import java.io.IOException;
 import java.net.*;
+import java.time.LocalDateTime;
 import java.util.concurrent.Executors;
 import java.util.concurrent.ScheduledExecutorService;
 import java.util.concurrent.TimeUnit;
@@ -18,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 @Data
 public class OneTimeIn5Min extends Thread {
     private final static long delay  = 1000L;
-    private final static long time  = 5 * 1000 * 60;
+    private final static long time  = 5 * 1000 * 600;
 
     private static Config date = Configs.getConfig("common.config","work_date");
     private final InetSocketAddress listenAddress = new InetSocketAddress(Integer.parseInt(date.getString("port")));
@@ -39,13 +40,19 @@ public class OneTimeIn5Min extends Thread {
             log.info("Client writing channel = oos & reading channel = ois initialized.");
             log.info("Socket = " + socket);
 
-            try {
-                Thread.sleep(5000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
+            int count = 0;
+
+            while (count < 50) {
+                out.writeUTF("@ TEST MESSAGE! One time in 5 minuts " + LocalDateTime.now());
+                try {
+                    Thread.sleep(5000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                count++;
+                out.writeUTF("@ TEST MESSAGE! One time in 5 minuts " + LocalDateTime.now() + " count = " +count);
+                log.info("Successful out writeUTF" + "\n");
             }
-            out.writeUTF("@ TEST MESSAGE! One time in 5 minuts");
-            log.info("Successful out writeUTF" +"\n");
 
         }
         catch (ConnectException | EOFException | UnknownHostException e) {
@@ -71,8 +78,9 @@ public class OneTimeIn5Min extends Thread {
     public static void push() {
         log.info("Start OneTimeIn5Min");
         OneTimeIn5Min oneTimeIn5Min = new OneTimeIn5Min();
-        ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
-        executor.scheduleAtFixedRate(oneTimeIn5Min, delay, time, TimeUnit.MILLISECONDS);
+     //   ScheduledExecutorService executor = Executors.newSingleThreadScheduledExecutor();
+      //  executor.scheduleAtFixedRate(oneTimeIn5Min, delay, time, TimeUnit.MILLISECONDS);
+        oneTimeIn5Min.start();
         log.info("End OneTimeIn5Min");
     }
 }
