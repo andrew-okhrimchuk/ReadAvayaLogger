@@ -6,6 +6,7 @@ import com.mongodb.client.model.InsertManyOptions;
 import static java.util.stream.Collectors.toList;
 
 import com.mongodb.client.result.DeleteResult;
+import com.mongodb.lang.NonNull;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import nonBlockingEchoServer.util.ToCalls;
@@ -25,23 +26,23 @@ public class ServiceCallsMongoDB {
     private static MongoDatabase sampleTrainingDB = mongoClient.getDatabase("calls_documents");
     public static MongoCollection<Document> gradesCollection = sampleTrainingDB.getCollection("calls");
 
-    public void insertOneDocument (ToCalls calls) {
+    public void insertOneDocument (@NonNull ToCalls calls) {
         log.info("start insertOneDocument");
         Gson gson = new Gson();
         gradesCollection.insertOne(Document.parse(gson.toJson(calls)));
     }
-    public void insertManyDocuments (List<ToCalls> doc) {
+    public void insertManyDocuments (@NonNull List<ToCalls> doc) {
         log.info("start insertManyDocuments");
 
         gradesCollection.insertMany(DocumentsToCalls(doc), new InsertManyOptions().ordered(false));
     }
-    private List<Document> DocumentsToCalls(List<ToCalls> calls){
+    private List<Document> DocumentsToCalls(@NonNull List<ToCalls> calls){
         Gson gson = new Gson();
         return calls.stream()
                 .map(doc -> Document.parse(gson.toJson(doc)) )
                 .collect(toList());
     }
-    public List<ToCalls> findBeetwDate (LocalDateTime start, LocalDateTime end) {
+    public List<ToCalls> findBeetwDate (@NonNull LocalDateTime start, @NonNull LocalDateTime end) {
         log.info("start findBeetwDate");
         int day1 = start.getDayOfMonth();
         int day2 = end.getDayOfMonth();

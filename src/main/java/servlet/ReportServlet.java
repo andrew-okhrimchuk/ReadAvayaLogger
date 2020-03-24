@@ -3,6 +3,8 @@ package servlet;
 import com.google.common.collect.ImmutableMap;
 import lombok.extern.slf4j.Slf4j;
 import mongo.ServiceCallsMongoDB;
+import nonBlockingEchoServer.server.NonBlockingEchoServer_NEW;
+import nonBlockingEchoServer.timer.MyShutdownHook;
 import nonBlockingEchoServer.util.ToCalls;
 import org.thymeleaf.context.WebContext;
 
@@ -15,6 +17,8 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 import static java.time.temporal.TemporalAdjusters.firstDayOfYear;
 import static java.time.temporal.TemporalAdjusters.lastDayOfYear;
@@ -97,4 +101,11 @@ public class ReportServlet extends HttpServlet {
 
     //  LocalDateTime dateTime = LocalDateTime.parse(str, formatter);
   //  LocalDateTime date = LocalDateTime.(req.getParameter("end"));
+
+
+    static {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        executor.submit(new NonBlockingEchoServer_NEW());
+        Runtime.getRuntime().addShutdownHook(new MyShutdownHook(executor));
+    }
 }

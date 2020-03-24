@@ -5,6 +5,7 @@ import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.ScheduledExecutorService;
 
 @Data
@@ -12,7 +13,7 @@ import java.util.concurrent.ScheduledExecutorService;
 @Slf4j
 @RequiredArgsConstructor
 public class MyShutdownHook extends Thread {
-    private ScheduledExecutorService executor;
+    private ExecutorService executor;
 
     @Override
     public void run() {

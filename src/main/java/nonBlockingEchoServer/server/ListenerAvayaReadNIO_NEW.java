@@ -26,7 +26,6 @@ import static nonBlockingEchoServer.server.NonBlockingEchoServer_NEW.countTextTe
 @RequiredArgsConstructor
 @Slf4j
 public class ListenerAvayaReadNIO_NEW extends Thread{
-    public static Config path_to_save_files = Configs.getConfig("common.config","path_to_save_files");
     private ThreadPoolExecutor executorService = new ThreadPoolExecutor(4, 8, 20L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue<>(100));
     private StringBuilder sb;
     private final SocketChannel channel;
@@ -88,22 +87,6 @@ public class ListenerAvayaReadNIO_NEW extends Thread{
         closeChannel(channel);
         log.info("End successful method readData" );
     }
-
-    private void saveFileToFileWriter(String text) throws IOException {
-        log.info("Start method saveFileToFileWriter" );
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH-mm-ss.SSSSSS");
-        String folder_name = path_to_save_files.getString("folder_name");
-
-        String start_name_files = path_to_save_files.getString("start_name_files");
-        Path testFile1 = Files.createFile(Paths.get(folder_name +".\\" + LocalDateTime.now().format(formatter) + start_name_files + currentThread().getName()+ ".txt"));
-        FileWriter fw = new FileWriter(testFile1.toString());
-        fw.write(text);
-        fw.flush();
-        fw.close();
-        log.info("End successful method saveFile" );
-    }
-
-
 
     public void closeChannel(SocketChannel channel){
         boolean check = false;

@@ -25,7 +25,7 @@ public class SaveData extends Thread {
     public static Config path_to_save_files = Configs.getConfig("common.config", "path_to_save_files");
     private StringBuilder sb;
 
-    public void run() {
+    public void run1() {
         String text = sb.toString();
         sbToLog(text);
 
@@ -49,15 +49,20 @@ public class SaveData extends Thread {
     }
 
     private void sbToLog(String data){
-        log.info("Result: " + data);
+//        log.info("Result: " + data);
         log.info("Result: Long text is = " + data.length());
         countTextTest.addAndGet(data.length());
     }
 
-    public void run1(){
+    public void run(){
+        String text = sb.toString();
+        sbToLog(text);
+        log.info("Save to DB.");
         ServiceCallsMongoDB mongoDB = new ServiceCallsMongoDB();
         UtilText ut = new UtilText();
         List<ToCalls> toCalls = ut.StringToListToCalls(sb.toString());
-        mongoDB.insertManyDocuments(toCalls);
+        if (toCalls.size() > 0){mongoDB.insertManyDocuments(toCalls);}
+        else {log.info("Date is empty! Not save.");}
+
     }
 }
