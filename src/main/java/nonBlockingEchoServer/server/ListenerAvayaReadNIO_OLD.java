@@ -20,7 +20,7 @@ import java.time.format.DateTimeFormatter;
 
 @RequiredArgsConstructor
 @Slf4j
-public class ListenerAvayaReadNIO extends Thread{
+public class ListenerAvayaReadNIO_OLD extends Thread{
     public static Config path_to_save_files = Configs.getConfig("common.config","path_to_save_files");
     public final StringBuilder sb;
     public final String channelName;

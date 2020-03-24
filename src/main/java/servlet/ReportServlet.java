@@ -1,7 +1,9 @@
 package servlet;
 
+import com.google.common.collect.ImmutableMap;
 import lombok.extern.slf4j.Slf4j;
-import mongo.ServiceCallsMD;
+import mongo.ServiceCallsMongoDB;
+import nonBlockingEchoServer.util.ToCalls;
 import org.thymeleaf.context.WebContext;
 
 import javax.servlet.ServletException;
@@ -10,14 +12,13 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
+
 import static java.time.temporal.TemporalAdjusters.firstDayOfYear;
 import static java.time.temporal.TemporalAdjusters.lastDayOfYear;
 
-import com.google.common.collect.ImmutableMap;
-import servlet.To.Report;
 
 import static servlet.web.ThymeleafListener.engine;
 
@@ -25,7 +26,8 @@ import static servlet.web.ThymeleafListener.engine;
 @WebServlet("")
 public class ReportServlet extends HttpServlet {
   //  private UserDao userDao = DBIProvider.getDao(UserDao.class);
-    ServiceCallsMD insTanceS = new ServiceCallsMD();
+    ServiceCallsMongoDB mongoDB = new ServiceCallsMongoDB();
+
 
    /* @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -46,20 +48,19 @@ public class ReportServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("Start doGet of '/servlets'");
-        final WebContext webContext = new WebContext(req, resp, req.getServletContext(), req.getLocale());
-        webContext.setVariable("report", buildReport(req));
-        webContext.setVariable("default_start", req.getParameter("start"));
-        webContext.setVariable("default_end", req.getParameter("end"));
+        final WebContext webContext = new WebContext(req, resp, req.getServletContext(), req.getLocale(),
+                ImmutableMap.of("calls", buildReport(req)));
+        webContext.setVariable("start_def", check_date("start", req));  //  "start", req.getParameter("start")
+        webContext.setVariable("end_def", check_date("end", req));
 
-        engine.process("result", webContext, resp.getWriter());
+        engine.process("calls", webContext, resp.getWriter());
     }
 
-    private Report buildReport(HttpServletRequest req){
-        Report report = new Report();
-        LocalDateTime start = LocalDateTime.now();
-        LocalDateTime end = LocalDateTime.now();
+    private List<ToCalls> buildReport(HttpServletRequest req){
+        LocalDateTime start = check_date("start", req);
+        LocalDateTime end = check_date("end", req);
 
-        if (req.getParameter("start")==null){
+      /*  if (req.getParameter("start")==null){
             start = LocalDateTime.now().with(firstDayOfYear());
         } else if (req.getParameter("start")!=null){
             start = LocalDateTime.parse(req.getParameter("start"));
@@ -69,11 +70,31 @@ public class ReportServlet extends HttpServlet {
             end = LocalDateTime.now().with(lastDayOfYear());
         } else if(req.getParameter("end")!=null){
             end = LocalDateTime.parse(req.getParameter("end"));
+        }*/
+        return mongoDB.findBeetwDate(start, end);
+    }
+
+    private LocalDateTime check_date (String start_end, HttpServletRequest req ){
+        LocalDateTime start = LocalDateTime.now();
+        LocalDateTime end = LocalDateTime.now();
+
+        if (req.getParameter("start")==null){
+            start = LocalDateTime.now().with(firstDayOfYear()).withHour(0).withMinute(0).withSecond(0);
+        } else if (req.getParameter("start")!=null){
+            start = LocalDateTime.parse(req.getParameter("start"));
         }
 
-        report.setStart(start);
-        report.setEnd(end);
-        report.setRequest(insTanceS.findBeetwDate(start, end));
-        return report;
+        if (req.getParameter("end")==null){
+            end = LocalDateTime.now().with(lastDayOfYear()).withHour(23).withMinute(59).withSecond(59);
+        } else if(req.getParameter("end")!=null){
+            end = LocalDateTime.parse(req.getParameter("end"));
+        }
+
+        return start_end.equals("start") ? start: end;
     }
+
+  //  DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+
+    //  LocalDateTime dateTime = LocalDateTime.parse(str, formatter);
+  //  LocalDateTime date = LocalDateTime.(req.getParameter("end"));
 }

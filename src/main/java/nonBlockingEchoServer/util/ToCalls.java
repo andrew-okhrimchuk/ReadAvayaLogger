@@ -1,10 +1,7 @@
 package nonBlockingEchoServer.util;
 
 
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.NoArgsConstructor;
-import lombok.ToString;
+import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.bson.codecs.pojo.annotations.BsonCreator;
 import org.bson.codecs.pojo.annotations.BsonProperty;
@@ -18,10 +15,10 @@ import org.bson.types.ObjectId;
 public class ToCalls {
 
     @BsonProperty("_id") public ObjectId id;
-    @BsonProperty("cond_code") public  int cond_code;
-    @BsonProperty("day") public  int day;
-    @BsonProperty("month")public  int month;
-    @BsonProperty("years")public  int years;
+    @BsonProperty("cond_code")  public  int cond_code;
+    @BsonProperty("day")  public  int day;
+    @BsonProperty("month")  public  int month;
+    @BsonProperty("years")  public  int years;
     @BsonProperty("time")public  int time;
     @BsonProperty("sec_dur")public  String sec_dur;
     @BsonProperty("code_dial") public  String code_dial;

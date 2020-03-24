@@ -86,7 +86,7 @@ public class NonBlockingEchoServer_NEW extends Thread
         log.info("Start cycle in NonBlockingEchoServer" + "\n");
         while (true) {
             // Wait for events
-            int readyCount = selector.select(12*60*60*1000L);
+            int readyCount = selector.select(24*60*60*1000L);
             if (readyCount == 0) {
                 log.info("readyCount == 0" );
 

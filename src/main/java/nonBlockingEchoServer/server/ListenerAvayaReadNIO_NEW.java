@@ -58,8 +58,7 @@ public class ListenerAvayaReadNIO_NEW extends Thread{
             log.error("catch Exception in startConnection " + e.toString());
         }
 
-        log.info("End successful method run");
-        log.info("Сережа, я все еще работаю не отключай меня, дай набрать статистику..." + "\n");
+        log.info("End successful method run" + "\n");
 
     }
     private void readData(SocketChannel channel) throws Exception {
@@ -68,16 +67,8 @@ public class ListenerAvayaReadNIO_NEW extends Thread{
 
         ByteBuffer buffer = ByteBuffer.allocate(1024);
         int count = -1;
-       // byte[] data ;
 
         while (channel.isOpen() && channel.isConnected() ) {
-           /* try {
-                count = channel.read(buffer);
-            } catch (IOException e) {
-                e.printStackTrace();
-                closeChannel(channel);
-                log.error("End error channel.read(buffer), "  + e.toString());
-            }*/
             while ((count = channel.read(buffer)) > 0) {
                 // TODO - in the future pass this to a "listener" which will do something useful with this buffer
                 byte[] data = new byte[count];
@@ -86,11 +77,9 @@ public class ListenerAvayaReadNIO_NEW extends Thread{
                 sb.append(new String(data));
             }
 
-
             if (count <= 0) {
                 if (sb.length() > 0) {
-                    sbToLog(sb.toString());
-                    saveFileToFileWriter(new String(sb));
+                    executorService.execute(new SaveData(sb));
                     sb = new StringBuilder();
                     log.info("Shannel.read(buffer) <= 0. Save to DB. " +"\n"+ channel.toString());
                 }
@@ -98,7 +87,6 @@ public class ListenerAvayaReadNIO_NEW extends Thread{
         }
         closeChannel(channel);
         log.info("End successful method readData" );
-
     }
 
     private void saveFileToFileWriter(String text) throws IOException {
@@ -115,28 +103,7 @@ public class ListenerAvayaReadNIO_NEW extends Thread{
         log.info("End successful method saveFile" );
     }
 
-    private void sbToLog(String data){
-        log.info("Result: " + data);
-        log.info("Result: Long text is = " + data.length());
-        countTextTest.addAndGet(data.length());
-    }
-    private boolean checkTestText(StringBuilder sb){
-        boolean chek = sb.toString().contains("@ TEST");
-        boolean chek2 = sb.toString().contains("@ TEST LONG TEXT");
-        int textLengths = sb.toString().length();
-        if(chek) {
-            log.info("CheckTestText = " + chek +  ". Not save test's text in file!" );
-        }
-        else {log.info("CheckTestText = " + chek);}
 
-        if(chek && chek2){
-            if(textLengths == 5161){
-                log.info("Full text long.");
-            }else log.info("Not full text long! Something wants wrong!" + "Long text must be = 5161, but find text = " + textLengths);
-        }
-
-        return chek;
-    }
 
     public void closeChannel(SocketChannel channel){
         boolean check = false;

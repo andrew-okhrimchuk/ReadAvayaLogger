@@ -13,5 +13,4 @@ import java.util.List;
 @Data
 public class Report implements Serializable {
     private LocalDateTime start, end;
-    private List<ToCalls>  request;
 }

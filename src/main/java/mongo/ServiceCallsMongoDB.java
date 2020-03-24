@@ -3,18 +3,10 @@ package mongo;
 
 import com.mongodb.client.*;
 import com.mongodb.client.model.InsertManyOptions;
-import static com.mongodb.client.model.Filters.gte;
-import static com.mongodb.client.model.Filters.lte;
-import static com.mongodb.client.model.Filters.*;
-import static com.mongodb.client.model.Projections.*;
-import static com.mongodb.client.model.Sorts.descending;
 import static java.util.stream.Collectors.toList;
 
 import com.mongodb.client.result.DeleteResult;
-import lombok.Data;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import nonBlockingEchoServer.util.ToCalls;
 import org.bson.Document;
@@ -28,7 +20,7 @@ import com.google.gson.Gson;
 
 @Slf4j
 @NoArgsConstructor
-public class ServiceCallsMD {
+public class ServiceCallsMongoDB {
     private static MongoClient mongoClient = MongoConfig.instance;
     private static MongoDatabase sampleTrainingDB = mongoClient.getDatabase("calls_documents");
     public static MongoCollection<Document> gradesCollection = sampleTrainingDB.getCollection("calls");
@@ -55,8 +47,8 @@ public class ServiceCallsMD {
         int day2 = end.getDayOfMonth();
         int month1 = start.getMonth().getValue();
         int month2 = end.getMonth().getValue();
-        int years1 = start.getDayOfYear();
-        int years2 = end.getDayOfYear();
+        int years1 = start.getYear();
+        int years2 = end.getYear();
 
         Document  query = new Document ();
         Map<String, Document > andQuery = new HashMap<>();  //BasicDBObject instead  Document

@@ -2,7 +2,7 @@ package server;
 
 import com.typesafe.config.Config;
 import nonBlockingEchoServer.config.Configs;
-import nonBlockingEchoServer.server.ListenerAvayaReadNIO;
+import nonBlockingEchoServer.server.ListenerAvayaReadNIO_OLD;
 import nonBlockingEchoServer.server.NonBlockingEchoServer;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
@@ -21,7 +21,7 @@ public abstract class AbstractModulesTest {
         nonBlockingEchoServer = new NonBlockingEchoServer();
         nonBlockingEchoServer.setListenAddress(new InetSocketAddress(Integer.parseInt(date.getString("port"))));
         NonBlockingEchoServer.path_to_save_files = path_to_save_files;
-        ListenerAvayaReadNIO.path_to_save_files = path_to_save_files;
+        ListenerAvayaReadNIO_OLD.path_to_save_files = path_to_save_files;
 
     }
 
