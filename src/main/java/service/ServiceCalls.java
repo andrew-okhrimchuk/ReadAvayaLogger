@@ -2,7 +2,6 @@ package service;
 
 import mongo.ServiceCallsMongoDB;
 import nonBlockingEchoServer.util.ToCalls;
-import servlet.To.WayTo;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
@@ -16,9 +15,12 @@ public class ServiceCalls {
     static ServiceCallsMongoDB mongoDB = new ServiceCallsMongoDB();
 
     public List<ToCalls> buildReport(HttpServletRequest req){
+        System.out.println(req.getAttributeNames().toString());
+
+        System.out.println(req.getParameterNames());
         LocalDateTime start = get_date("start", req);
         LocalDateTime end = get_date("end", req);
-        String way = req.getParameter("calls_way");
+        String way = req.getParameter("subject");
         if(way==null || way.equals("all")){
             return mongoDB.findBeetwDate(start, end);
         }else { int wayI = 7;
@@ -27,14 +29,13 @@ public class ServiceCalls {
         }
     }
 
-    public WayTo ways(HttpServletRequest reqq){
-        WayTo ways = new WayTo();
+
+    public List list (HttpServletRequest req){
         List<String > list = new ArrayList<>();
         list.add("all");
         list.add("out");
         list.add("in");
-        ways.setList(list);
-        return ways;
+        return list;
     }
 
     public LocalDateTime get_date(String start_end, HttpServletRequest req ){

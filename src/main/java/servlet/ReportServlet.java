@@ -21,10 +21,8 @@ import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-import static java.time.temporal.TemporalAdjusters.firstDayOfYear;
-import static java.time.temporal.TemporalAdjusters.lastDayOfYear;
 
-
+import static java.time.temporal.TemporalAdjusters.*;
 import static servlet.web.ThymeleafListener.engine;
 
 @Slf4j
@@ -57,8 +55,8 @@ public class ReportServlet extends HttpServlet {
                 ImmutableMap.of("calls", serviceCalls.buildReport(req)));
         webContext.setVariable("start_def", serviceCalls.get_date("start", req));  //  "start", req.getParameter("start")
         webContext.setVariable("end_def", serviceCalls.get_date("end", req));
-        webContext.setVariable("ways", serviceCalls.ways(req));
-
+        webContext.setVariable("list", serviceCalls.list(req));
+        webContext.setVariable("subject", "");
         engine.process("calls", webContext, resp.getWriter());
     }
 

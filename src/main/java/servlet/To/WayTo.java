@@ -13,4 +13,5 @@ import java.util.List;
 @Data
 public class WayTo implements Serializable {
     private List<String > list;
+    private LocalDateTime start, end;
 }

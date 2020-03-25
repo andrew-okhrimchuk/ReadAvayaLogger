@@ -7,43 +7,33 @@
 <!--<h4><a href="">Upload XML</a></h4>-->
 <h3>Report on all calls</h3>
 <div>
-
-                 /*@thymesVar id="list" type="java.util.List<java.lang.String>"*/
-    <form action="" method="get" >
-      <p>
-          <label class="control-label col-sm-3" for="start">Enter start date and time:</label>
-          <input type="datetime-local" class="form-control" name="start" id="start" th:value="${{start_def}}"><br/>
-      </p>
-      <p>
-          <label class="control-label col-sm-3" for="end">Enter end date and time:</label>
-          <input type="datetime-local" class="form-control" name="end" id="end" th:value="${{end_def}}"><br/>
-      </p>
-      <p>
-          <input type="submit" value="Update report" name="submit">
+    <form action="" method="get">
+        <p>
+            <label class="control-label col-sm-3" for="start">Enter start date and time:</label>
+            <input type="datetime-local" class="form-control" name="start" id="start" th:value="${{start_def}}"><br/>
+        </p>
+        <p>
+            <label class="control-label col-sm-3" for="end">Enter end date and time:</label>
+            <input type="datetime-local" class="form-control" name="end" id="end" th:value="${{end_def}}"><br/>
+        </p>
+        <p>
+            <input type="submit" value="Update report" name="submit">
 
 
-          <label >
-              <select class="form-control" th:field="*{subject}" id="subject" name="subject">
-                  <option th:each="iter: ${list}" th:value="${{iter}}" th:text="${iter}"></option>
-              </select>
-          </label>
-          <!--<label >
-              <select class="form-control" th:field="*{subject}" id="subject" name="subject">
-                  <option th:each="iter: ${ways.getList()}" th:value="${{iter}}" th:text="${iter}"></option>
-              </select>
-          </label>-->
+            <select class="form-control" th:object="*{{ways}}">
+                <option th:each="iter: ${ways.getList()}" th:value="${{iter}}" th:text="${iter}"></option>
+            </select>
 
-      </p>
-  </form>
+        </p>
+    </form>
 </div>
-
 
 
 <table border="1" cellpadding="8" cellspacing="0" width="50%">
     <thead>
     <tr>
-      <!--  <th width="5%">Date start</th>
-        <th width="5%">Date end</th>-->
+        <!--  <th width="5%">Date start</th>
+          <th width="5%">Date end</th>-->
         <th>#</th>
         <th width="8%">cond_code</th>
         <th width="8%">date</th>
@@ -60,9 +50,9 @@
     </thead>
     <tbody>
 
-<!--
-    /*@thymesVar id="calls" type="java.util.List<nonBlockingEchoServer.util.ToCalls>"*/
--->
+    <!--
+        /*@thymesVar id="calls" type="java.util.List<nonBlockingEchoServer.util.ToCalls>"*/
+    -->
     <tr th:each="call,iter: ${calls}">
         <td th:text="${iter.count}"></td>
         <td th:text="${call.cond_code}"></td>

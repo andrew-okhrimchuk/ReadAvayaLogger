@@ -1,0 +1,61 @@
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Report</title>
+</head>
+<body>
+<!--<h4><a href="">Upload XML</a></h4>-->
+<h3>Report on all calls</h3>
+<div>
+
+    <form action="" method="post">
+      <p>
+          <label class="control-label col-sm-3" for="start">Start date:</label>
+          <input type="datetime-local" class="form-control" name="start" id="start" th:value="${{start_def}}"><br/>
+      </p>
+      <p>
+          <label class="control-label col-sm-3" for="end">End date:</label>
+          <input type="datetime-local" class="form-control" name="end" id="end" th:value="${{end_def}}"><br/>
+      </p>
+      <p>
+          <input type="submit" value="Update report" name="submit">
+
+          <select class="form-control" th:field="*{{ways}}">
+              <option th:each="iter: ${ways}" th:value="${{iter}}" th:text="${iter}"></option>
+          </select>
+          <!--<select class="form-control" th:field="*{{wayisone}}">
+              <option th:each="iter: ${calls_way.getWayisone()}" th:value="${{iter}}" th:text="${iter}"></option>
+          </select>-->
+         <!-- <select class="form-control" th:field="*{{calls_way}}" multiple="multiple">
+              <option th:each="part : ${calls_way}" th:field="*{part.way}" th:value="${part.way}"
+                      th:text="${part.getWay()}">Part name</option>
+          </select>-->
+        <p>
+           <!--      <label for="calls_way"></label><select id="calls_way" th:field="*{{calls_way}}">
+              <option value="all">All Calls</option>
+              <option value="9">Out Calls</option>
+              <option value="7">In Calls</option>
+          </select>-->
+        <p>
+
+
+
+  <!--      <div>
+            <label for="multiValues">Multiple Values:</label>
+            <select id="multiValues" th:field="*{calls_way}" multiple="multiple" th:disabled="${param.d}">
+                <option th:each="o : ${calls_way.calls.multiValueOptions}" th:value="${o}" th:text="${o}">...</option>
+            </select>
+        </div>-->
+
+       <!-- <select th:field="*{type}">
+            <option th:each="type : ${calls_way}"
+                    th:value="${type}"
+                    th:text="#{${'seedstarter.type.' + type}}">Wireframe</option>
+        </select>-->
+    </p>
+
+
+  </form>
+</div>
+</body>
+</html>
