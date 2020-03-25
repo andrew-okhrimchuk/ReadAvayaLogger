@@ -8,7 +8,9 @@
 <h3>Report on all calls</h3>
 <div>
 
+<!--
                  /*@thymesVar id="list" type="java.util.List<java.lang.String>"*/
+-->
     <form action="" method="get" >
       <p>
           <label class="control-label col-sm-3" for="start">Enter start date and time:</label>
@@ -27,11 +29,6 @@
                   <option th:each="iter: ${list}" th:value="${{iter}}" th:text="${iter}"></option>
               </select>
           </label>
-          <!--<label >
-              <select class="form-control" th:field="*{subject}" id="subject" name="subject">
-                  <option th:each="iter: ${ways.getList()}" th:value="${{iter}}" th:text="${iter}"></option>
-              </select>
-          </label>-->
 
       </p>
   </form>

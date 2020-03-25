@@ -89,7 +89,7 @@ public class ServiceCallsMongoDB {
         andQuery.put("day", new Document ("$gte", day1).append("$lte", day2));
         andQuery.put("month", new Document ("$gte", month1).append("$lte", month2));
         andQuery.put("years", new Document ("$gte", years1).append("$lte", years2));
-        andQuery.put("cond_code", new Document ("cond_code", way));
+        andQuery.put("cond_code", new Document ("$eq", way));
         query.putAll(andQuery);
 
         FindIterable<ToCalls> docs = gradesCollection.find(query, ToCalls.class);
@@ -102,11 +102,7 @@ public class ServiceCallsMongoDB {
         //       query.put("$and", andQuery);
 
         return gradesCollection.find(query, ToCalls.class)
-                //   .projection(fields(excludeId(), include("class_id", "student_id")))
-                //   .sort(descending("class_id"))
-                //   .skip(2)
-                //   .limit(2)
-                .into(new ArrayList<>());
+                              .into(new ArrayList<>());
 
     }
 
