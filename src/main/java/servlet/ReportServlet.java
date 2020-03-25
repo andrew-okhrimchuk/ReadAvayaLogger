@@ -55,8 +55,8 @@ public class ReportServlet extends HttpServlet {
         log.info("Start doGet of '/servlets'");
         final WebContext webContext = new WebContext(req, resp, req.getServletContext(), req.getLocale(),
                 ImmutableMap.of("calls", serviceCalls.buildReport(req)));
-        webContext.setVariable("start_def", check_date("start", req));  //  "start", req.getParameter("start")
-        webContext.setVariable("end_def", check_date("end", req));
+        webContext.setVariable("start_def", serviceCalls.get_date("start", req));  //  "start", req.getParameter("start")
+        webContext.setVariable("end_def", serviceCalls.get_date("end", req));
 
         engine.process("calls", webContext, resp.getWriter());
     }
