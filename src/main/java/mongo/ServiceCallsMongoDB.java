@@ -75,6 +75,41 @@ public class ServiceCallsMongoDB {
                 .into(new ArrayList<>());
 
     }
+    public List<ToCalls> findBeetwDateAndWay (@NonNull LocalDateTime start, @NonNull LocalDateTime end, @NonNull int way) {
+        log.info("start findBeetwDate");
+        int day1 = start.getDayOfMonth();
+        int day2 = end.getDayOfMonth();
+        int month1 = start.getMonth().getValue();
+        int month2 = end.getMonth().getValue();
+        int years1 = start.getYear();
+        int years2 = end.getYear();
+
+        Document  query = new Document ();
+        Map<String, Document > andQuery = new HashMap<>();  //BasicDBObject instead  Document
+        andQuery.put("day", new Document ("$gte", day1).append("$lte", day2));
+        andQuery.put("month", new Document ("$gte", month1).append("$lte", month2));
+        andQuery.put("years", new Document ("$gte", years1).append("$lte", years2));
+        andQuery.put("cond_code", new Document ("cond_code", way));
+        query.putAll(andQuery);
+
+        FindIterable<ToCalls> docs = gradesCollection.find(query, ToCalls.class);
+        //       query.put("quantity", new BasicDBObject("$gte", day1));
+
+        //       List<BasicDBObject> andQuery1 = new ArrayList<BasicDBObject>();
+        //       andQuery1.add(new BasicDBObject("manufacturer", manufacturer));
+        //       query.put("price",new BasicDBObject("$gte", lowPrice).append("$lte", highPrice));
+
+        //       query.put("$and", andQuery);
+
+        return gradesCollection.find(query, ToCalls.class)
+                //   .projection(fields(excludeId(), include("class_id", "student_id")))
+                //   .sort(descending("class_id"))
+                //   .skip(2)
+                //   .limit(2)
+                .into(new ArrayList<>());
+
+    }
+
     public List<ToCalls> findAll (){
         return gradesCollection.find(ToCalls.class).into(new ArrayList<>());
     }

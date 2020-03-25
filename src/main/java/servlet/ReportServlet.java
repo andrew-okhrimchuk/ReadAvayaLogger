@@ -7,6 +7,7 @@ import nonBlockingEchoServer.server.NonBlockingEchoServer_NEW;
 import nonBlockingEchoServer.timer.MyShutdownHook;
 import nonBlockingEchoServer.util.ToCalls;
 import org.thymeleaf.context.WebContext;
+import service.ServiceCalls;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -30,7 +31,7 @@ import static servlet.web.ThymeleafListener.engine;
 @WebServlet("")
 public class ReportServlet extends HttpServlet {
   //  private UserDao userDao = DBIProvider.getDao(UserDao.class);
-    ServiceCallsMongoDB mongoDB = new ServiceCallsMongoDB();
+  ServiceCalls serviceCalls = new ServiceCalls();
 
 
    /* @Override
@@ -53,18 +54,18 @@ public class ReportServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         log.info("Start doGet of '/servlets'");
         final WebContext webContext = new WebContext(req, resp, req.getServletContext(), req.getLocale(),
-                ImmutableMap.of("calls", buildReport(req)));
+                ImmutableMap.of("calls", serviceCalls.buildReport(req)));
         webContext.setVariable("start_def", check_date("start", req));  //  "start", req.getParameter("start")
         webContext.setVariable("end_def", check_date("end", req));
 
         engine.process("calls", webContext, resp.getWriter());
     }
 
-    private List<ToCalls> buildReport(HttpServletRequest req){
+  /*  private List<ToCalls> buildReport(HttpServletRequest req){
         LocalDateTime start = check_date("start", req);
         LocalDateTime end = check_date("end", req);
 
-      /*  if (req.getParameter("start")==null){
+      *//*  if (req.getParameter("start")==null){
             start = LocalDateTime.now().with(firstDayOfYear());
         } else if (req.getParameter("start")!=null){
             start = LocalDateTime.parse(req.getParameter("start"));
@@ -74,9 +75,9 @@ public class ReportServlet extends HttpServlet {
             end = LocalDateTime.now().with(lastDayOfYear());
         } else if(req.getParameter("end")!=null){
             end = LocalDateTime.parse(req.getParameter("end"));
-        }*/
-        return mongoDB.findBeetwDate(start, end);
-    }
+        }*//*
+        return serviceCalls.findBeetwDate(start, end);
+    }*/
 
     private LocalDateTime check_date (String start_end, HttpServletRequest req ){
         LocalDateTime start = LocalDateTime.now();

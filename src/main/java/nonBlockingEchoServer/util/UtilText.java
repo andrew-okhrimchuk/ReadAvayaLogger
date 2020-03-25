@@ -10,7 +10,6 @@ import java.util.List;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
-import static nonBlockingEchoServer.util.Texts.longText;
 
 @Data
 @Slf4j
@@ -80,7 +79,7 @@ public class UtilText {
 
     public static void main(String args[]) {
         UtilText ss = new UtilText();
-        List<ToCalls> xx = ss.StringToListToCalls (longText);
+        List<ToCalls> xx = ss.StringToListToCalls ("longText");
         System.out.println(xx);
     }
 }
