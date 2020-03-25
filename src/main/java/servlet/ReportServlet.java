@@ -57,6 +57,7 @@ public class ReportServlet extends HttpServlet {
                 ImmutableMap.of("calls", serviceCalls.buildReport(req)));
         webContext.setVariable("start_def", serviceCalls.get_date("start", req));  //  "start", req.getParameter("start")
         webContext.setVariable("end_def", serviceCalls.get_date("end", req));
+        webContext.setVariable("ways", serviceCalls.ways(req));
 
         engine.process("calls", webContext, resp.getWriter());
     }

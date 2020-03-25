@@ -2,7 +2,7 @@ package service;
 
 import mongo.ServiceCallsMongoDB;
 import nonBlockingEchoServer.util.ToCalls;
-import servlet.To.Report;
+import servlet.To.WayTo;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;
@@ -25,6 +25,16 @@ public class ServiceCalls {
             if (way.equals("in")){return mongoDB.findBeetwDateAndWay(start, end, 9);}
             return mongoDB.findBeetwDateAndWay(start, end, wayI);
         }
+    }
+
+    public WayTo ways(HttpServletRequest reqq){
+        WayTo ways = new WayTo();
+        List<String > list = new ArrayList<>();
+        list.add("all");
+        list.add("out");
+        list.add("in");
+        ways.setList(list);
+        return ways;
     }
 
     public LocalDateTime get_date(String start_end, HttpServletRequest req ){

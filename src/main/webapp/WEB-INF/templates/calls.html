@@ -18,6 +18,13 @@
       </p>
       <p>
           <input type="submit" value="Update report" name="submit">
+
+          <!--
+                 /*@thymesVar id="ways" type="servlet.To.WayTo"*/
+             -->
+          <select class="form-control" th:field="*{{ways}}">
+              <option th:each="iter: ${ways.getList()}" th:value="${{iter}}" th:text="${iter}"></option>
+          </select>
       </p>
   </form>
 </div>

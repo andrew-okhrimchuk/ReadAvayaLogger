@@ -11,6 +11,6 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Data
-public class Report implements Serializable {
-    private LocalDateTime start, end;
+public class WayTo implements Serializable {
+    private List<String > list;
 }
