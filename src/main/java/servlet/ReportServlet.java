@@ -2,10 +2,8 @@ package servlet;
 
 import com.google.common.collect.ImmutableMap;
 import lombok.extern.slf4j.Slf4j;
-import mongo.ServiceCallsMongoDB;
 import nonBlockingEchoServer.server.NonBlockingEchoServer_NEW;
 import nonBlockingEchoServer.timer.MyShutdownHook;
-import nonBlockingEchoServer.util.ToCalls;
 import org.thymeleaf.context.WebContext;
 import service.ServiceCalls;
 
@@ -15,14 +13,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.List;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-
-import static java.time.temporal.TemporalAdjusters.*;
 import static servlet.web.ThymeleafListener.engine;
 
 @Slf4j
@@ -39,6 +32,7 @@ public class ReportServlet extends HttpServlet {
         webContext.setVariable("end_def", serviceCalls.get_date("end", req));
         webContext.setVariable("list", serviceCalls.list(req));
         webContext.setVariable("subject", "");
+        webContext.setVariable("num", serviceCalls.get_numberInt(req));
         engine.process("calls", webContext, resp.getWriter());
     }
 

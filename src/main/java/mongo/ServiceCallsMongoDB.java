@@ -58,24 +58,11 @@ public class ServiceCallsMongoDB {
         andQuery.put("years", new Document ("$gte", years1).append("$lte", years2));
         query.putAll(andQuery);
 
-        FindIterable<ToCalls> docs = gradesCollection.find(query, ToCalls.class);
- //       query.put("quantity", new BasicDBObject("$gte", day1));
-
- //       List<BasicDBObject> andQuery1 = new ArrayList<BasicDBObject>();
- //       andQuery1.add(new BasicDBObject("manufacturer", manufacturer));
- //       query.put("price",new BasicDBObject("$gte", lowPrice).append("$lte", highPrice));
-
- //       query.put("$and", andQuery);
-
         return gradesCollection.find(query, ToCalls.class)
-             //   .projection(fields(excludeId(), include("class_id", "student_id")))
-             //   .sort(descending("class_id"))
-                //   .skip(2)
-                //   .limit(2)
                 .into(new ArrayList<>());
 
     }
-    public List<ToCalls> findBeetwDateAndWay (@NonNull LocalDateTime start, @NonNull LocalDateTime end, @NonNull int way) {
+    public List<ToCalls> findBeetwDateAndWay (@NonNull LocalDateTime start, @NonNull LocalDateTime end, int way, String num) {
         log.info("start findBeetwDate");
         int day1 = start.getDayOfMonth();
         int day2 = end.getDayOfMonth();
@@ -89,17 +76,12 @@ public class ServiceCallsMongoDB {
         andQuery.put("day", new Document ("$gte", day1).append("$lte", day2));
         andQuery.put("month", new Document ("$gte", month1).append("$lte", month2));
         andQuery.put("years", new Document ("$gte", years1).append("$lte", years2));
-        andQuery.put("cond_code", new Document ("$eq", way));
+        if (way !=0 ){andQuery.put("cond_code", new Document ("$eq", way));}
+        if (num != null ){andQuery.put("calling_num", new Document ("$eq", num));}
+
         query.putAll(andQuery);
 
         FindIterable<ToCalls> docs = gradesCollection.find(query, ToCalls.class);
-        //       query.put("quantity", new BasicDBObject("$gte", day1));
-
-        //       List<BasicDBObject> andQuery1 = new ArrayList<BasicDBObject>();
-        //       andQuery1.add(new BasicDBObject("manufacturer", manufacturer));
-        //       query.put("price",new BasicDBObject("$gte", lowPrice).append("$lte", highPrice));
-
-        //       query.put("$and", andQuery);
 
         return gradesCollection.find(query, ToCalls.class)
                               .into(new ArrayList<>());
@@ -116,17 +98,4 @@ public class ServiceCallsMongoDB {
     public void deleteCollection (String collection){
         sampleTrainingDB.getCollection(collection).drop();
     }
-
-
-   /* @Getter
-    public static ServiceCallsMD insTanceS;
-    static {
-        try {
-            insTanceS = new ServiceCallsMD();
-            log.info("run static method init insTanceS ServiceCallsMD");
-        } catch (Exception e) {
-            throw new RuntimeException("Exception occured in creating singleton instance " + e.toString());
-        }
-    }*/
-
 }

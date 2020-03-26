@@ -19,21 +19,12 @@ public class ServiceCalls {
     public static List listIn = new ArrayList<>(Arrays.asList("in","out","all"));
 
     public List<ToCalls> buildReport(HttpServletRequest req){
-        System.out.println(req.getAttributeNames().toString());
-
-        System.out.println(req.getParameterNames());
         LocalDateTime start = get_date("start", req);
         LocalDateTime end = get_date("end", req);
-        String way = req.getParameter("subject");
-        if(way==null || way.equals("all")){
-            return mongoDB.findBeetwDate(start, end);
-        }else { int wayI = 7;
-            if (way.equals("in")){return mongoDB.findBeetwDateAndWay(start, end, 9);}
-            return mongoDB.findBeetwDateAndWay(start, end, wayI);
-        }
+        int way = get_subjec(req);
+        String num = get_number(req);
+        return mongoDB.findBeetwDateAndWay(start, end, way, num);
     }
-
-
     public List list (HttpServletRequest req){
         String way = req.getParameter("subject");
         if(way==null || way.equals("all")){
@@ -47,7 +38,6 @@ public class ServiceCalls {
         }
         return listAll;
     }
-
     public LocalDateTime get_date(String start_end, HttpServletRequest req ){
         LocalDateTime start = LocalDateTime.now();
         LocalDateTime end = LocalDateTime.now();
@@ -66,6 +56,21 @@ public class ServiceCalls {
 
         return start_end.equals("start") ? start: end;
     }
-
-
+    public int get_subjec(HttpServletRequest req){
+        String way = req.getParameter("subject");
+        if(way==null ){return 0;}
+        else if (way.equals("out")) {return 7;}
+        else if (way.equals("in"))  {return 9;}
+        return 0;
+    }
+    public String get_number(HttpServletRequest req){
+        String number = req.getParameter("num");
+        if(number==null || number.length() >10 || number.equals("")|| number.equals("0")){return null;}
+        return number;
+    }
+    public int get_numberInt(HttpServletRequest req){
+        String number = req.getParameter("num");
+        if(number==null || number.equals("0") || number.equals("")){return 0;}
+        return Integer.parseInt(number);
+    }
 }

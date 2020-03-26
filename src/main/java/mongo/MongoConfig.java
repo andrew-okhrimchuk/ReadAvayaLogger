@@ -28,20 +28,16 @@ public class MongoConfig {
     }
 
     private static MongoClient init() {
-        // log.getLogger("org.mongodb.driver").setLevel(Level.WARNING);
         log.info("run method MongoClient init");
         CodecRegistry pojoCodecRegistry = fromRegistries(MongoClientSettings.getDefaultCodecRegistry(),
                 fromProviders(PojoCodecProvider.builder().automatic(true).build()));
 
         log.warn("not run method MongoClient init");
-     //   String connectionString = System.getenv("mongodb.uri");
         MongoClientSettings settings = MongoClientSettings.builder()
                 .codecRegistry(pojoCodecRegistry)
                 .applyConnectionString(new ConnectionString("mongodb://localhost:27017"))
                 .build();
 
-       // return MongoClients.create("mongodb://localhost:27017");
         return MongoClients.create(settings);
     }
-
 }

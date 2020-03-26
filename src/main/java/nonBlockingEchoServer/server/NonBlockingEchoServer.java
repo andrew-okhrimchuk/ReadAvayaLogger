@@ -239,8 +239,6 @@ public class NonBlockingEchoServer extends Thread
     public static void main(String[] args)
     {
         new NonBlockingEchoServer().start();
-       // OneTimeIn5Min.push();
-       // OneTimeIn15Min.push();
 
     }
 }

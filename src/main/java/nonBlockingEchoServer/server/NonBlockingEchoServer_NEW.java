@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import nonBlockingEchoServer.config.Configs;
-import nonBlockingEchoServer.tester.OneTimeIn5Min;
 
 import java.io.IOException;
 import java.net.InetSocketAddress;
@@ -212,8 +211,5 @@ public class NonBlockingEchoServer_NEW extends Thread
     public static void main(String[] args)
     {
         new NonBlockingEchoServer_NEW().start();
-        OneTimeIn5Min.push();
-       // OneTimeIn15Min.push();
-
     }
 }
