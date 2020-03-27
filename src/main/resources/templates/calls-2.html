@@ -1,4 +1,4 @@
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="RU">
 <head>
     <meta charset="UTF-8">
     <title>Report</title>
@@ -7,33 +7,40 @@
 <h3>Report on all calls</h3>
 <div>
 
-<!--
-                 /*@thymesVar id="all_out_in" type="java.util.List<java.lang.String>"*/
--->
-   <!-- /*@thymesVar id="TO" type="main.web.TO.TO"*/-->
 
-    <form action="/" method="get"  th:object="${TO}">
+ <!--   /*@thymesVar id="TO" type="main.web.TO.TO"*/-->
+
+    <form action="/" method="get"  th:object="${TO}" >
 
       <p>
-          <label class="control-label col-sm-3" >Enter start date and time:</label>
-          <input type="datetime-local" class="form-control" th:field="*{start}" th:value="${{TO.start}}"><br/>
+          <label class="control-label col-sm-3" >Введите и дату и время ("00:00"):
+              <input type="datetime-local" name="start" id="start" class="form-control" th:field="*{{start}}" th:value="*{{start}}">
+          </label><br/>
       </p>
       <p>
-          <label class="control-label col-sm-3" >Enter end date and time:</label>
-          <input type="datetime-local" class="form-control" th:field="*{end}"  th:value="${{TO.end}}"><br/>
+          <label class="control-label col-sm-3" >Введите и дату и время ("00:00"):
+              <input type="datetime-local" name="end" id="end" class="form-control" th:field="*{end}"  th:value="${TO.end}">
+          </label><br/>
       </p>
       <p>
-          <input type="submit" value="Update report" name="submit">
-
-
+          <input type="submit" value="Update report" name="submit" onclick="myFunction()">
+          <!--
+                           /*@thymesVar id="all_out_in" type="java.util.List<java.lang.String>"*/
+          -->
           <label >
               <select class="form-control" th:field="*{answer_all_out_in}" >
                   <option th:each="iter: ${all_out_in}" th:value="${{iter}}" th:text="${iter}"></option>
               </select>
           </label>
       </p>
+        <p>
+            <label for="num" class="control-label col-sm-3"  th:field="*{num}">Введите нужный номер, такой как 0971116699 :</label>
+            <input type="number" class="form-control" id="num"  th:field="*{num}"  th:value="${{TO.num}}"> (calling_num)<br/>
+        </p>
   </form>
 </div>
+
+
 
 
 
@@ -48,8 +55,8 @@
         <th width="8%">sec_dur</th>
         <th width="8%">code_dial</th>
         <th width="8%">code_used</th>
-        <th width="8%">dialed_num</th>
-        <th width="8%">calling_num</th>
+        <th width="8%">dialed_num (кому звонят)</th>
+        <th width="8%">calling_num (кто звонит)</th>
         <th width="8%">acct_code</th>
         <th width="8%">out_crt_id</th>
         <th width="8%">in_crt_id</th>
@@ -79,5 +86,26 @@
     </tbody>
 </table>
 
+<script type="text/javascript">
+
+    function myFunction() {
+        var num = document.getElementById("num").value;
+
+        if(num === null || num.length === 0 ){
+            return true;
+        }
+
+        if(num.length > 10){
+            alert("Слиииишком длинный номер телефона. Не больше 10 цифр.");
+            return false;
+        }
+        if(!num.match(/^\d+$/)) {
+            alert('В поле "Номер телефона" должно стоять числовое значение(только цифры)!');
+            return false;
+        }
+        return  true;
+    }
+</script>
 </body>
 </html>
+

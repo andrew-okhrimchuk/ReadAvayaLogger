@@ -1,11 +1,9 @@
 package service;
 
-import nonBlockingEchoServer.util.TextsOne;
-import nonBlockingEchoServer.util.ToCalls;
-import nonBlockingEchoServer.util.UtilText;
+import main.nonBlockingEchoServer.util.ToCalls;
+import main.nonBlockingEchoServer.util.UtilText;
 import org.junit.Assert;
 import org.junit.Test;
-import server.TextsData;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -23,7 +21,7 @@ public class ServiceTests extends AdstractServiceTests {
     @Test
     public void insertOneDocument () {
         UtilText util = new UtilText();
-        ToCalls doc = util.strToCalls(TextsOne.oneText);
+        ToCalls doc = util.strToCalls("flslgksdmfgd");
 
         serviceCallsMongoDB.insertOneDocument(doc);
         List<ToCalls> docs = serviceCallsMongoDB.findAll();
@@ -37,7 +35,7 @@ public class ServiceTests extends AdstractServiceTests {
     @Test
     public void findDocuments () {
         UtilText util = new UtilText();
-        List<ToCalls> doc = util.StringToListToCalls(TextsData.longText);
+        List<ToCalls> doc = util.StringToListToCalls("fasfsdfasdfas");
         serviceCallsMongoDB.insertManyDocuments(doc);
         List<ToCalls> docs2 = serviceCallsMongoDB.findBeetwDate(LocalDateTime.MIN, LocalDateTime.MAX);
         System.out.println(docs2);

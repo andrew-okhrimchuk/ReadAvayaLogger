@@ -6,6 +6,8 @@ import main.web.TO.TO;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -39,8 +41,8 @@ public class ServiceCalls {
     }
     public LocalDateTime get_date_start(TO to){
         LocalDateTime start;
-        if (to.getStart()==null){
-            start = LocalDateTime.now().with(firstDayOfYear()).withHour(0).withMinute(0).withSecond(0);
+        if (to.getStart()==null || to.getStart().equals("")){
+            start = LocalDateTime.now().with(firstDayOfYear()).withHour(0).withMinute(0).truncatedTo(ChronoUnit.MINUTES);
         } else {
             start = LocalDateTime.parse(to.getStart());
         }
@@ -49,8 +51,8 @@ public class ServiceCalls {
 
     public LocalDateTime get_date_end(TO to){
         LocalDateTime end;
-        if (to.getEnd()==null){
-            end = LocalDateTime.now().with(lastDayOfYear()).withHour(23).withMinute(59).withSecond(59);
+        if (to.getEnd()==null || to.getStart().equals("")){
+            end = LocalDateTime.now().with(lastDayOfYear()).withHour(23).withMinute(59).truncatedTo(ChronoUnit.MINUTES);
         } else {
             end = LocalDateTime.parse(to.getEnd());
         }

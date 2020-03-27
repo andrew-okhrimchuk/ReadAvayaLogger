@@ -15,7 +15,6 @@ import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 @Slf4j
 @Controller
 public class ReportRestController  {
-//@RequestParam(value = "end") @DateTimeFormat(iso = DateTimeFormat.ISO.DATE_TIME) LocalDateTime end,
     @Autowired
     ServiceCalls serviceCalls;
 
@@ -35,7 +34,7 @@ public class ReportRestController  {
         return modelAndView;
     }
 
-   /* @Bean
+    @Bean
     public ClassLoaderTemplateResolver secondaryTemplateResolver() {
         ClassLoaderTemplateResolver secondaryTemplateResolver = new ClassLoaderTemplateResolver();
         secondaryTemplateResolver.setPrefix("templates/");
@@ -46,7 +45,7 @@ public class ReportRestController  {
         secondaryTemplateResolver.setCheckExistence(true);
 
         return secondaryTemplateResolver;
-    }*/
+    }
 
 
 }

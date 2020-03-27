@@ -2,18 +2,9 @@ package service;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoDatabase;
-import mongo.MongoConfig;
-import mongo.ServiceCallsMongoDB;
-import nonBlockingEchoServer.util.TextsOne;
-import nonBlockingEchoServer.util.ToCalls;
-import nonBlockingEchoServer.util.UtilText;
-import org.junit.Assert;
-import org.junit.Test;
-import server.TextsData;
-
-import java.util.List;
-
-import static org.hamcrest.core.Is.is;
+import main.mongo.MongoConfig;
+import main.mongo.ServiceCallsMongoDB;
+import main.nonBlockingEchoServer.util.UtilText;
 
 public class ServiceNOTTests extends AdstractServiceTests {
 
@@ -29,6 +20,6 @@ public class ServiceNOTTests extends AdstractServiceTests {
         ServiceCallsMongoDB.gradesCollection = sampleTrainingDB.getCollection("calls");
 
         UtilText util = new UtilText();
-        serviceCallsMongoDB.insertManyDocuments(util.StringToListToCalls(TextsData.longText));
+        serviceCallsMongoDB.insertManyDocuments(util.StringToListToCalls("gwgwerggeg"));
     }
 }

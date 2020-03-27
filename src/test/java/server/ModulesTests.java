@@ -1,11 +1,7 @@
 package server;
 
-import org.junit.Assert;
 import org.junit.Test;
-import nonBlockingEchoServer.config.Configs;
-
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
+import main.nonBlockingEchoServer.config.Configs;
 
 //import static nonBlockingEchoServer.server.NonBlockingEchoServer.countTextTest;
 
@@ -14,7 +10,7 @@ public class ModulesTests extends AbstractModulesTest {
     int length = Configs.getConfig("common.config","length_lines_in_one_file").getInt("length");
 
 
-
+/*
 
     @Test
     public void simple () throws Exception {
@@ -53,11 +49,11 @@ public class ModulesTests extends AbstractModulesTest {
         jt2.start();
         Thread.sleep(150);
         jt3.start();
-        Thread.sleep(2*1000);
+        Thread.sleep(2*1000);*/
 
 
 //        System.out.println("countTextTest = " + countTextTest);
 //       System.out.println("countTextTest / 5112 = " + (countTextTest.get()/5112));
  //       Assert.assertThat(countTextTest.get() , is(92016)); // = 15 * 5112
-    }
+ //   }
 }

@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import nonBlockingEchoServer.config.Configs;
+import main.nonBlockingEchoServer.config.Configs;
 
 import java.io.DataOutputStream;
 import java.io.EOFException;
@@ -15,7 +15,6 @@ import java.net.Socket;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 
-import static server.TextsData.longText;
 
 @Data
 @RequiredArgsConstructor
@@ -47,8 +46,8 @@ public class ListenerAvayaClientTest_2 extends Thread{
             log.info("Socket = " + socket);
 
             while(count < 3  ){
-                out.writeUTF(longText);
-                out.writeUTF(longText);
+                out.writeUTF("longText");
+                out.writeUTF("longText");
                 out.flush();
                 count++;
             }

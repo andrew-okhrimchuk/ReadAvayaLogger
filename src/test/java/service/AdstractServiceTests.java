@@ -2,8 +2,8 @@ package service;
 
 import com.mongodb.client.MongoClient;
 import com.mongodb.client.MongoDatabase;
-import mongo.MongoConfig;
-import mongo.ServiceCallsMongoDB;
+import main.mongo.MongoConfig;
+import main.mongo.ServiceCallsMongoDB;
 import org.junit.AfterClass;
 import org.junit.BeforeClass;
 
