@@ -37,9 +37,4 @@ public class UtilText {
         return calls;
     }
 
-    public static void main(String args[]) {
-        UtilText ss = new UtilText();
-        List<ToCalls> xx = ss.StringToListToCalls ("longText");
-        System.out.println(xx);
-    }
 }

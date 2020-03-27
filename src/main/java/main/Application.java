@@ -23,6 +23,7 @@ public class Application {
         }
         NonBlockingEchoServer_NEW nonBlockingEchoServer_new = (NonBlockingEchoServer_NEW) ctx.getBean("nonBlockingEchoServer_NEW");
         nonBlockingEchoServer_new.start();
+
     }
 
 }

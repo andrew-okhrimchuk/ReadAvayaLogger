@@ -4,32 +4,33 @@
     <title>Report</title>
 </head>
 <body>
-<!--<h4><a href="">Upload XML</a></h4>-->
 <h3>Report on all calls</h3>
 <div>
 
 <!--
-                 /*@thymesVar id="list" type="java.util.List<java.lang.String>"*/
+                 /*@thymesVar id="all_out_in" type="java.util.List<java.lang.String>"*/
 -->
-    <form action="" method="get" >
+   <!-- /*@thymesVar id="TO" type="main.web.TO.TO"*/-->
+
+    <form action="/" method="get"  th:object="${TO}">
+
       <p>
-          <label class="control-label col-sm-3" for="start">Enter start date and time:</label>
-          <input type="datetime-local" class="form-control" name="start" id="start" th:value="${{start_def}}"><br/>
+          <label class="control-label col-sm-3" >Enter start date and time:</label>
+          <input type="datetime-local" class="form-control" th:field="*{start}" th:value="${{TO.start}}"><br/>
       </p>
       <p>
-          <label class="control-label col-sm-3" for="end">Enter end date and time:</label>
-          <input type="datetime-local" class="form-control" name="end" id="end" th:value="${{end_def}}"><br/>
+          <label class="control-label col-sm-3" >Enter end date and time:</label>
+          <input type="datetime-local" class="form-control" th:field="*{end}"  th:value="${{TO.end}}"><br/>
       </p>
       <p>
           <input type="submit" value="Update report" name="submit">
 
 
           <label >
-              <select class="form-control" th:field="*{subject}" id="subject" name="subject">
-                  <option th:each="iter: ${list}" th:value="${{iter}}" th:text="${iter}"></option>
+              <select class="form-control" th:field="*{answer_all_out_in}" >
+                  <option th:each="iter: ${all_out_in}" th:value="${{iter}}" th:text="${iter}"></option>
               </select>
           </label>
-
       </p>
   </form>
 </div>
@@ -58,9 +59,9 @@
     <tbody>
 
 <!--
-    /*@thymesVar id="calls" type="java.util.List<nonBlockingEchoServer.util.ToCalls>"*/
+        /*@thymesVar id="calls_list" type="java.util.List<main.nonBlockingEchoServer.util.ToCalls>"*/
 -->
-    <tr th:each="call,iter: ${calls}">
+    <tr th:each="call,iter: ${calls_list}">
         <td th:text="${iter.count}"></td>
         <td th:text="${call.cond_code}"></td>
         <td th:text="${call.day} + '.' + ${call.month} + '.' + ${call.years}"></td>
