@@ -1,4 +1,4 @@
-package mongo;
+package main.mongo;
 
 
 import com.mongodb.client.*;
@@ -9,7 +9,7 @@ import com.mongodb.client.result.DeleteResult;
 import com.mongodb.lang.NonNull;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
-import nonBlockingEchoServer.util.ToCalls;
+import main.nonBlockingEchoServer.util.ToCalls;
 import org.bson.Document;
 
 import java.time.LocalDateTime;

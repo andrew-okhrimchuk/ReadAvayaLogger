@@ -1,11 +1,12 @@
-package servlet;
+package main.servlet;
 
 import com.google.common.collect.ImmutableMap;
 import lombok.extern.slf4j.Slf4j;
-import nonBlockingEchoServer.server.NonBlockingEchoServer_NEW;
-import nonBlockingEchoServer.timer.MyShutdownHook;
+import main.nonBlockingEchoServer.server.NonBlockingEchoServer_NEW;
+import main.nonBlockingEchoServer.timer.MyShutdownHook;
+import main.service.ServiceCalls;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.thymeleaf.context.WebContext;
-import service.ServiceCalls;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -13,15 +14,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
 
-import static servlet.web.ThymeleafListener.engine;
+import static main.servlet.web.ThymeleafListener.engine;
 
 @Slf4j
 @WebServlet("")
 public class ReportServlet extends HttpServlet {
   ServiceCalls serviceCalls = new ServiceCalls();
+
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -36,9 +36,5 @@ public class ReportServlet extends HttpServlet {
         engine.process("calls", webContext, resp.getWriter());
     }
 
-    static {
-        ExecutorService executor = Executors.newSingleThreadExecutor();
-        executor.submit(new NonBlockingEchoServer_NEW());
-        Runtime.getRuntime().addShutdownHook(new MyShutdownHook(executor));
-    }
+
 }

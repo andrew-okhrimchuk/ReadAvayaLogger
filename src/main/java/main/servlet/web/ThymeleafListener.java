@@ -1,4 +1,4 @@
-package servlet.web;
+package main.servlet.web;
 
 import org.thymeleaf.TemplateEngine;
 

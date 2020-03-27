@@ -1,7 +1,7 @@
-package service;
+package main.service;
 
-import mongo.ServiceCallsMongoDB;
-import nonBlockingEchoServer.util.ToCalls;
+import main.mongo.ServiceCallsMongoDB;
+import main.nonBlockingEchoServer.util.ToCalls;
 
 import javax.servlet.http.HttpServletRequest;
 import java.time.LocalDateTime;

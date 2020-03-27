@@ -1,8 +1,13 @@
-package nonBlockingEchoServer.server;
+package main.nonBlockingEchoServer.server;
 
-import lombok.RequiredArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
+import javax.annotation.Resource;
 import java.io.EOFException;
 import java.io.IOException;
 import java.net.*;
@@ -13,12 +18,19 @@ import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 
 
-@RequiredArgsConstructor
+
 @Slf4j
+@Component("listenerAvayaReadNIO_new")
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class ListenerAvayaReadNIO_NEW extends Thread{
     private ThreadPoolExecutor executorService = new ThreadPoolExecutor(4, 8, 20L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue<>(100));
     private StringBuilder sb;
-    private final SocketChannel channel;
+
+    @Setter
+    @Getter
+    private SocketChannel channel;
+    @Resource(name="saveData")
+    SaveData saveData;
 
     public void run()  {
         log.info("Start method run" );
@@ -68,7 +80,8 @@ public class ListenerAvayaReadNIO_NEW extends Thread{
 
             if (count <= 0) {
                 if (sb.length() > 0) {
-                    executorService.execute(new SaveData(sb));
+                    saveData.setSb(sb);
+                    executorService.execute(saveData);
                     sb = new StringBuilder();
                     log.info("Shannel.read(buffer) <= 0. Save to DB. " +"\n"+ channel.toString());
                 }

@@ -1,12 +1,16 @@
-package nonBlockingEchoServer.server;
+package main.nonBlockingEchoServer.server;
 
 import com.typesafe.config.Config;
-import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import mongo.ServiceCallsMongoDB;
-import nonBlockingEchoServer.config.Configs;
-import nonBlockingEchoServer.util.ToCalls;
-import nonBlockingEchoServer.util.UtilText;
+import main.mongo.ServiceCallsMongoDB;
+import main.nonBlockingEchoServer.util.ToCalls;
+import main.nonBlockingEchoServer.util.UtilText;
+import main.nonBlockingEchoServer.config.Configs;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
 
 import java.io.FileWriter;
 import java.io.IOException;
@@ -17,12 +21,16 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-import static nonBlockingEchoServer.server.NonBlockingEchoServer_NEW.countTextTest;
+import static main.nonBlockingEchoServer.server.NonBlockingEchoServer_NEW.countTextTest;
 
 @Slf4j
-@AllArgsConstructor
+@Component ("saveData")
+
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class SaveData extends Thread {
     public static Config path_to_save_files = Configs.getConfig("common.config", "path_to_save_files");
+    @Setter
+    @Getter
     private StringBuilder sb;
 
     public void run1() {

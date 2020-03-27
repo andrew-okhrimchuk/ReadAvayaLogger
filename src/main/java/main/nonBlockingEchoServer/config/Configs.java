@@ -1,4 +1,4 @@
-package nonBlockingEchoServer.config;
+package main.nonBlockingEchoServer.config;
 
 import com.typesafe.config.Config;
 import com.typesafe.config.ConfigFactory;

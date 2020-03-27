@@ -1,4 +1,4 @@
-package nonBlockingEchoServer.timer;
+package main.nonBlockingEchoServer.timer;
 
 import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
