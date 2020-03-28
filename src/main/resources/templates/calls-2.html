@@ -65,9 +65,9 @@
     </thead>
     <tbody>
 
-<!--
-        /*@thymesVar id="calls_list" type="java.util.List<main.nonBlockingEchoServer.util.ToCalls>"*/
--->
+    <!--
+            /*@thymesVar id="calls_list" type="java.util.List<main.entity.Calls>"*/
+    -->
     <tr th:each="call,iter: ${calls_list}">
         <td th:text="${iter.count}"></td>
         <td th:text="${call.cond_code}"></td>

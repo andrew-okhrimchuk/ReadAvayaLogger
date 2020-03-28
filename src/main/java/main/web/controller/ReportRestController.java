@@ -1,5 +1,6 @@
 package main.web.controller;
 
+import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import main.service_web.ServiceCalls;
 import main.web.TO.TO;
@@ -20,7 +21,7 @@ public class ReportRestController  {
 
     @RequestMapping(value = { "/" }, method = RequestMethod.GET)
     @ResponseBody
-    protected ModelAndView  doGet(@ModelAttribute TO to, ModelAndView modelAndView) {
+    protected ModelAndView  doGet(@ModelAttribute @NonNull TO to, ModelAndView modelAndView) {
         log.info("Start doGet of '/servlets'");
 
         modelAndView.getModelMap().addAttribute("calls_list", serviceCalls.buildReport(to));

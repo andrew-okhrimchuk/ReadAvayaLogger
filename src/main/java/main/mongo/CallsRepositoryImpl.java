@@ -3,11 +3,13 @@ import com.mongodb.lang.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import main.entity.Calls;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 
 import java.time.LocalDateTime;
+import java.util.Collection;
 import java.util.List;
 
 @Slf4j
@@ -16,13 +18,13 @@ public class CallsRepositoryImpl implements CallsRepositoryCustom {
     MongoTemplate mongoTemplate;
 
     @Override
-    public void insertOneDocument(@NonNull Calls calls) {
-        mongoTemplate.insert(calls);
+    public Calls insertOneDocument(@NonNull Calls calls) {
+        return mongoTemplate.insert(calls);
     }
 
     @Override
-    public void insertManyDocuments(@NonNull List<Calls> doc) {
-        mongoTemplate.insertAll(doc);
+    public Collection<Calls> insertManyDocuments(@NonNull List<Calls> doc) {
+        return mongoTemplate.insertAll(doc);
     }
 
 
@@ -38,13 +40,20 @@ public class CallsRepositoryImpl implements CallsRepositoryCustom {
 
 //       query.with(new Sort(Sort.Direction.ASC, "age"));
         Query query = new Query();
-        query.addCriteria(Criteria.where("day").lt(day2).gt(day1));
-        query.addCriteria(Criteria.where("month").lt(month2).gt(month1));
-        query.addCriteria(Criteria.where("years").lt(years2).gt(years1));
-        if (way !=0 ){query.addCriteria(Criteria.where("cond_code").is("way"));}
-        if (num != null ){query.addCriteria(Criteria.where("calling_num").is("num"));}
+        query.addCriteria(Criteria.where("day").lte(day2).gte(day1)).with(Sort.by(Sort.Direction.ASC, "day"));
+        query.addCriteria(Criteria.where("month").lte(month2).gte(month1)).with(Sort.by(Sort.Direction.ASC, "month"));
+        query.addCriteria(Criteria.where("years").lte(years2).gte(years1)).with(Sort.by(Sort.Direction.ASC, "years"));
+        if (way !=0 ){query.addCriteria(Criteria.where("cond_code").is(way));}
+        if (num != null ){query.addCriteria(Criteria.where("calling_num").is(num));}
 
-        return mongoTemplate.find(query, Calls.class);
+
+        int result = 0;
+        List<Calls> resultCalls = mongoTemplate.find(query, Calls.class);
+            if (!resultCalls.isEmpty()){
+                result = resultCalls.size();
+            }
+        log.info("Fined " + result + " items.");
+        return resultCalls;
     }
     @Override
     public List<Calls> findAll() {

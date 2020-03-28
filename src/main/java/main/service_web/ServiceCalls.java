@@ -1,8 +1,11 @@
 package main.service_web;
 
+import main.entity.Calls;
+import main.mongo.CallsRepository;
 import main.mongo.ServiceCallsMongoDB;
 import main.entity.ToCalls;
 import main.web.TO.TO;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -16,13 +19,22 @@ import static java.time.temporal.TemporalAdjusters.lastDayOfYear;
 
 @Component()
 public class ServiceCalls {
-    static ServiceCallsMongoDB mongoDB = new ServiceCallsMongoDB();
+    private final CallsRepository callsRepository;
+
+    @Autowired
+    public ServiceCalls(CallsRepository repo) {
+        callsRepository = repo;
+    }
+
+    //CallsRepository callsRepository;
+
+   // static ServiceCallsMongoDB callsRepository = new ServiceCallsMongoDB();
     public static List listAll = new ArrayList<>(Arrays.asList("all","out","in"));
     public static List listOut = new ArrayList<>(Arrays.asList("out","all","in"));
     public static List listIn = new ArrayList<>(Arrays.asList("in","out","all"));
 
-    public List<ToCalls> buildReport(TO to){
-        return mongoDB.findBeetwDateAndWay(get_date_start(to), get_date_end(to), get_selected_all_out_in_to_Int(to),  check_phone_number(to.getNum()));
+    public List<Calls> buildReport(TO to){
+        return callsRepository.findBeetwDateAndWay(get_date_start(to), get_date_end(to), get_selected_all_out_in_to_Int(to),  check_phone_number(to));
     }
 
     public List list (TO to){
@@ -65,11 +77,13 @@ public class ServiceCalls {
         else if (answer_all_out_in.equals("in"))  {return 9;}
         return 0;
     }
-    public String check_phone_number(String number){
+    public String check_phone_number(TO to){
+        String number = to.getNum();
         if(number==null || number.length() >10 || number.equals("")|| number.equals("0")){return null;}
         return number;
     }
     public String CallStringToCallInt(TO to){
+        if(to == null){return "0";}
         String number = to.getAnswer_all_out_in();
         if(number==null || number.equals("0") || number.equals("")){return "0";}
         return number;

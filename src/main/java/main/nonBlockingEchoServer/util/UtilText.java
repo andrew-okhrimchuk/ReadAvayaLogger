@@ -2,26 +2,27 @@ package main.nonBlockingEchoServer.util;
 
 import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
-import main.entity.ToCalls;
+import main.entity.Calls;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toList;
 
-@Data
 @Slf4j
+@Component
 public class UtilText {
 
-    public List<ToCalls> StringToListToCalls(String str){
+    public List<Calls> StringToListToCalls(String str){
         return Stream.of(str.split("\n"))
                 .filter(s -> (s.startsWith("7") | s.startsWith("9")))
                 .map(this::strToCalls)
                 .collect(toList());
     }
 
-    public ToCalls strToCalls (String str){
-        ToCalls calls = new ToCalls (                null,
+    public Calls strToCalls (String str){
+        Calls calls = new Calls (                null,
         Integer.parseInt(str.substring(0,1).trim()),
         Integer.parseInt(str.substring(2,4)),
         Integer.parseInt(str.substring(4,6)),

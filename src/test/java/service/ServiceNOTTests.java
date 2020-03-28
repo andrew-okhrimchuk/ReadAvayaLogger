@@ -14,12 +14,12 @@ public class ServiceNOTTests extends AdstractServiceTests {
     }
 
  //   @Test
-    public void notSimple () {
+   /* public void notSimple () {
         MongoClient mongoClient = MongoConfig.instance;
         MongoDatabase sampleTrainingDB = mongoClient.getDatabase("calls_documents");
         ServiceCallsMongoDB.gradesCollection = sampleTrainingDB.getCollection("calls");
 
         UtilText util = new UtilText();
         serviceCallsMongoDB.insertManyDocuments(util.StringToListToCalls("gwgwerggeg"));
-    }
+    }*/
 }

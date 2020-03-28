@@ -12,7 +12,7 @@ import org.junit.BeforeClass;
 public abstract class AdstractServiceTests {
     static ServiceCallsMongoDB serviceCallsMongoDB = new ServiceCallsMongoDB();
 
-    @BeforeClass
+  /*  @BeforeClass
     public static void before (){
         MongoClient mongoClient = MongoConfig.instance;
         MongoDatabase sampleTrainingDB = mongoClient.getDatabase("calls_documents");
@@ -21,5 +21,5 @@ public abstract class AdstractServiceTests {
     @AfterClass
     public static void after (){
         serviceCallsMongoDB.deleteCollection("calls_test");
-    }
+    }*/
 }

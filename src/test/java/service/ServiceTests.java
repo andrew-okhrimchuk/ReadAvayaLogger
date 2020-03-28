@@ -1,6 +1,6 @@
 package service;
 
-import main.nonBlockingEchoServer.util.ToCalls;
+import main.entity.ToCalls;
 import main.nonBlockingEchoServer.util.UtilText;
 import org.junit.Assert;
 import org.junit.Test;
@@ -18,7 +18,7 @@ public class ServiceTests extends AdstractServiceTests {
     public void simple ()  {
 
     }
-    @Test
+   /* @Test
     public void insertOneDocument () {
         UtilText util = new UtilText();
         ToCalls doc = util.strToCalls("flslgksdmfgd");
@@ -39,5 +39,5 @@ public class ServiceTests extends AdstractServiceTests {
         serviceCallsMongoDB.insertManyDocuments(doc);
         List<ToCalls> docs2 = serviceCallsMongoDB.findBeetwDate(LocalDateTime.MIN, LocalDateTime.MAX);
         System.out.println(docs2);
-    }
+    }*/
 }

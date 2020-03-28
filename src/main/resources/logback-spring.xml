@@ -31,7 +31,7 @@
         </encoder>
     </appender>
 
-    <logger name="nonBlockingEchoServer" level="info"/>
+    <logger name="main" level="info"/>
 
     <root level="warn">
         <appender-ref ref="file"/>

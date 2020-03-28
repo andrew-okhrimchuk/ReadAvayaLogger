@@ -7,6 +7,6 @@
 *.iml
 out
 gen
-/src/main/java/nonBlockingEchoServer/util/Texts.java
+/src/main/java/main/nonBlockingEchoServer/util/Texts.java
 /src/test/java/server/TextsData.java
-/src/main/java/nonBlockingEchoServer/util/TextsOne.java
+/src/main/java/main/nonBlockingEchoServer/util/TextsOne.java
