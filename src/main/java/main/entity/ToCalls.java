@@ -1,4 +1,4 @@
-package main.nonBlockingEchoServer.util;
+package main.entity;
 
 
 import lombok.*;

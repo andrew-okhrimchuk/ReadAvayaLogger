@@ -12,7 +12,7 @@ import org.bson.codecs.pojo.PojoCodecProvider;
 
 import static org.bson.codecs.configuration.CodecRegistries.fromRegistries;
 import static org.bson.codecs.configuration.CodecRegistries.fromProviders;
-
+// https://www.devglan.com/spring-boot/spring-boot-mongodb-configuration
 @Slf4j
 @NoArgsConstructor
 public class MongoConfig {

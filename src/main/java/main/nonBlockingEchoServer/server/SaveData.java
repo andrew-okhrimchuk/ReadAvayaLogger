@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import main.mongo.ServiceCallsMongoDB;
-import main.nonBlockingEchoServer.util.ToCalls;
+import main.entity.ToCalls;
 import main.nonBlockingEchoServer.util.UtilText;
 import main.nonBlockingEchoServer.config.Configs;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
@@ -65,7 +65,7 @@ public class SaveData extends Thread {
     public void run(){
         String text = sb.toString();
         sbToLog(text);
-        log.info("Save to DB.");
+        log.info("Try save to DB.");
         ServiceCallsMongoDB mongoDB = new ServiceCallsMongoDB();
         UtilText ut = new UtilText();
         List<ToCalls> toCalls = ut.StringToListToCalls(sb.toString());

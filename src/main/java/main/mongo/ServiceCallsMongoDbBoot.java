@@ -1,27 +1,34 @@
 package main.mongo;
 
 
-import com.mongodb.client.*;
+import com.google.gson.Gson;
+import com.mongodb.client.FindIterable;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 import com.mongodb.client.model.InsertManyOptions;
-import static java.util.stream.Collectors.toList;
-
 import com.mongodb.client.result.DeleteResult;
 import com.mongodb.lang.NonNull;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import main.entity.ToCalls;
 import org.bson.Document;
+import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import com.google.gson.Gson;
+
+import static java.util.stream.Collectors.toList;
 
 @Slf4j
 @NoArgsConstructor
-public class ServiceCallsMongoDB {
+@Component
+public class ServiceCallsMongoDbBoot {
+    CallsRepository callsRepository;
+
     private static MongoClient mongoClient = MongoConfig.instance;
     private static MongoDatabase sampleTrainingDB = mongoClient.getDatabase("calls_documents");
     public static MongoCollection<Document> gradesCollection = sampleTrainingDB.getCollection("calls");

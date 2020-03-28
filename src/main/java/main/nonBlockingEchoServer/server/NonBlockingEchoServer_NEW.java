@@ -2,6 +2,7 @@ package main.nonBlockingEchoServer.server;
 //https://github.com/teocci/NioSocketCodeSample/blob/master/src/com/github/teocci/nio/socket/nio/NonBlockingEchoServer.java
 
 import com.typesafe.config.Config;
+import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import main.nonBlockingEchoServer.config.Configs;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,8 @@ public class NonBlockingEchoServer_NEW extends Thread
     public static Config path_to_save_files = Configs.getConfig("common.config","path_to_save_files");
     private static Config date = Configs.getConfig("common.config","work_date");
 
-    private InetSocketAddress listenAddress = new InetSocketAddress(Integer.parseInt(date.getString("port")));
+    @Setter
+    public InetSocketAddress listenAddress = new InetSocketAddress(Integer.parseInt(date.getString("port")));
    // private ExecutorService executorService = Executors.newFixedThreadPool(30);
     private ThreadPoolExecutor executorService = new ThreadPoolExecutor(1, 5, 20L,TimeUnit.MILLISECONDS, new ArrayBlockingQueue<>(100));
     private Selector selector;

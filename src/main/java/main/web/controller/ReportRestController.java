@@ -1,7 +1,7 @@
 package main.web.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import main.service.ServiceCalls;
+import main.service_web.ServiceCalls;
 import main.web.TO.TO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
