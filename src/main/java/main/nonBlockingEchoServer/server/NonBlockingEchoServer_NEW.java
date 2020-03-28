@@ -1,10 +1,9 @@
 package main.nonBlockingEchoServer.server;
 //https://github.com/teocci/NioSocketCodeSample/blob/master/src/com/github/teocci/nio/socket/nio/NonBlockingEchoServer.java
 
-import com.typesafe.config.Config;
+import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
-import main.nonBlockingEchoServer.config.Configs;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -33,16 +32,14 @@ import java.util.concurrent.atomic.AtomicInteger;
 @Component("nonBlockingEchoServer_NEW")
 public class NonBlockingEchoServer_NEW extends Thread
 {
-    public static Config path_to_save_files = Configs.getConfig("common.config","path_to_save_files");
-    private static Config date = Configs.getConfig("common.config","work_date");
+    public static String folder_name = "Loggers";
+    public static int port = 9000;
 
     @Setter
-    public InetSocketAddress listenAddress = new InetSocketAddress(Integer.parseInt(date.getString("port")));
-   // private ExecutorService executorService = Executors.newFixedThreadPool(30);
+    public InetSocketAddress listenAddress = new InetSocketAddress(port);
     private ThreadPoolExecutor executorService = new ThreadPoolExecutor(1, 5, 20L,TimeUnit.MILLISECONDS, new ArrayBlockingQueue<>(100));
     private Selector selector;
     private Map<SocketChannel, Long> myConcurrentSet = new ConcurrentHashMap<>();
-    public static AtomicInteger countTextTest = new AtomicInteger();// for tests
 
     @Autowired
     private ListenerAvayaReadNIO_NEW listenerAvayaReadNIO_new;
@@ -152,7 +149,6 @@ public class NonBlockingEchoServer_NEW extends Thread
     }
 
     private static void crateFolder(){
-        String folder_name = path_to_save_files.getString("folder_name");
 
         Path filePath = Paths.get(".\\" + folder_name);
         if(!Files.exists(Paths.get(filePath.toString()))){

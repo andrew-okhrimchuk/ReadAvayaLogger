@@ -1,8 +1,9 @@
 package main.nonBlockingEchoServer.util;
 
-import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import main.entity.Calls;
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -12,6 +13,7 @@ import static java.util.stream.Collectors.toList;
 
 @Slf4j
 @Component
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class UtilText {
 
     public List<Calls> StringToListToCalls(String str){
