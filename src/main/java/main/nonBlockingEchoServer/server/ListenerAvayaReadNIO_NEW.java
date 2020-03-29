@@ -17,12 +17,8 @@ import java.nio.channels.SocketChannel;
 
 @Slf4j
 @Component("listenerAvayaReadNIO_new")
-@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class ListenerAvayaReadNIO_NEW {
-    private StringBuilder sb;
 
-
-    private SocketChannel channel;
     @Autowired
     SaveData saveData;
 
@@ -59,7 +55,7 @@ public class ListenerAvayaReadNIO_NEW {
     }
     private void readData(SocketChannel channel) throws Exception {
         log.info("Start method readData" );
-        sb = new StringBuilder();
+         StringBuilder sb = new StringBuilder();
 
         ByteBuffer buffer = ByteBuffer.allocate(1024);
         int count = -1;
