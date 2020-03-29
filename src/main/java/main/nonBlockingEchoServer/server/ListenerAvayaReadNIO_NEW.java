@@ -1,38 +1,33 @@
 package main.nonBlockingEchoServer.server;
 
-import lombok.Getter;
-import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
-import javax.annotation.Resource;
 import java.io.EOFException;
 import java.io.IOException;
 import java.net.*;
 import java.nio.ByteBuffer;
 import java.nio.channels.SocketChannel;
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 
 
 
 @Slf4j
 @Component("listenerAvayaReadNIO_new")
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-public class ListenerAvayaReadNIO_NEW extends Thread{
-    private ThreadPoolExecutor executorService = new ThreadPoolExecutor(4, 8, 20L, TimeUnit.MILLISECONDS, new ArrayBlockingQueue<>(100));
+public class ListenerAvayaReadNIO_NEW {
     private StringBuilder sb;
 
-    @Setter
-    @Getter
+
     private SocketChannel channel;
-    @Resource(name="saveData")
+    @Autowired
     SaveData saveData;
 
-    public void run()  {
+    @Async
+    public void run(SocketChannel channel)  {
         log.info("Start method run" );
         try {
             readData(channel);
@@ -80,8 +75,7 @@ public class ListenerAvayaReadNIO_NEW extends Thread{
 
             if (count <= 0) {
                 if (sb.length() > 0) {
-                    saveData.setSb(sb);
-                    executorService.execute(saveData);
+                    saveData.saveCalls(sb);
                     sb = new StringBuilder();
                     log.info("Shannel.read(buffer) <= 0. Save to DB. " +"\n"+ channel.toString());
                 }
@@ -91,6 +85,7 @@ public class ListenerAvayaReadNIO_NEW extends Thread{
         log.info("End successful method readData" );
     }
 
+    @Async
     public void closeChannel(SocketChannel channel){
         boolean check = false;
         String socketName = null;

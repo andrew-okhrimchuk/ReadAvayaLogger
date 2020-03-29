@@ -38,7 +38,6 @@ public class CallsRepositoryImpl implements CallsRepositoryCustom {
         int years1 = start.getYear();
         int years2 = end.getYear();
 
-//       query.with(new Sort(Sort.Direction.ASC, "age"));
         Query query = new Query();
         query.addCriteria(Criteria.where("day").lte(day2).gte(day1)).with(Sort.by(Sort.Direction.ASC, "day"));
         query.addCriteria(Criteria.where("month").lte(month2).gte(month1)).with(Sort.by(Sort.Direction.ASC, "month"));

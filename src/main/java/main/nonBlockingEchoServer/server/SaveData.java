@@ -1,27 +1,20 @@
 package main.nonBlockingEchoServer.server;
 
-import lombok.Getter;
-import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import main.entity.Calls;
 import main.mongo.CallsRepository;
 import main.nonBlockingEchoServer.util.UtilText;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.stereotype.Service;
 
 import java.util.Collection;
 import java.util.List;
 
 
 @Slf4j
-@Component ("saveData")
-@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-public class SaveData extends Thread {
-    @Setter
-    @Getter
-    private StringBuilder sb;
+@Service
+public class SaveData {
     private final CallsRepository callsRepository;
     private final UtilText utilText;
 
@@ -30,12 +23,12 @@ public class SaveData extends Thread {
         callsRepository = repo;
         utilText = utilText1;
     }
-
-    private void sbToLog(String data){
+    @Async
+    public void sbToLog(String data){
         log.info("Result: Long text is = " + data.length());
     }
-
-    public void run(){
+    @Async
+    public void saveCalls(StringBuilder sb){
         String text = sb.toString();
         sbToLog(text);
         log.info("Try save to DB.");

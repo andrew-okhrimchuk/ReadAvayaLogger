@@ -1,7 +1,6 @@
 package main.nonBlockingEchoServer.server;
 //https://github.com/teocci/NioSocketCodeSample/blob/master/src/com/github/teocci/nio/socket/nio/NonBlockingEchoServer.java
 
-import lombok.Getter;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,7 +22,6 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.*;
-import java.util.concurrent.atomic.AtomicInteger;
 
 
 
@@ -37,7 +35,6 @@ public class NonBlockingEchoServer_NEW extends Thread
 
     @Setter
     public InetSocketAddress listenAddress = new InetSocketAddress(port);
-    private ThreadPoolExecutor executorService = new ThreadPoolExecutor(1, 5, 20L,TimeUnit.MILLISECONDS, new ArrayBlockingQueue<>(100));
     private Selector selector;
     private Map<SocketChannel, Long> myConcurrentSet = new ConcurrentHashMap<>();
 
@@ -114,10 +111,7 @@ public class NonBlockingEchoServer_NEW extends Thread
                 else if (key.isReadable()) {
                     log.info("key.isReadable");
                     SocketChannel channel = (SocketChannel) key.channel();
-                    //String channelName = channel.socket().getRemoteSocketAddress().toString();
-                    //StringBuilder sb = new StringBuilder();
-                    listenerAvayaReadNIO_new.setChannel(channel);
-                    executorService.execute(listenerAvayaReadNIO_new);
+                    listenerAvayaReadNIO_new.run(channel);
                         key.cancel();
                 }
                 else {
