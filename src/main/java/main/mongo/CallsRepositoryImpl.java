@@ -51,7 +51,7 @@ public class CallsRepositoryImpl implements CallsRepositoryCustom {
 
         long total = mongoTemplate.count(query, Calls.class);
 
-        final Pageable pageableRequest = PageRequest.of(page, 10);
+        final Pageable pageableRequest = PageRequest.of(page, 10000);
         query.with(pageableRequest);
 
 

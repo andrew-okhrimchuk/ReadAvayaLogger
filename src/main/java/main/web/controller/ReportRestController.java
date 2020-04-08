@@ -30,6 +30,9 @@ public class ReportRestController  {
     protected ModelAndView  doGet(@ModelAttribute @NonNull TO to, ModelAndView modelAndView) {
         log.info("Start doGet of '/servlets'");
         Page<Calls> callsPage = serviceCalls.buildReport(to);
+        System.out.println("page = " + callsPage.getPageable().getPageNumber());
+        System.out.println("getPageSize = " + callsPage.getPageable().getPageSize());
+        System.out.println("first = " + callsPage.getPageable().first());
 
         modelAndView.getModelMap().addAttribute("callsPage", callsPage);
         modelAndView.getModelMap().addAttribute("start", serviceCalls.get_date_start(to));
@@ -37,6 +40,19 @@ public class ReportRestController  {
         modelAndView.getModelMap().addAttribute("all_out_in", serviceCalls.list(to));
         modelAndView.getModelMap().addAttribute("answer_all_out_in", "");
         modelAndView.getModelMap().addAttribute("num", serviceCalls.CallStringToCallInt(to));
+
+        long current = callsPage.getNumber() + 1;
+        long begin = Math.max(1, current - callsPage.getTotalElements());
+        long end = Math.min(begin + 5, callsPage.getTotalPages());
+        long totalPageCount = callsPage.getTotalPages();
+        String baseUrl = "/(page=${pageNumber}, start=*{{start}}, end =*{{end}},answer_all_out_in =*{{answer_all_out_in}}, num =*{{num}}  )";
+
+        modelAndView.getModelMap().addAttribute("beginIndex", begin);
+        modelAndView.getModelMap().addAttribute("endIndex", end);
+        modelAndView.getModelMap().addAttribute("currentIndex", current);
+        modelAndView.getModelMap().addAttribute("totalPageCount", totalPageCount);
+        modelAndView.getModelMap().addAttribute("baseUrl", baseUrl);
+
 
         int totalPages = callsPage.getTotalPages();
         if (totalPages > 0) {
@@ -49,6 +65,8 @@ public class ReportRestController  {
         modelAndView.setViewName("calls-2");
         return modelAndView;
     }
+
+
 
     @Bean
     public ClassLoaderTemplateResolver secondaryTemplateResolver() {

@@ -89,6 +89,6 @@ public class ServiceCalls {
     }
     public int check_Page(TO to){
         if(to == null || to.getPage() == null || to.getPage().equals("") || to.getPage().equals("0")){return 0;}
-        else return Integer.valueOf(to.getPage()) - 1;
+        else return (Integer.valueOf(to.getPage())-1);
     }
 }

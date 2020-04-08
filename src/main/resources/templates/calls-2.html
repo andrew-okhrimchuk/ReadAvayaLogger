@@ -18,6 +18,23 @@
     <!--
         /*@thymesVar id="all_out_in" type="java.util.List<java.lang.String>"*/
     -->
+<!--
+        /*@thymesVar id="baseUrl" type="java.lang.String"*/
+-->
+<!--
+        /*@thymesVar id="beginIndex" type="java.lang.Long"*/
+-->
+<!--
+        /*@thymesVar id="endIndex" type="java.lang.Long"*/
+-->
+<!--
+        /*@thymesVar id="currentIndex" type="java.lang.Long"*/
+-->
+<!--
+        /*@thymesVar id="totalPageCount" type="java.lang.Long"*/
+-->
+
+
 
     <form action="/" method="get"  th:object="${TO}" >
 
@@ -47,10 +64,60 @@
         </p>
 
 
-        <p th:if="${callsPage.totalPages > 0}" class="pagination"
+      <!--  <span th:if="${callsPage.hasPrevious()}">
+        <a th:href="@{/employees(page=${callsPage.number}-1 ,size=${callsPage.size})}">Previous</a>
+            </span>
+
+        <th:block th:each="i: ${#numbers.sequence(0, callsPage.totalPages - 1)}">
+            <span th:if="${callsPage.number == i}" class="selected">[[${i}+1]]</span>
+            <span th:unless="${callsPage.number == i}">
+             <a th:href="@{/employees(page=${i},size=${callsPage.size})}">[[${i}+1]]</a>
+        </span>
+        </th:block>
+        <span th:if="${callsPage.hasNext()}">
+        <a th:href="@{/employees(page=${callsPage.number+1},size=${callsPage.size})}">Next</a>
+            </span>
+-->
+
+        <ul class="pagination">
+            <li
+                    th:class="${currentIndex == 1}? 'page-item disabled' : 'page-item'">
+                <a class="page-link" th:href="@{/(page=${0}, start=*{{start}}, end =*{{end}},answer_all_out_in =*{{answer_all_out_in}}, num =*{{num}}  )}">First</a>
+            </li>
+            <li
+                    th:class="${currentIndex == 1}? 'page-item disabled': 'page-item' ">
+                <a class="page-link" aria-label="Previous"
+                   th:href="@{/(page=${currentIndex - 1}, start=*{{start}}, end =*{{end}},answer_all_out_in =*{{answer_all_out_in}}, num =*{{num}}  )}"
+                   title='Go to previous page'><span aria-hidden="true">«</span>
+                    <span class="sr-only">Previous</span></a>
+            </li>
+            <li th:each="item : ${#numbers.sequence(beginIndex,endIndex)}"
+                th:class="${item == currentIndex ? 'page-item active' :'page-item' }">
+                <a class="page-link" th:href="@{/(page=${item}, start=*{{start}}, end =*{{end}},answer_all_out_in =*{{answer_all_out_in}}, num =*{{num}}  )}"> <span
+                        th:text='${item}'>(currentIndex + item)</span>
+                </a>
+            </li>
+            <li
+                    th:class="${currentIndex == totalPageCount}? 'page-item disabled': 'page-item'">
+                <a class="page-link" aria-label="Next"
+                   th:href="@{/(page=${currentIndex + 1}, start=*{{start}}, end =*{{end}},answer_all_out_in =*{{answer_all_out_in}}, num =*{{num}}  )}" title='Go to next page'><span
+                        aria-hidden="true">»</span> <span class="sr-only">Next</span></a>
+            </li>
+            <li
+                    th:class="${currentIndex == totalPageCount}? 'page-item disabled':'page-item'">
+                <a class="page-link" th:href="@{/(page=${totalPageCount}-1, start=*{{start}}, end =*{{end}},answer_all_out_in =*{{answer_all_out_in}}, num =*{{num}}  )}">Last</a>
+            </li>
+        </ul>
+
+       <!-- <p th:if="${callsPage.totalPages > 0}" class="pagination"
              th:each="pageNumber : ${pageNumbers}">
-            <a th:href="@{/(page=${pageNumber}, start=*{{start}}, end =*{{end}},answer_all_out_in =*{{answer_all_out_in}}, num =*{{num}}  )}" th:object="${TO}" th:text="${pageNumber}" th:class="${pageNumber==callsPage.number + 1} ? active"></a>
-        </p>
+
+            <a th:href="@{/(page=${pageNumber}, start=*{{start}}, end =*{{end}},answer_all_out_in =*{{answer_all_out_in}}, num =*{{num}}  )}"
+               th:object="${TO}"
+               th:text="${pageNumber}"  th:class="${pageNumber==callsPage.number + 1} ? active">
+
+            </a>
+        </p>-->
 
         <table border="1">
             <thead>
@@ -82,7 +149,7 @@
 
                 <!-- <td th:text="${call.id}" />
                  <td th:text="${call.name}" />-->
-                <td th:text="${iter.count}"></td>
+                <td th:text="${iter.count} + ${callsPage.getPageable().getPageNumber()} * ${callsPage.getPageable().getPageSize()}"></td>
                 <td th:text="${call.cond_code}"></td>
                 <td th:text="${call.day} + '.' + ${call.month} + '.' + ${call.years}"></td>
                 <td th:text="${call.sec_dur}"></td>
