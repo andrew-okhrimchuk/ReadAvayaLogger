@@ -14,16 +14,17 @@ import org.bson.types.ObjectId;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode
+
 public class Calls {
 
     @Id
     public ObjectId id;
     public  int cond_code;
-  //  @Indexed
+    @Indexed
     public  int day;
- //   @Indexed
+    @Indexed
     public  int month;
- //   @Indexed
+  //  @Indexed
     public  int years;
     public  int time;
     public  String sec_dur;
