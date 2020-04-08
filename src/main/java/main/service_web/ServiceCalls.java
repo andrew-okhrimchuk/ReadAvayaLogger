@@ -13,8 +13,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static java.time.temporal.TemporalAdjusters.firstDayOfYear;
-import static java.time.temporal.TemporalAdjusters.lastDayOfYear;
+import static java.time.temporal.TemporalAdjusters.firstDayOfMonth;
+import static java.time.temporal.TemporalAdjusters.lastDayOfMonth;
 
 @Component()
 public class ServiceCalls {
@@ -52,7 +52,7 @@ public class ServiceCalls {
     public LocalDateTime get_date_start(TO to){
         LocalDateTime start;
         if (to.getStart()==null || to.getStart().equals("")){
-            start = LocalDateTime.now().with(firstDayOfYear()).withHour(0).withMinute(0).truncatedTo(ChronoUnit.MINUTES);
+            start = LocalDateTime.now().with(firstDayOfMonth()).minusMonths(1).withHour(0).withMinute(0).truncatedTo(ChronoUnit.MINUTES);
         } else {
             start = LocalDateTime.parse(to.getStart());
         }
@@ -62,7 +62,7 @@ public class ServiceCalls {
     public LocalDateTime get_date_end(TO to){
         LocalDateTime end;
         if (to.getEnd()==null || to.getStart().equals("")){
-            end = LocalDateTime.now().with(lastDayOfYear()).withHour(23).withMinute(59).truncatedTo(ChronoUnit.MINUTES);
+            end = LocalDateTime.now().with(lastDayOfMonth()).minusMonths(1).withHour(23).withMinute(59).truncatedTo(ChronoUnit.MINUTES);
         } else {
             end = LocalDateTime.parse(to.getEnd());
         }

@@ -20,9 +20,9 @@ public class Calls {
     @Id
     public ObjectId id;
     public  int cond_code;
-    @Indexed
+ //   @Indexed
     public  int day;
-    @Indexed
+ //   @Indexed
     public  int month;
   //  @Indexed
     public  int years;
