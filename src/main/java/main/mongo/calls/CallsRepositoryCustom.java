@@ -1,4 +1,4 @@
-package main.mongo;
+package main.mongo.calls;
 
 import com.mongodb.lang.NonNull;
 import main.entity.Calls;

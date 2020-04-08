@@ -1,4 +1,4 @@
-package main.mongo;
+package main.mongo.calls;
 import com.mongodb.lang.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import main.entity.Calls;

@@ -45,13 +45,12 @@ public class ReportRestController  {
         long begin = Math.max(1, current - callsPage.getTotalElements());
         long end = Math.min(begin + 5, callsPage.getTotalPages());
         long totalPageCount = callsPage.getTotalPages();
-        String baseUrl = "/(page=${pageNumber}, start=*{{start}}, end =*{{end}},answer_all_out_in =*{{answer_all_out_in}}, num =*{{num}}  )";
 
         modelAndView.getModelMap().addAttribute("beginIndex", begin);
         modelAndView.getModelMap().addAttribute("endIndex", end);
         modelAndView.getModelMap().addAttribute("currentIndex", current);
         modelAndView.getModelMap().addAttribute("totalPageCount", totalPageCount);
-        modelAndView.getModelMap().addAttribute("baseUrl", baseUrl);
+
 
 
         int totalPages = callsPage.getTotalPages();

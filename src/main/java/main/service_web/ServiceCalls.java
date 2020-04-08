@@ -1,7 +1,7 @@
 package main.service_web;
 
 import main.entity.Calls;
-import main.mongo.CallsRepository;
+import main.mongo.calls.CallsRepository;
 import main.web.TO.TO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -25,7 +25,7 @@ public class ServiceCalls {
         callsRepository = repo;
     }
 
-    //CallsRepository callsRepository;
+    //CallsNewRepository callsRepository;
 
    // static ServiceCallsMongoDB callsRepository = new ServiceCallsMongoDB();
     public static List listAll = new ArrayList<>(Arrays.asList("all","out","in"));
