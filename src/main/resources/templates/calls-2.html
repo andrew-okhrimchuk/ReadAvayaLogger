@@ -9,6 +9,15 @@
 
 
  <!--   /*@thymesVar id="TO" type="main.web.TO.TO"*/-->
+ <!--
+       /*@thymesVar id="callsPage" type="org.springframework.data.domain.Page<main.entity.Calls>"*/
+-->
+    <!--
+        /*@thymesVar id="pageNumbers" type="java.util.List<java.lang.Integer>"*/
+    -->
+    <!--
+        /*@thymesVar id="all_out_in" type="java.util.List<java.lang.String>"*/
+    -->
 
     <form action="/" method="get"  th:object="${TO}" >
 
@@ -24,9 +33,8 @@
       </p>
       <p>
           <input type="submit" value="Update report" name="submit" onclick="myFunction()">
-          <!--
-                           /*@thymesVar id="all_out_in" type="java.util.List<java.lang.String>"*/
-          -->
+
+
           <label >
               <select class="form-control" th:field="*{answer_all_out_in}" >
                   <option th:each="iter: ${all_out_in}" th:value="${{iter}}" th:text="${iter}"></option>
@@ -37,18 +45,71 @@
             <label for="num" class="control-label col-sm-3"  th:field="*{num}">Введите нужный номер, такой как 0971116699 :</label>
             <input type="number" class="form-control" id="num"  th:field="*{num}"  th:value="${{TO.num}}"> (calling_num)<br/>
         </p>
+
+
+        <p th:if="${callsPage.totalPages > 0}" class="pagination"
+             th:each="pageNumber : ${pageNumbers}">
+            <a th:href="@{/(page=${pageNumber}, start=*{{start}}, end =*{{end}},answer_all_out_in =*{{answer_all_out_in}}, num =*{{num}}  )}" th:object="${TO}" th:text="${pageNumber}" th:class="${pageNumber==callsPage.number + 1} ? active"></a>
+        </p>
+
+        <table border="1">
+            <thead>
+            <tr>
+                <th>#</th>
+                <th width="8%">cond_code</th>
+                <th width="8%">date</th>
+                <th width="8%">sec_dur</th>
+                <th width="8%">code_dial</th>
+                <th width="8%">code_used</th>
+                <th width="8%">dialed_num (кому звонят)</th>
+                <th width="8%">calling_num (кто звонит)</th>
+                <th width="8%">acct_code</th>
+                <th width="8%">out_crt_id</th>
+                <th width="8%">in_crt_id</th>
+                <th width="8%">in_trk_code</th>
+            </tr>
+            </thead>
+
+
+            <!--
+                /*@thymesVar id="callsPage" type="org.springframework.data.domain.Page<main.entity.Calls>"*/
+            -->
+
+            <tbody>
+            <tr th:each="call, iter : ${callsPage}">
+                <!--   th:style="${iter.odd}? 'font-weight: bold;'"
+                   th:alt-title="${iter.even}? 'even' : 'odd'">-->
+
+                <!-- <td th:text="${call.id}" />
+                 <td th:text="${call.name}" />-->
+                <td th:text="${iter.count}"></td>
+                <td th:text="${call.cond_code}"></td>
+                <td th:text="${call.day} + '.' + ${call.month} + '.' + ${call.years}"></td>
+                <td th:text="${call.sec_dur}"></td>
+                <td th:text="${call.code_dial}"></td>
+                <td th:text="${call.code_used}"></td>
+                <td th:text="${call.dialed_num}"></td>
+                <td th:text="${call.calling_num}"></td>
+                <td th:text="${call.acct_code}"></td>
+                <td th:text="${call.out_crt_id}"></td>
+                <td th:text="${call.in_crt_id}"></td>
+                <td th:text="${call.in_trk_code}"></td>
+            </tr>
+            </tbody>
+        </table>
+
+
   </form>
 </div>
 
 
 
-
-
+<!--
 <table border="1" cellpadding="8" cellspacing="0" width="50%">
     <thead>
     <tr>
-      <!--  <th width="5%">Date start</th>
-        <th width="5%">Date end</th>-->
+      &lt;!&ndash;  <th width="5%">Date start</th>
+        <th width="5%">Date end</th>&ndash;&gt;
         <th>#</th>
         <th width="8%">cond_code</th>
         <th width="8%">date</th>
@@ -65,9 +126,9 @@
     </thead>
     <tbody>
 
-    <!--
+    &lt;!&ndash;
             /*@thymesVar id="calls_list" type="java.util.List<main.entity.Calls>"*/
-    -->
+    &ndash;&gt;
     <tr th:each="call,iter: ${calls_list}">
         <td th:text="${iter.count}"></td>
         <td th:text="${call.cond_code}"></td>
@@ -84,7 +145,8 @@
 
     </tr>
     </tbody>
-</table>
+</table>-->
+
 
 <script type="text/javascript">
 

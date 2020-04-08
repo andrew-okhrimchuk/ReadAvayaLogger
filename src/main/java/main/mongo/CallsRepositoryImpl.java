@@ -3,10 +3,14 @@ import com.mongodb.lang.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import main.entity.Calls;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.repository.support.PageableExecutionUtils;
 
 import java.time.LocalDateTime;
 import java.util.Collection;
@@ -29,7 +33,7 @@ public class CallsRepositoryImpl implements CallsRepositoryCustom {
 
 
     @Override
-    public List<Calls> findBeetwDateAndWay(@NonNull LocalDateTime start, @NonNull LocalDateTime end, int way, String num) {
+    public Page<Calls> findBeetwDateAndWay(@NonNull LocalDateTime start, @NonNull LocalDateTime end, int way, String num, int page) {
         log.info("start findBeetwDateAndWay");
         int day1 = start.getDayOfMonth();
         int day2 = end.getDayOfMonth();
@@ -45,14 +49,27 @@ public class CallsRepositoryImpl implements CallsRepositoryCustom {
         if (way !=0 ){query.addCriteria(Criteria.where("cond_code").is(way));}
         if (num != null ){query.addCriteria(Criteria.where("calling_num").is(num));}
 
+        long total = mongoTemplate.count(query, Calls.class);
 
-        int result = 0;
+        final Pageable pageableRequest = PageRequest.of(page, 10);
+        query.with(pageableRequest);
+
+
+        long result = 0;
         List<Calls> resultCalls = mongoTemplate.find(query, Calls.class);
-            if (!resultCalls.isEmpty()){
+           /* if (!resultCalls.isEmpty()){
                 result = resultCalls.size();
-            }
+            }*/
+
+        Page<Calls> patientPage = PageableExecutionUtils.getPage(
+                resultCalls,
+                pageableRequest,
+                () -> total );
+        result = patientPage.getTotalElements();
+
         log.info("Fined " + result + " items.");
-        return resultCalls;
+
+        return patientPage;
     }
     @Override
     public List<Calls> findAll() {

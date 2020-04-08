@@ -4,6 +4,7 @@ package main.entity;
 import lombok.*;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 import org.bson.types.ObjectId;
 
@@ -18,8 +19,11 @@ public class Calls {
     @Id
     public ObjectId id;
     public  int cond_code;
+  //  @Indexed
     public  int day;
+ //   @Indexed
     public  int month;
+ //   @Indexed
     public  int years;
     public  int time;
     public  String sec_dur;

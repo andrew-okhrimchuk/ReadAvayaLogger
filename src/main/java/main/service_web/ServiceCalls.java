@@ -4,6 +4,7 @@ import main.entity.Calls;
 import main.mongo.CallsRepository;
 import main.web.TO.TO;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -31,8 +32,8 @@ public class ServiceCalls {
     public static List listOut = new ArrayList<>(Arrays.asList("out","all","in"));
     public static List listIn = new ArrayList<>(Arrays.asList("in","out","all"));
 
-    public List<Calls> buildReport(TO to){
-        return callsRepository.findBeetwDateAndWay(get_date_start(to), get_date_end(to), get_selected_all_out_in_to_Int(to),  check_phone_number(to));
+    public Page<Calls> buildReport(TO to){
+        return callsRepository.findBeetwDateAndWay(get_date_start(to), get_date_end(to), get_selected_all_out_in_to_Int(to),  check_phone_number(to), check_Page(to));
     }
 
     public List list (TO to){
@@ -85,5 +86,9 @@ public class ServiceCalls {
         String number = to.getAnswer_all_out_in();
         if(number==null || number.equals("0") || number.equals("")){return "0";}
         return number;
+    }
+    public int check_Page(TO to){
+        if(to == null || to.getPage() == null || to.getPage().equals("") || to.getPage().equals("0")){return 0;}
+        else return Integer.valueOf(to.getPage()) - 1;
     }
 }
