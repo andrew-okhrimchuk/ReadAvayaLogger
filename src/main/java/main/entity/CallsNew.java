@@ -9,6 +9,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -25,6 +26,7 @@ public class CallsNew {
     @Id
     public ObjectId id;
     public  int cond_code;
+    @DateTimeFormat(pattern = "MM.dd.yyyy. HH:mm")
     public LocalDateTime localDateTime;
     public  String sec_dur;
     public  String code_dial;

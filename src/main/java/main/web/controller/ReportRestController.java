@@ -2,7 +2,7 @@ package main.web.controller;
 
 import lombok.NonNull;
 import lombok.extern.slf4j.Slf4j;
-import main.entity.Calls;
+import main.entity.CallsNew;
 import main.service_web.ServiceCalls;
 import main.web.TO.TO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +29,7 @@ public class ReportRestController  {
     @ResponseBody
     protected ModelAndView  doGet(@ModelAttribute @NonNull TO to, ModelAndView modelAndView) {
         log.info("Start doGet of '/servlets'");
-        Page<Calls> callsPage = serviceCalls.buildReport(to);
+        Page<CallsNew> callsPage = serviceCalls.buildReport(to);
         System.out.println("page = " + callsPage.getPageable().getPageNumber());
         System.out.println("getPageSize = " + callsPage.getPageable().getPageSize());
         System.out.println("first = " + callsPage.getPageable().first());

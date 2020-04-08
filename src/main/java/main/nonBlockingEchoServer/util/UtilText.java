@@ -1,7 +1,6 @@
 package main.nonBlockingEchoServer.util;
 
 import lombok.extern.slf4j.Slf4j;
-import main.entity.Calls;
 import main.entity.CallsNew;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;

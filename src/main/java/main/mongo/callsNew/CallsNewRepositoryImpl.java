@@ -43,9 +43,9 @@ public class CallsNewRepositoryImpl implements CallsNewRepositoryCustom {
         int years2 = end.getYear();
 
         Query query = new Query();
-        query.addCriteria(Criteria.where("day").lte(day2).gte(day1)).with(Sort.by(Sort.Direction.ASC, "day"));
-        query.addCriteria(Criteria.where("month").lte(month2).gte(month1)).with(Sort.by(Sort.Direction.ASC, "month"));
-        query.addCriteria(Criteria.where("years").lte(years2).gte(years1)).with(Sort.by(Sort.Direction.ASC, "years"));
+        query.addCriteria(Criteria.where("localDateTime").lte(end).gte(start)).with(Sort.by(Sort.Direction.ASC, "localDateTime"));
+ //       query.addCriteria(Criteria.where("month").lte(month2).gte(month1)).with(Sort.by(Sort.Direction.ASC, "month"));
+ //       query.addCriteria(Criteria.where("years").lte(years2).gte(years1)).with(Sort.by(Sort.Direction.ASC, "years"));
         if (way !=0 ){query.addCriteria(Criteria.where("cond_code").is(way));}
         if (num != null ){query.addCriteria(Criteria.where("calling_num").is(num));}
 

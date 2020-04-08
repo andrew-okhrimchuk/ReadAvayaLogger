@@ -1,7 +1,7 @@
 package main.service_web;
 
-import main.entity.Calls;
-import main.mongo.calls.CallsRepository;
+import main.entity.CallsNew;
+import main.mongo.callsNew.CallsNewRepository;
 import main.web.TO.TO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -18,10 +18,10 @@ import static java.time.temporal.TemporalAdjusters.lastDayOfMonth;
 
 @Component()
 public class ServiceCalls {
-    private final CallsRepository callsRepository;
+    private final CallsNewRepository callsRepository;
 
     @Autowired
-    public ServiceCalls(CallsRepository repo) {
+    public ServiceCalls(CallsNewRepository repo) {
         callsRepository = repo;
     }
 
@@ -32,7 +32,7 @@ public class ServiceCalls {
     public static List listOut = new ArrayList<>(Arrays.asList("out","all","in"));
     public static List listIn = new ArrayList<>(Arrays.asList("in","out","all"));
 
-    public Page<Calls> buildReport(TO to){
+    public Page<CallsNew> buildReport(TO to){
         return callsRepository.findBeetwDateAndWay(get_date_start(to), get_date_end(to), get_selected_all_out_in_to_Int(to),  check_phone_number(to), check_Page(to));
     }
 
