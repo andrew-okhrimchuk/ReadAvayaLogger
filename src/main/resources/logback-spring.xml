@@ -8,14 +8,14 @@
     <property name="LOG_DIR" value="/apps/nonBlockingEchoServer/logs/"/>
 
     <appender name="file" class="ch.qos.logback.core.rolling.RollingFileAppender">
-        <file>${user.dir}/${project.build.finalName}.log</file>
+        <file>${LOG_DIR}/${project.build.finalName}.log</file>
         <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
             <charset>UTF-8</charset>
             <pattern>%d{yyyy-MM-dd_HH:mm:ss.SSS} [%thread] %-5level %logger{0} [%file:%line] - %msg%n</pattern>
         </encoder>
         <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
             <!-- rollover daily -->
-            <fileNamePattern>${user.dir}/archived/${project.build.finalName}.%d{yyyy-MM-dd}.%i.log
+            <fileNamePattern>${LOG_DIR}/archived/${project.build.finalName}.%d{yyyy-MM-dd}.%i.log
             </fileNamePattern>
             <timeBasedFileNamingAndTriggeringPolicy
                     class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
