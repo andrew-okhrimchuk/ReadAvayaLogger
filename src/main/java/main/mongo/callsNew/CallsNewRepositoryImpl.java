@@ -18,6 +18,8 @@ import java.util.List;
 
 @Slf4j
 public class CallsNewRepositoryImpl implements CallsNewRepositoryCustom {
+    private final int size_oF_page = 1000;
+
     @Autowired
     MongoTemplate mongoTemplate;
 
@@ -35,37 +37,25 @@ public class CallsNewRepositoryImpl implements CallsNewRepositoryCustom {
     @Override
     public Page<CallsNew> findBeetwDateAndWay(@NonNull LocalDateTime start, @NonNull LocalDateTime end, int way, String num, int page) {
         log.info("start findBeetwDateAndWay");
-        int day1 = start.getDayOfMonth();
-        int day2 = end.getDayOfMonth();
-        int month1 = start.getMonth().getValue();
-        int month2 = end.getMonth().getValue();
-        int years1 = start.getYear();
-        int years2 = end.getYear();
 
         Query query = new Query();
         query.addCriteria(Criteria.where("localDateTime").lte(end).gte(start)).with(Sort.by(Sort.Direction.ASC, "localDateTime"));
- //       query.addCriteria(Criteria.where("month").lte(month2).gte(month1)).with(Sort.by(Sort.Direction.ASC, "month"));
- //       query.addCriteria(Criteria.where("years").lte(years2).gte(years1)).with(Sort.by(Sort.Direction.ASC, "years"));
         if (way !=0 ){query.addCriteria(Criteria.where("cond_code").is(way));}
         if (num != null ){query.addCriteria(Criteria.where("calling_num").is(num));}
 
         long total = mongoTemplate.count(query, CallsNew.class);
 
-        final Pageable pageableRequest = PageRequest.of(page, 10000);
+        final Pageable pageableRequest = PageRequest.of(page, size_oF_page);
         query.with(pageableRequest);
 
 
-        long result = 0;
         List<CallsNew> resultCalls = mongoTemplate.find(query, CallsNew.class);
-           /* if (!resultCalls.isEmpty()){
-                result = resultCalls.size();
-            }*/
 
         Page<CallsNew> patientPage = PageableExecutionUtils.getPage(
                 resultCalls,
                 pageableRequest,
                 () -> total );
-        result = patientPage.getTotalElements();
+        long result = patientPage.getTotalElements();
 
         log.info("Fined " + result + " items.");
 

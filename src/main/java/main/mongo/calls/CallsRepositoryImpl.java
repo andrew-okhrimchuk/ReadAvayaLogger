@@ -1,4 +1,5 @@
 package main.mongo.calls;
+import com.mongodb.client.result.DeleteResult;
 import com.mongodb.lang.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import main.entity.Calls;
@@ -16,6 +17,7 @@ import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
 
+@Deprecated
 @Slf4j
 public class CallsRepositoryImpl implements CallsRepositoryCustom {
     @Autowired
@@ -57,9 +59,6 @@ public class CallsRepositoryImpl implements CallsRepositoryCustom {
 
         long result = 0;
         List<Calls> resultCalls = mongoTemplate.find(query, Calls.class);
-           /* if (!resultCalls.isEmpty()){
-                result = resultCalls.size();
-            }*/
 
         Page<Calls> patientPage = PageableExecutionUtils.getPage(
                 resultCalls,
@@ -80,5 +79,29 @@ public class CallsRepositoryImpl implements CallsRepositoryCustom {
     public void deleteCollection(@NonNull String collection) {
 
     }
+
+    public List<Calls> findAll_Limit() {
+        log.info("start findAll_Limit 500 items");
+        Query query = new Query();
+        final Pageable pageableRequest = PageRequest.of(0, 500);
+        query.with(pageableRequest);
+        List<Calls> resultCalls = mongoTemplate.find(query, Calls.class);
+        long result = resultCalls.size();
+        log.info("Fined in findAll_Limit " + result + " items.");
+
+        return resultCalls;
+    }
+
+    public void delite() {
+        log.info("start delite");
+        Query query = new Query();
+        final Pageable pageableRequest = PageRequest.of(0, 500);
+        query.with(pageableRequest);
+        DeleteResult ds = mongoTemplate.remove(query, Calls.class);
+        log.info("Fined in delite " + ds.getDeletedCount() + " items.");
+    }
+
+
+
 }
 

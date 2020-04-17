@@ -30,9 +30,6 @@ public class ReportRestController  {
     protected ModelAndView  doGet(@ModelAttribute @NonNull TO to, ModelAndView modelAndView) {
         log.info("Start doGet of '/servlets'");
         Page<CallsNew> callsPage = serviceCalls.buildReport(to);
-        System.out.println("page = " + callsPage.getPageable().getPageNumber());
-        System.out.println("getPageSize = " + callsPage.getPageable().getPageSize());
-        System.out.println("first = " + callsPage.getPageable().first());
 
         modelAndView.getModelMap().addAttribute("callsPage", callsPage);
         modelAndView.getModelMap().addAttribute("start", serviceCalls.get_date_start(to));
@@ -41,10 +38,11 @@ public class ReportRestController  {
         modelAndView.getModelMap().addAttribute("answer_all_out_in", "");
         modelAndView.getModelMap().addAttribute("num", serviceCalls.CallStringToCallInt(to));
 
-        long current = callsPage.getNumber() + 1;
-        long begin = Math.max(1, current - callsPage.getTotalElements());
-        long end = Math.min(begin + 5, callsPage.getTotalPages());
         long totalPageCount = callsPage.getTotalPages();
+        long current = callsPage.getNumber() + 1;
+        long begin = Math.max(1, current - callsPage.getContent().size());
+        long end = Math.min(begin + 5, totalPageCount);
+
 
         modelAndView.getModelMap().addAttribute("beginIndex", begin);
         modelAndView.getModelMap().addAttribute("endIndex", end);

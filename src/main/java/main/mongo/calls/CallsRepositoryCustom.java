@@ -7,7 +7,7 @@ import org.springframework.data.domain.Page;
 import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.List;
-
+@Deprecated
 public interface CallsRepositoryCustom {
     Calls insertOneDocument (@NonNull Calls calls);
     Collection<Calls> insertManyDocuments (@NonNull List<Calls> doc);

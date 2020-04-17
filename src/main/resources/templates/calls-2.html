@@ -4,29 +4,17 @@
     <title>Report</title>
 </head>
 <body>
-<h3>Report on all calls</h3>
+<h2>Отчет по всем звонкам <H5>(По умолчанию выдает данные за прошлый месяц)</H5></h2>
 <div>
 
 
  <!--   /*@thymesVar id="TO" type="main.web.TO.TO"*/-->
-<!--
-       /*@thymesVar id="callsPage" type="org.springframework.data.domain.Page<main.entity.CallsNew>"*/
--->
-    <!--
-        /*@thymesVar id="all_out_in" type="java.util.List<java.lang.String>"*/
-    -->
-<!--
-        /*@thymesVar id="beginIndex" type="java.lang.Long"*/
--->
-<!--
-        /*@thymesVar id="endIndex" type="java.lang.Long"*/
--->
-<!--
-        /*@thymesVar id="currentIndex" type="java.lang.Long"*/
--->
-<!--
-        /*@thymesVar id="totalPageCount" type="java.lang.Long"*/
--->
+<!--    /*@thymesVar id="callsPage" type="org.springframework.data.domain.Page<main.entity.CallsNew>"*/-->
+    <!--/*@thymesVar id="all_out_in" type="java.util.List<java.lang.String>"*/ -->
+    <!--/*@thymesVar id="beginIndex" type="java.lang.Long"*/-->
+<!--    /*@thymesVar id="endIndex" type="java.lang.Long"*/-->
+<!--    /*@thymesVar id="currentIndex" type="java.lang.Long"*/-->
+<!--    /*@thymesVar id="totalPageCount" type="java.lang.Long"*/-->
 
 
 
@@ -51,41 +39,12 @@
                   <option th:each="iter: ${all_out_in}" th:value="${{iter}}" th:text="${iter}"></option>
               </select>
           </label>
+
       </p>
         <p>
             <label for="num" class="control-label col-sm-3"  th:field="*{num}">Введите нужный номер, такой как 0971116699 :</label>
             <input type="number" class="form-control" id="num"  th:field="*{num}"  th:value="${{TO.num}}"> (calling_num)<br/>
         </p>
-
-        <ul class="pagination">
-            <li
-                    th:class="${currentIndex == 1}? 'page-item disabled' : 'page-item'">
-                <a class="page-link" th:href="@{/(page=${0}, start=*{{start}}, end =*{{end}},answer_all_out_in =*{{answer_all_out_in}}, num =*{{num}}  )}">First</a>
-            </li>
-            <li
-                    th:class="${currentIndex == 1}? 'page-item disabled': 'page-item' ">
-                <a class="page-link" aria-label="Previous"
-                   th:href="@{/(page=${currentIndex - 1}, start=*{{start}}, end =*{{end}},answer_all_out_in =*{{answer_all_out_in}}, num =*{{num}}  )}"
-                   title='Go to previous page'><span aria-hidden="true">«</span>
-                    <span class="sr-only">Previous</span></a>
-            </li>
-            <li th:each="item : ${#numbers.sequence(beginIndex,endIndex)}"
-                th:class="${item == currentIndex ? 'page-item active' :'page-item' }">
-                <a class="page-link" th:href="@{/(page=${item}, start=*{{start}}, end =*{{end}},answer_all_out_in =*{{answer_all_out_in}}, num =*{{num}}  )}"> <span
-                        th:text='${item}'>(currentIndex + item)</span>
-                </a>
-            </li>
-            <li
-                    th:class="${currentIndex == totalPageCount}? 'page-item disabled': 'page-item'">
-                <a class="page-link" aria-label="Next"
-                   th:href="@{/(page=${currentIndex + 1}, start=*{{start}}, end =*{{end}},answer_all_out_in =*{{answer_all_out_in}}, num =*{{num}}  )}" title='Go to next page'><span
-                        aria-hidden="true">»</span> <span class="sr-only">Next</span></a>
-            </li>
-            <li
-                    th:class="${currentIndex == totalPageCount}? 'page-item disabled':'page-item'">
-                <a class="page-link" th:href="@{/(page=${totalPageCount}-1, start=*{{start}}, end =*{{end}},answer_all_out_in =*{{answer_all_out_in}}, num =*{{num}}  )}">Last</a>
-            </li>
-        </ul>
 
 
         <table border="1">
@@ -127,6 +86,39 @@
             </tr>
             </tbody>
         </table>
+
+        <ul class="pagination">
+            <li
+                    th:class="${currentIndex == 1}? 'page-item disabled' : 'page-item'">
+                <a class="page-link" th:href="@{/(page=${0}, start=*{{start}}, end =*{{end}},answer_all_out_in =*{{answer_all_out_in}}, num =*{{num}}  )}">First</a>
+            </li>
+            <li
+                    th:class="${currentIndex == 1}? 'page-item disabled': 'page-item' ">
+                <a class="page-link" aria-label="Previous"
+                   th:href="@{/(page=${currentIndex - 1}, start=*{{start}}, end =*{{end}},answer_all_out_in =*{{answer_all_out_in}}, num =*{{num}}  )}"
+                   title='Go to previous page'><span aria-hidden="true">«</span>
+                    <span class="sr-only">Previous</span></a>
+            </li>
+            <li th:each="item : ${#numbers.sequence(beginIndex,endIndex)}"
+                th:class="${item == currentIndex ? 'page-item active' :'page-item' }">
+                <a class="page-link" th:href="@{/(page=${item}, start=*{{start}}, end =*{{end}},answer_all_out_in =*{{answer_all_out_in}}, num =*{{num}}  )}"> <span
+                        th:text='${item}'>(currentIndex + item)</span>
+                </a>
+            </li>
+            <li
+                    th:class="${currentIndex == totalPageCount}? 'page-item disabled': 'page-item'">
+                <a class="page-link" aria-label="Next"
+                   th:href="@{/(page=${currentIndex + 1}, start=*{{start}}, end =*{{end}},answer_all_out_in =*{{answer_all_out_in}}, num =*{{num}}  )}" title='Go to next page'><span
+                        aria-hidden="true">»</span> <span class="sr-only">Next</span></a>
+            </li>
+            <li
+                    th:class="${currentIndex == totalPageCount}? 'page-item disabled':'page-item'">
+                <a class="page-link" th:href="@{/(page=${totalPageCount}, start=*{{start}}, end =*{{end}},answer_all_out_in =*{{answer_all_out_in}}, num =*{{num}}  )}">Last</a>
+            </li>
+        </ul>
+
+
+
 
 
   </form>

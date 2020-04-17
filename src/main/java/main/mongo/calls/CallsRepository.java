@@ -10,7 +10,7 @@ import org.springframework.data.mongodb.core.index.Index;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import javax.annotation.PostConstruct;
-
+@Deprecated
 public interface CallsRepository extends MongoRepository<Calls, ObjectId>, CallsRepositoryCustom  {
 
 

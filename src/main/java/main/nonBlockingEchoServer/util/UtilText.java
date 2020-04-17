@@ -1,6 +1,7 @@
 package main.nonBlockingEchoServer.util;
 
 import lombok.extern.slf4j.Slf4j;
+import main.entity.Calls;
 import main.entity.CallsNew;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
@@ -49,5 +50,62 @@ public class UtilText {
         str.substring(76,80).trim());
         return calls;
     }
+
+
+    @Deprecated
+    public List<CallsNew> oldToNew(List<Calls> list) {
+        return list
+                .stream()
+                .map(this::oldToNew)
+                .collect(toList());
+    }
+
+    @Deprecated
+    public CallsNew oldToNew(Calls item){
+        LocalDate localDate = LocalDate.of(
+                item.getYears(),
+                item.getMonth(),
+                item.getDay());
+        LocalTime localTime = LocalTime.of(
+                firstDigit(item.getTime()),
+                lastDigit(item.getTime()));
+        LocalDateTime localDateTime = LocalDateTime.of(localDate, localTime);
+
+        CallsNew callsNew = new CallsNew();
+        callsNew.setCond_code(item.getCond_code());
+        callsNew.setLocalDateTime(localDateTime);
+        callsNew.setSec_dur(item.getSec_dur());
+        callsNew.setCode_dial(item.getCode_dial());
+        callsNew.setCode_used(item.getCode_used());
+        callsNew.setDialed_num(item.getDialed_num());
+        callsNew.setCalling_num(item.getCalling_num());
+        callsNew.setAcct_code(item.getAcct_code());
+        callsNew.setOut_crt_id(item.getOut_crt_id());
+        callsNew.setIn_crt_id(item.getIn_crt_id());
+        callsNew.setIn_trk_code(item.getIn_trk_code());
+        return callsNew;
+    }
+
+    @Deprecated
+    // Find the first digit
+    private static int firstDigit(int n)
+    {
+        // Remove last digit from number
+        // till only one digit is left
+        while (n >= 100)
+            n /= 100;
+
+        // return the first digit
+        return n;
+    }
+
+    @Deprecated
+    // Find the last digit
+    private static int lastDigit(int n)
+    {
+        // return the last digit
+        return (n % 100);
+    }
+
 
 }

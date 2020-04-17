@@ -7,6 +7,8 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 import java.util.concurrent.Executor;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 @Configuration
 @EnableAsync
@@ -23,4 +25,14 @@ public class AsyncConfiguration {
         executor.initialize();
         return executor;
     }
+
+    @Deprecated
+    @Bean (name = "newSingleThreadExecutor")
+    public Executor newSingleThreadExecutor() {
+        LOGGER.debug("Creating Async newSingleThreadExecutor");
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+        return executor;
+    }
+
+
 }

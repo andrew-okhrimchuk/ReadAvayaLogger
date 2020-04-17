@@ -25,9 +25,7 @@ public class ServiceCalls {
         callsRepository = repo;
     }
 
-    //CallsNewRepository callsRepository;
 
-   // static ServiceCallsMongoDB callsRepository = new ServiceCallsMongoDB();
     public static List listAll = new ArrayList<>(Arrays.asList("all","out","in"));
     public static List listOut = new ArrayList<>(Arrays.asList("out","all","in"));
     public static List listIn = new ArrayList<>(Arrays.asList("in","out","all"));
