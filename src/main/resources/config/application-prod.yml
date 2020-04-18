@@ -1,0 +1,13 @@
+server:
+    port: 8082
+
+spring:
+    profiles:
+        active: prod
+    data:
+        mongodb:
+            database: calls_documents
+    thymeleaf:
+           suffix: .html
+           cache: false
+           encoding: UTF-8

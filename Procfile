@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -jar target/nonBlockingEchoServer.jar
+web: java -Xmx384m -Xss512k -XX:+UseCompressedOops -jar target/nonBlockingEchoServer.jar --spring.profiles.active=prod --server.port=$PORT --spring.data.mongodb.uri=$MONGOLAB_URI
