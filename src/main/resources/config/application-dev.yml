@@ -6,14 +6,8 @@ spring:
         active: dev
     data:
         mongodb:
-          #  host: localhost
-          #  port: 27017
-          #  database: calls_documents
             uri: mongodb://localhost/calls_documents
-    thymeleaf:
-        suffix: .html
-        cache: false
-        encoding: UTF-8
+
 
 # cd  to C:\Program Files\MongoDB\Server\4.2\bin
 #enter command mongod

@@ -1,2 +1,5 @@
-multipart:
-    maxFileSize: 5Mb
+spring:
+    thymeleaf:
+        suffix: .html
+        cache: false
+        encoding: UTF-8
