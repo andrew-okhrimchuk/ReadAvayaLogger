@@ -1,12 +1,14 @@
-server:
-    port: 8082
+#server:
+#    port: 8082
 
 spring:
     profiles:
         active: prod
-  #  data:
-  #      mongodb:
-  #          database: calls_documents
+    data:
+        mongodb:
+            uri: ${MONGODB_URI}
+            #database: calls_documents
+
     thymeleaf:
            suffix: .html
            cache: false
