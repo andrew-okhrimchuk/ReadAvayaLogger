@@ -4,9 +4,9 @@ server:
 spring:
     profiles:
         active: prod
-    data:
-        mongodb:
-            database: calls_documents
+  #  data:
+  #      mongodb:
+  #          database: calls_documents
     thymeleaf:
            suffix: .html
            cache: false
