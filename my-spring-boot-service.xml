@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<service>
+<id>avaya-Logger-Server-service</id>
+<name>avaya-Logger-Server-service</name>
+<description>Аvaya-Logger-Server-service as windows service. Сережа, привет, как дела?</description>
+<executable>C:\Program Files\Java\jre1.8.0_231\bin\java.exe</executable>
+<arguments>-jar "%BASE%\nonBlockingEchoServer.jar"</arguments>
+<logmode>rotate</logmode>
+</service>
+
+<!--C:\Program Files\Java\jre1.8.0_231\bin\java.exe
+C:\Program Files\Java\jdk1.8.0_144\bin\java.exe
+
+        Этот файл для создания приложения как сервис в виндовс, взято от сюда
+        https://javadeveloperzone.com/spring-boot/spring-boot-as-windows-service/
+        РАБОТАЕТ!!!
+-->

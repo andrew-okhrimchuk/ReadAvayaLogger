@@ -103,9 +103,9 @@
                 <version>2.2.2.RELEASE</version>
                 <executions>
                     <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
+                        <configuration>
+                            <mainClass>target\nonBlockingEchoServer.jar</mainClass>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
