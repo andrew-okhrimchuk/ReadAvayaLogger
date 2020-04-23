@@ -43,9 +43,13 @@ java -Dfile.encoding=windows-1251 -jar D:\Stajirovka\ReadAvayaLogger\target\nonB
 https://javadeveloperzone.com/spring-boot/spring-boot-as-windows-service/
 Для запуска приложения как сервиса виндовс:
 11. Запустить cmd 
+
 12. cd D:\target\
+
 13. avaya-logger-server-service.exe install
+
 14. cmd Services.msc
+
 15. avaya-logger-server-service.exe uninstall
     avaya-logger-server-service.exe start
     avaya-logger-server-service.exe stop
