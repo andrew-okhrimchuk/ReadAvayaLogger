@@ -2,10 +2,22 @@
 <head>
     <meta charset="UTF-8">
     <title>Report</title>
+    <style>
+        body {background-color: rgba(133, 191, 211, 0.07) }
+        h2   {color:blue}
+        h5   {color: #9b16ff
+        }
+        p    {color:green}
+        b    {display: inline-block;}
+        .xx0 {padding-top: 10px}
+        .xxx {padding-left: 20px}
+        .xx1 {padding-left: 50px}
+
+    </style>
 </head>
 <body>
 <h2>Отчет по всем звонкам <H5>(По умолчанию выдает данные за прошлый месяц)</H5></h2>
-<div>
+<div class="xx0">
 
 
  <!--   /*@thymesVar id="TO" type="main.web.TO.TO"*/-->
@@ -15,39 +27,54 @@
 <!--    /*@thymesVar id="endIndex" type="java.lang.Long"*/-->
 <!--    /*@thymesVar id="currentIndex" type="java.lang.Long"*/-->
 <!--    /*@thymesVar id="totalPageCount" type="java.lang.Long"*/-->
+<!--    /*@thymesVar id="totalElements" type="java.lang.Long"*/-->
 
 
 
     <form action="/" method="get"  th:object="${TO}" >
 
-      <p>
-          <label class="control-label col-sm-3" >Введите и дату и время ("00:00"):
-              <input type="datetime-local" name="start" id="start" class="form-control" th:field="*{{start}}" th:value="*{{start}}">
+      <b class="xxx">
+          <label class="control-label col-sm-3" >  Введите период : с
+              <input type="date" name="start" id="start" class="form-control" th:field="*{{start}}" th:value="*{{start}}" placeholder="${TO.start}">
           </label><br/>
-      </p>
-      <p>
-          <label class="control-label col-sm-3" >Введите и дату и время ("00:00"):
-              <input type="datetime-local" name="end" id="end" class="form-control" th:field="*{end}"  th:value="${TO.end}">
+      </b>
+      <b class="xx1">
+
+          <label class="control-label col-sm-3" > по
+              <input type="date" name="end" id="end" class="form-control" th:field="*{end}"  th:value="${TO.end}" placeholder="${TO.end}">
           </label><br/>
-      </p>
+      </b>
       <p>
-          <input type="submit" value="Update report" name="submit" onclick="myFunction()">
-
-
-          <label >
-              <select class="form-control" th:field="*{answer_all_out_in}" >
-                  <option th:each="iter: ${all_out_in}" th:value="${{iter}}" th:text="${iter}"></option>
-              </select>
-          </label>
 
       </p>
-        <p>
-            <label for="num" class="control-label col-sm-3"  th:field="*{num}">Введите нужный номер, такой как 0971116699 :</label>
-            <input type="number" class="form-control" id="num"  th:field="*{num}"  th:value="${{TO.num}}"> (calling_num)<br/>
-        </p>
+      <b>
+            <label for="numD" class="control-label col-sm-3"  th:field="*{numD}">Найти кому звонят :</label>
+            <input type="number" class="form-control" id="numD"  th:field="*{numD}"  th:value="${{TO.numD}}" placeholder="dialed_num"><br/>
+      </b>
+      <b>
+            <label for="num" class="control-label col-sm-3"  th:field="*{num}">или кто: </label>
+            <input type="number" class="form-control" id="num"  th:field="*{num}"  th:value="${{TO.num}}" placeholder="calling_num"><br/>
+      </b>
+
+        <div class="xx0"><b>
+            <input type="submit" value="Обновить отчет" name="submit" onclick="myFunction()">
 
 
-        <table border="1">
+            <label >
+                <select class="form-control" th:field="*{answer_all_out_in}" >Направление звонков
+                    <option th:each="iter: ${all_out_in}" th:value="${{iter}}" th:text="${iter}"></option>
+                </select>
+            </label>
+            <i  class="xxx" >Найдено всего записей - <span
+                    th:text='${totalElements}'>(totalElements)
+              </span></i>
+
+        </b></div>
+
+
+
+
+        <table border="1" class="xx0">
             <thead>
             <tr>
                 <th>#</th>
@@ -116,8 +143,6 @@
                 <a class="page-link" th:href="@{/(page=${totalPageCount}, start=*{{start}}, end =*{{end}},answer_all_out_in =*{{answer_all_out_in}}, num =*{{num}}  )}">Last</a>
             </li>
         </ul>
-
-
 
 
 

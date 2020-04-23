@@ -37,17 +37,19 @@ public class ReportRestController  {
         modelAndView.getModelMap().addAttribute("all_out_in", serviceCalls.list(to));
         modelAndView.getModelMap().addAttribute("answer_all_out_in", "");
         modelAndView.getModelMap().addAttribute("num", serviceCalls.CallStringToCallInt(to));
+        modelAndView.getModelMap().addAttribute("numD", serviceCalls.CallStringToCallInt(to));
 
         long totalPageCount = callsPage.getTotalPages();
         long current = callsPage.getNumber() + 1;
         long begin = Math.max(1, current - callsPage.getContent().size());
         long end = Math.min(begin + 5, totalPageCount);
-
+        long totalElements = callsPage.getTotalElements();
 
         modelAndView.getModelMap().addAttribute("beginIndex", begin);
         modelAndView.getModelMap().addAttribute("endIndex", end);
         modelAndView.getModelMap().addAttribute("currentIndex", current);
         modelAndView.getModelMap().addAttribute("totalPageCount", totalPageCount);
+        modelAndView.getModelMap().addAttribute("totalElements", totalElements);
 
 
 
@@ -63,8 +65,6 @@ public class ReportRestController  {
         return modelAndView;
     }
 
-
-
     @Bean
     public ClassLoaderTemplateResolver secondaryTemplateResolver() {
         ClassLoaderTemplateResolver secondaryTemplateResolver = new ClassLoaderTemplateResolver();
@@ -74,7 +74,6 @@ public class ReportRestController  {
         secondaryTemplateResolver.setCharacterEncoding("UTF-8");
       //  secondaryTemplateResolver.setOrder(1);
         secondaryTemplateResolver.setCheckExistence(true);
-
         return secondaryTemplateResolver;
     }
 

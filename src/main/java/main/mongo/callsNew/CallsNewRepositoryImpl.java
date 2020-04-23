@@ -2,6 +2,7 @@ package main.mongo.callsNew;
 import com.mongodb.lang.NonNull;
 import lombok.extern.slf4j.Slf4j;
 import main.entity.CallsNew;
+import main.web.TO.TOServiceToBase;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -35,17 +36,19 @@ public class CallsNewRepositoryImpl implements CallsNewRepositoryCustom {
 
 
     @Override
-    public Page<CallsNew> findBeetwDateAndWay(@NonNull LocalDateTime start, @NonNull LocalDateTime end, int way, String num, int page) {
+   // public Page<CallsNew> findBeetwDateAndWay(@NonNull LocalDateTime start, @NonNull LocalDateTime end, int way, String num, int page) {
+    public Page<CallsNew> findBeetwDateAndWay(TOServiceToBase tos) {
         log.info("start findBeetwDateAndWay");
 
         Query query = new Query();
-        query.addCriteria(Criteria.where("localDateTime").lte(end).gte(start)).with(Sort.by(Sort.Direction.ASC, "localDateTime"));
-        if (way !=0 ){query.addCriteria(Criteria.where("cond_code").is(way));}
-        if (num != null ){query.addCriteria(Criteria.where("calling_num").is(num));}
+        query.addCriteria(Criteria.where("localDateTime").lte(tos.getEnd()).gte(tos.getStart())).with(Sort.by(Sort.Direction.ASC, "localDateTime"));
+        if (tos.getWay() !=0 ){query.addCriteria(Criteria.where("cond_code").is(tos.getWay()));}
+        if (tos.getNum() != null ){query.addCriteria(Criteria.where("calling_num").is(tos.getNum()));}
+        if (tos.getNumD() != null ){query.addCriteria(Criteria.where("dialed_num").is(tos.getNumD()));}
 
         long total = mongoTemplate.count(query, CallsNew.class);
 
-        final Pageable pageableRequest = PageRequest.of(page, size_oF_page);
+        final Pageable pageableRequest = PageRequest.of(tos.getPage(), size_oF_page);
         query.with(pageableRequest);
 
 
