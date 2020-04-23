@@ -50,9 +50,9 @@ https://javadeveloperzone.com/spring-boot/spring-boot-as-windows-service/
 
 14. cmd Services.msc
 
-15. avaya-logger-server-service.exe uninstall
-    avaya-logger-server-service.exe start
-    avaya-logger-server-service.exe stop
+15. avaya-logger-server-service.exe uninstall      
+        avaya-logger-server-service.exe start
+        avaya-logger-server-service.exe stop
     
 
 
