@@ -1,3 +1,3 @@
-commands.txt
 
+cd /media/andrey/845A97DCB51B3D4F/Stajirovka/ReadAvayaLogger/DOCKER
 docker-compose up
