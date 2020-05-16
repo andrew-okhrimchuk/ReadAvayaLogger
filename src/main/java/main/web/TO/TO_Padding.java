@@ -2,8 +2,10 @@ package main.web.TO;
 
 import lombok.Getter;
 import lombok.Setter;
+
 import main.entity.CallsNew;
 import org.springframework.context.annotation.Scope;
+
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 
@@ -11,7 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
-//@Service
+@Service
 @Getter
 @Setter
 //@Scope("prototype")
@@ -19,16 +21,17 @@ public class TO_Padding {
 
     long totalPageCount;
     long currentIndex;
-    long begin;
+    long beginIndex;
     long endIndex;
     long totalElements;
     List<Integer> pageNumbers;
 
-    public TO_Padding(Page<CallsNew> callsPage) {
+
+    public void init(Page<CallsNew> callsPage) {
         this.totalPageCount = callsPage.getTotalPages();
         this.currentIndex = callsPage.getNumber() + 1;
-        this.begin = Math.max(1, currentIndex - callsPage.getContent().size());
-        this.endIndex = Math.min(begin + 5, totalPageCount);
+        this.beginIndex = Math.max(1, currentIndex - callsPage.getContent().size());
+        this.endIndex = Math.min(beginIndex + 5, totalPageCount);
         this.totalElements = callsPage.getTotalElements();
         setPageNumbersList(callsPage);
     }
