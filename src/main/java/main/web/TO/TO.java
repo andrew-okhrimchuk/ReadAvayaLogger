@@ -5,6 +5,7 @@ import lombok.Setter;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Service
 @Getter
@@ -12,7 +13,7 @@ import java.time.LocalDateTime;
 public class TO {
     String start;
     String end;
-    String all_out_in;
+    List<String> all_out_in;
     String answer_all_out_in;
     String num;
     String numD;

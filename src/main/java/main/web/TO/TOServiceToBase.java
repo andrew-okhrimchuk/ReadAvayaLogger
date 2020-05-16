@@ -1,11 +1,13 @@
 package main.web.TO;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
 
 import static java.time.temporal.TemporalAdjusters.firstDayOfMonth;
@@ -13,10 +15,12 @@ import static java.time.temporal.TemporalAdjusters.lastDayOfMonth;
 
 @Getter
 @Setter
+@NoArgsConstructor
 public class TOServiceToBase {
     LocalDateTime start,  end;
     int way, page;
     String numD, num;
+    static DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 
     public TOServiceToBase(TO to) {
         this.start = get_date_start(to);
@@ -31,9 +35,10 @@ public class TOServiceToBase {
         LocalDateTime start;
         if (to.getStart()==null || to.getStart().equals("")){
             start = LocalDateTime.now().with(firstDayOfMonth()).minusMonths(1).withHour(0).withMinute(0).truncatedTo(ChronoUnit.MINUTES);
+            to.setStart(start.format(formatter));
         } else {
-            //start = LocalDateTime.parse(to.getStart());
             start = LocalDateTime.of(LocalDate.parse(to.getStart()), LocalTime.of(00, 00));
+            to.setStart(start.format(formatter));
         }
         return start;
     }
@@ -42,9 +47,10 @@ public class TOServiceToBase {
         LocalDateTime end;
         if (to.getEnd()==null || to.getEnd().equals("")){
             end = LocalDateTime.now().with(lastDayOfMonth()).minusMonths(1).withHour(23).withMinute(59).truncatedTo(ChronoUnit.MINUTES);
+            to.setEnd(end.format(formatter));
         } else {
-            //end = LocalDateTime.parse(to.getEnd());
             end = LocalDateTime.of(LocalDate.parse(to.getEnd()), LocalTime.of(23, 59));
+            to.setEnd(end.format(formatter));
         }
         return end;
     }

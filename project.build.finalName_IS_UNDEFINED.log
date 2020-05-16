@@ -426,3 +426,391 @@ org.springframework.expression.spel.SpelEvaluationException: EL1007E: Property o
 2020-05-16_08:49:03.021 [http-nio-9001-exec-9] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
 2020-05-16_08:49:03.022 [http-nio-9001-exec-9] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
 2020-05-16_08:49:03.109 [http-nio-9001-exec-9] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 122732 items.
+2020-05-16_09:00:44.246 [main] INFO  Application [StartupInfoLogger.java:55] - Starting Application v1.0-SNAPSHOT on Andrew-ПК with PID 4672 (D:\Stajirovka\ReadAvayaLogger\target\nonBlockingEchoServer.jar started by Andrew in D:\Stajirovka\ReadAvayaLogger)
+2020-05-16_09:00:44.250 [main] INFO  Application [SpringApplication.java:655] - The following profiles are active: dev
+2020-05-16_09:00:46.331 [main] INFO  Application [Application.java:36] - Running with Spring profile(s) : [dev]
+2020-05-16_09:00:47.663 [main] INFO  Application [StartupInfoLogger.java:61] - Started Application in 4.176 seconds (JVM running for 4.679)
+2020-05-16_09:00:47.665 [main] INFO  Application [Application.java:50] - Access URLs:
+----------------------------------------------------------
+	Local: 		http://127.0.0.1:9001
+	External: 	http://192.168.1.47:9001
+----------------------------------------------------------
+2020-05-16_09:00:47.668 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:56] - Server started on port >> 9000
+2020-05-16_09:00:47.669 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:83] - Start cycle in NonBlockingEchoServer
+
+2020-05-16_09:00:52.182 [http-nio-9001-exec-1] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:00:52.190 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:00:52.430 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 122732 items.
+2020-05-16_09:03:59.190 [main] INFO  Application [StartupInfoLogger.java:55] - Starting Application v1.0-SNAPSHOT on Andrew-ПК with PID 4124 (D:\Stajirovka\ReadAvayaLogger\target\nonBlockingEchoServer.jar started by Andrew in D:\Stajirovka\ReadAvayaLogger)
+2020-05-16_09:03:59.193 [main] INFO  Application [SpringApplication.java:655] - The following profiles are active: dev
+2020-05-16_09:04:00.998 [main] INFO  Application [Application.java:36] - Running with Spring profile(s) : [dev]
+2020-05-16_09:04:02.284 [main] INFO  Application [StartupInfoLogger.java:61] - Started Application in 3.899 seconds (JVM running for 4.424)
+2020-05-16_09:04:02.286 [main] INFO  Application [Application.java:50] - Access URLs:
+----------------------------------------------------------
+	Local: 		http://127.0.0.1:9001
+	External: 	http://192.168.1.47:9001
+----------------------------------------------------------
+2020-05-16_09:04:02.289 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:56] - Server started on port >> 9000
+2020-05-16_09:04:02.289 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:83] - Start cycle in NonBlockingEchoServer
+
+2020-05-16_09:04:05.385 [http-nio-9001-exec-1] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:04:05.395 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:04:05.651 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 122732 items.
+2020-05-16_09:04:19.870 [http-nio-9001-exec-3] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:04:19.873 [http-nio-9001-exec-3] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:04:19.878 [http-nio-9001-exec-3] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_09:04:27.925 [http-nio-9001-exec-4] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:04:27.926 [http-nio-9001-exec-4] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:04:28.046 [http-nio-9001-exec-4] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 122732 items.
+2020-05-16_09:06:16.500 [main] INFO  Application [StartupInfoLogger.java:55] - Starting Application v1.0-SNAPSHOT on Andrew-ПК with PID 3984 (D:\Stajirovka\ReadAvayaLogger\target\nonBlockingEchoServer.jar started by Andrew in D:\Stajirovka\ReadAvayaLogger)
+2020-05-16_09:06:16.504 [main] INFO  Application [SpringApplication.java:655] - The following profiles are active: dev
+2020-05-16_09:06:18.330 [main] INFO  Application [Application.java:36] - Running with Spring profile(s) : [dev]
+2020-05-16_09:06:19.635 [main] INFO  Application [StartupInfoLogger.java:61] - Started Application in 3.967 seconds (JVM running for 4.46)
+2020-05-16_09:06:19.638 [main] INFO  Application [Application.java:50] - Access URLs:
+----------------------------------------------------------
+	Local: 		http://127.0.0.1:9001
+	External: 	http://192.168.1.47:9001
+----------------------------------------------------------
+2020-05-16_09:06:19.641 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:56] - Server started on port >> 9000
+2020-05-16_09:06:19.641 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:83] - Start cycle in NonBlockingEchoServer
+
+2020-05-16_09:06:30.355 [http-nio-9001-exec-1] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:06:30.360 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:06:30.403 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_09:06:35.757 [http-nio-9001-exec-2] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:06:35.760 [http-nio-9001-exec-2] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:06:35.940 [http-nio-9001-exec-2] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 122732 items.
+2020-05-16_09:06:44.740 [http-nio-9001-exec-4] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:06:44.741 [http-nio-9001-exec-4] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:06:45.091 [http-nio-9001-exec-4] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 14084 items.
+2020-05-16_09:06:49.747 [http-nio-9001-exec-5] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:06:49.748 [http-nio-9001-exec-5] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:06:49.850 [http-nio-9001-exec-5] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 122732 items.
+2020-05-16_09:20:53.705 [main] INFO  Application [StartupInfoLogger.java:55] - Starting Application v1.0-SNAPSHOT on Andrew-ПК with PID 5312 (D:\Stajirovka\ReadAvayaLogger\target\nonBlockingEchoServer.jar started by Andrew in D:\Stajirovka\ReadAvayaLogger)
+2020-05-16_09:20:53.710 [main] INFO  Application [SpringApplication.java:655] - The following profiles are active: dev
+2020-05-16_09:20:55.930 [main] INFO  Application [Application.java:36] - Running with Spring profile(s) : [dev]
+2020-05-16_09:20:57.715 [main] INFO  Application [StartupInfoLogger.java:61] - Started Application in 5.004 seconds (JVM running for 5.817)
+2020-05-16_09:20:57.720 [main] INFO  Application [Application.java:50] - Access URLs:
+----------------------------------------------------------
+	Local: 		http://127.0.0.1:9001
+	External: 	http://192.168.1.47:9001
+----------------------------------------------------------
+2020-05-16_09:20:57.725 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:56] - Server started on port >> 9000
+2020-05-16_09:20:57.726 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:83] - Start cycle in NonBlockingEchoServer
+
+2020-05-16_09:21:07.058 [http-nio-9001-exec-1] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:21:18.705 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:21:18.709 [http-nio-9001-exec-3] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:21:18.710 [http-nio-9001-exec-3] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:21:18.777 [http-nio-9001-exec-3] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_09:21:18.777 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_09:21:51.549 [http-nio-9001-exec-2] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:21:51.550 [http-nio-9001-exec-2] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:21:51.557 [http-nio-9001-exec-2] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_09:32:06.759 [main] INFO  Application [StartupInfoLogger.java:55] - Starting Application v1.0-SNAPSHOT on Andrew-ПК with PID 3852 (D:\Stajirovka\ReadAvayaLogger\target\nonBlockingEchoServer.jar started by Andrew in D:\Stajirovka\ReadAvayaLogger)
+2020-05-16_09:32:06.763 [main] INFO  Application [SpringApplication.java:655] - The following profiles are active: dev
+2020-05-16_09:32:08.896 [main] INFO  Application [Application.java:36] - Running with Spring profile(s) : [dev]
+2020-05-16_09:32:10.647 [main] INFO  Application [StartupInfoLogger.java:61] - Started Application in 4.803 seconds (JVM running for 5.538)
+2020-05-16_09:32:10.650 [main] INFO  Application [Application.java:50] - Access URLs:
+----------------------------------------------------------
+	Local: 		http://127.0.0.1:9001
+	External: 	http://192.168.1.47:9001
+----------------------------------------------------------
+2020-05-16_09:32:10.655 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:56] - Server started on port >> 9000
+2020-05-16_09:32:10.655 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:83] - Start cycle in NonBlockingEchoServer
+
+2020-05-16_09:32:20.828 [http-nio-9001-exec-1] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:32:20.834 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:32:20.886 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_09:34:53.573 [main] INFO  Application [StartupInfoLogger.java:55] - Starting Application v1.0-SNAPSHOT on Andrew-ПК with PID 452 (D:\Stajirovka\ReadAvayaLogger\target\nonBlockingEchoServer.jar started by Andrew in D:\Stajirovka\ReadAvayaLogger)
+2020-05-16_09:34:53.578 [main] INFO  Application [SpringApplication.java:655] - The following profiles are active: dev
+2020-05-16_09:34:55.493 [main] INFO  Application [Application.java:36] - Running with Spring profile(s) : [dev]
+2020-05-16_09:34:56.805 [main] INFO  Application [StartupInfoLogger.java:61] - Started Application in 3.951 seconds (JVM running for 4.44)
+2020-05-16_09:34:56.807 [main] INFO  Application [Application.java:50] - Access URLs:
+----------------------------------------------------------
+	Local: 		http://127.0.0.1:9001
+	External: 	http://192.168.1.47:9001
+----------------------------------------------------------
+2020-05-16_09:34:56.821 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:56] - Server started on port >> 9000
+2020-05-16_09:34:56.821 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:83] - Start cycle in NonBlockingEchoServer
+
+2020-05-16_09:34:58.952 [http-nio-9001-exec-1] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:34:58.957 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:34:59.002 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_09:35:01.872 [http-nio-9001-exec-2] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:35:01.873 [http-nio-9001-exec-2] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:35:01.878 [http-nio-9001-exec-2] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_09:35:06.601 [http-nio-9001-exec-3] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:35:06.603 [http-nio-9001-exec-3] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:35:06.608 [http-nio-9001-exec-3] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_09:35:11.168 [http-nio-9001-exec-5] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:35:11.174 [http-nio-9001-exec-5] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:35:11.592 [http-nio-9001-exec-5] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 68408 items.
+2020-05-16_09:35:15.432 [http-nio-9001-exec-6] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:35:15.433 [http-nio-9001-exec-6] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:35:15.772 [http-nio-9001-exec-6] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 54324 items.
+2020-05-16_09:35:17.211 [http-nio-9001-exec-7] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:35:17.212 [http-nio-9001-exec-7] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:35:17.541 [http-nio-9001-exec-7] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 54324 items.
+2020-05-16_09:35:19.087 [http-nio-9001-exec-8] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:35:19.088 [http-nio-9001-exec-8] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:35:19.184 [http-nio-9001-exec-8] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 122732 items.
+2020-05-16_09:36:01.997 [main] INFO  Application [StartupInfoLogger.java:55] - Starting Application v1.0-SNAPSHOT on Andrew-ПК with PID 5972 (D:\Stajirovka\ReadAvayaLogger\target\nonBlockingEchoServer.jar started by Andrew in D:\Stajirovka\ReadAvayaLogger)
+2020-05-16_09:36:02.001 [main] INFO  Application [SpringApplication.java:655] - The following profiles are active: dev
+2020-05-16_09:36:04.400 [main] INFO  Application [Application.java:36] - Running with Spring profile(s) : [dev]
+2020-05-16_09:36:06.686 [main] INFO  Application [StartupInfoLogger.java:61] - Started Application in 5.631 seconds (JVM running for 6.362)
+2020-05-16_09:36:06.690 [main] INFO  Application [Application.java:50] - Access URLs:
+----------------------------------------------------------
+	Local: 		http://127.0.0.1:9001
+	External: 	http://192.168.1.47:9001
+----------------------------------------------------------
+2020-05-16_09:36:06.695 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:56] - Server started on port >> 9000
+2020-05-16_09:36:06.695 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:83] - Start cycle in NonBlockingEchoServer
+
+2020-05-16_09:36:09.909 [http-nio-9001-exec-1] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:36:09.920 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:36:10.418 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 54324 items.
+2020-05-16_09:36:52.167 [http-nio-9001-exec-4] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:36:52.168 [http-nio-9001-exec-4] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:36:52.172 [http-nio-9001-exec-4] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_09:36:56.331 [http-nio-9001-exec-5] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:36:56.334 [http-nio-9001-exec-5] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:36:56.353 [http-nio-9001-exec-5] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_09:37:53.659 [main] INFO  Application [StartupInfoLogger.java:55] - Starting Application v1.0-SNAPSHOT on Andrew-ПК with PID 5016 (D:\Stajirovka\ReadAvayaLogger\target\nonBlockingEchoServer.jar started by Andrew in D:\Stajirovka\ReadAvayaLogger)
+2020-05-16_09:37:53.662 [main] INFO  Application [SpringApplication.java:655] - The following profiles are active: dev
+2020-05-16_09:37:55.465 [main] INFO  Application [Application.java:36] - Running with Spring profile(s) : [dev]
+2020-05-16_09:37:56.856 [main] INFO  Application [StartupInfoLogger.java:61] - Started Application in 3.977 seconds (JVM running for 4.465)
+2020-05-16_09:37:56.858 [main] INFO  Application [Application.java:50] - Access URLs:
+----------------------------------------------------------
+	Local: 		http://127.0.0.1:9001
+	External: 	http://192.168.1.47:9001
+----------------------------------------------------------
+2020-05-16_09:37:56.862 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:56] - Server started on port >> 9000
+2020-05-16_09:37:56.862 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:83] - Start cycle in NonBlockingEchoServer
+
+2020-05-16_09:38:04.072 [http-nio-9001-exec-1] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:38:04.077 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:38:04.120 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_09:38:33.681 [http-nio-9001-exec-3] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:38:33.682 [http-nio-9001-exec-3] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:38:33.687 [http-nio-9001-exec-3] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_09:38:40.793 [http-nio-9001-exec-4] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:38:40.794 [http-nio-9001-exec-4] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:38:40.798 [http-nio-9001-exec-4] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_09:38:51.352 [main] INFO  Application [StartupInfoLogger.java:55] - Starting Application v1.0-SNAPSHOT on Andrew-ПК with PID 3860 (D:\Stajirovka\ReadAvayaLogger\target\nonBlockingEchoServer.jar started by Andrew in D:\Stajirovka\ReadAvayaLogger)
+2020-05-16_09:38:51.360 [main] INFO  Application [SpringApplication.java:655] - The following profiles are active: dev
+2020-05-16_09:38:53.639 [main] INFO  Application [Application.java:36] - Running with Spring profile(s) : [dev]
+2020-05-16_09:38:55.468 [main] INFO  Application [StartupInfoLogger.java:61] - Started Application in 5.027 seconds (JVM running for 5.77)
+2020-05-16_09:38:55.470 [main] INFO  Application [Application.java:50] - Access URLs:
+----------------------------------------------------------
+	Local: 		http://127.0.0.1:9001
+	External: 	http://192.168.1.47:9001
+----------------------------------------------------------
+2020-05-16_09:38:55.475 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:56] - Server started on port >> 9000
+2020-05-16_09:38:55.475 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:83] - Start cycle in NonBlockingEchoServer
+
+2020-05-16_09:39:03.050 [http-nio-9001-exec-1] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:39:03.057 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:39:03.113 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_09:39:42.218 [http-nio-9001-exec-3] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:39:42.219 [http-nio-9001-exec-3] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:39:42.225 [http-nio-9001-exec-3] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_09:39:49.990 [http-nio-9001-exec-4] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:39:49.991 [http-nio-9001-exec-4] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:39:49.997 [http-nio-9001-exec-4] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_09:39:56.694 [http-nio-9001-exec-5] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:40:14.489 [http-nio-9001-exec-5] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:40:14.497 [http-nio-9001-exec-5] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_09:50:03.228 [main] INFO  Application [StartupInfoLogger.java:55] - Starting Application v1.0-SNAPSHOT on Andrew-ПК with PID 5044 (D:\Stajirovka\ReadAvayaLogger\target\nonBlockingEchoServer.jar started by Andrew in D:\Stajirovka\ReadAvayaLogger)
+2020-05-16_09:50:03.232 [main] INFO  Application [SpringApplication.java:655] - The following profiles are active: dev
+2020-05-16_09:50:05.422 [main] INFO  Application [Application.java:36] - Running with Spring profile(s) : [dev]
+2020-05-16_09:50:07.269 [main] INFO  Application [StartupInfoLogger.java:61] - Started Application in 4.976 seconds (JVM running for 5.761)
+2020-05-16_09:50:07.272 [main] INFO  Application [Application.java:50] - Access URLs:
+----------------------------------------------------------
+	Local: 		http://127.0.0.1:9001
+	External: 	http://192.168.1.47:9001
+----------------------------------------------------------
+2020-05-16_09:50:07.277 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:56] - Server started on port >> 9000
+2020-05-16_09:50:07.278 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:83] - Start cycle in NonBlockingEchoServer
+
+2020-05-16_09:50:09.607 [http-nio-9001-exec-1] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:50:14.453 [http-nio-9001-exec-1] ERROR [dispatcherServlet] [DirectJDKLog.java:175] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is java.time.format.DateTimeParseException: Text '2020-04-01T00:00' could not be parsed, unparsed text found at index 10] with root cause
+java.time.format.DateTimeParseException: Text '2020-04-01T00:00' could not be parsed, unparsed text found at index 10
+	at java.time.format.DateTimeFormatter.parseResolved0(DateTimeFormatter.java:1952)
+	at java.time.format.DateTimeFormatter.parse(DateTimeFormatter.java:1851)
+	at java.time.LocalDate.parse(LocalDate.java:400)
+	at java.time.LocalDate.parse(LocalDate.java:385)
+	at main.web.TO.TOServiceToBase.get_date_start(TOServiceToBase.java:38)
+	at main.web.TO.TOServiceToBase.<init>(TOServiceToBase.java:24)
+	at main.service_web.ServiceCalls.buildReport(ServiceCalls.java:42)
+	at main.web.controller.ReportRestController.doGet(ReportRestController.java:34)
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.lang.reflect.Method.invoke(Method.java:498)
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:190)
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:138)
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:106)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:888)
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:793)
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1040)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:526)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:367)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:860)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1591)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-16_09:53:13.005 [main] INFO  Application [StartupInfoLogger.java:55] - Starting Application v1.0-SNAPSHOT on Andrew-ПК with PID 4920 (D:\Stajirovka\ReadAvayaLogger\target\nonBlockingEchoServer.jar started by Andrew in D:\Stajirovka\ReadAvayaLogger)
+2020-05-16_09:53:13.009 [main] INFO  Application [SpringApplication.java:655] - The following profiles are active: dev
+2020-05-16_09:53:14.937 [main] INFO  Application [Application.java:36] - Running with Spring profile(s) : [dev]
+2020-05-16_09:53:16.270 [main] INFO  Application [StartupInfoLogger.java:61] - Started Application in 4.015 seconds (JVM running for 4.525)
+2020-05-16_09:53:16.273 [main] INFO  Application [Application.java:50] - Access URLs:
+----------------------------------------------------------
+	Local: 		http://127.0.0.1:9001
+	External: 	http://192.168.1.47:9001
+----------------------------------------------------------
+2020-05-16_09:53:16.276 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:56] - Server started on port >> 9000
+2020-05-16_09:53:16.277 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:83] - Start cycle in NonBlockingEchoServer
+
+2020-05-16_09:53:18.672 [http-nio-9001-exec-1] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:53:18.678 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:53:18.727 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_09:53:44.335 [http-nio-9001-exec-5] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:53:44.336 [http-nio-9001-exec-5] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:53:44.341 [http-nio-9001-exec-5] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_09:56:25.983 [main] INFO  Application [StartupInfoLogger.java:55] - Starting Application v1.0-SNAPSHOT on Andrew-ПК with PID 5632 (D:\Stajirovka\ReadAvayaLogger\target\nonBlockingEchoServer.jar started by Andrew in D:\Stajirovka\ReadAvayaLogger)
+2020-05-16_09:56:25.986 [main] INFO  Application [SpringApplication.java:655] - The following profiles are active: dev
+2020-05-16_09:56:27.938 [main] INFO  Application [Application.java:36] - Running with Spring profile(s) : [dev]
+2020-05-16_09:56:29.243 [main] INFO  Application [StartupInfoLogger.java:61] - Started Application in 4.137 seconds (JVM running for 4.683)
+2020-05-16_09:56:29.245 [main] INFO  Application [Application.java:50] - Access URLs:
+----------------------------------------------------------
+	Local: 		http://127.0.0.1:9001
+	External: 	http://192.168.1.47:9001
+----------------------------------------------------------
+2020-05-16_09:56:29.249 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:56] - Server started on port >> 9000
+2020-05-16_09:56:29.249 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:83] - Start cycle in NonBlockingEchoServer
+
+2020-05-16_09:56:31.760 [http-nio-9001-exec-1] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:56:31.766 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:56:31.810 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_09:59:02.133 [main] INFO  Application [StartupInfoLogger.java:55] - Starting Application v1.0-SNAPSHOT on Andrew-ПК with PID 5776 (D:\Stajirovka\ReadAvayaLogger\target\nonBlockingEchoServer.jar started by Andrew in D:\Stajirovka\ReadAvayaLogger)
+2020-05-16_09:59:02.139 [main] INFO  Application [SpringApplication.java:655] - The following profiles are active: dev
+2020-05-16_09:59:04.115 [main] INFO  Application [Application.java:36] - Running with Spring profile(s) : [dev]
+2020-05-16_09:59:05.404 [main] INFO  Application [StartupInfoLogger.java:61] - Started Application in 4.071 seconds (JVM running for 4.562)
+2020-05-16_09:59:05.406 [main] INFO  Application [Application.java:50] - Access URLs:
+----------------------------------------------------------
+	Local: 		http://127.0.0.1:9001
+	External: 	http://192.168.1.47:9001
+----------------------------------------------------------
+2020-05-16_09:59:05.409 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:56] - Server started on port >> 9000
+2020-05-16_09:59:05.410 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:83] - Start cycle in NonBlockingEchoServer
+
+2020-05-16_09:59:06.571 [http-nio-9001-exec-1] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:59:06.577 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:59:06.618 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_09:59:16.957 [http-nio-9001-exec-3] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:59:16.963 [http-nio-9001-exec-3] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:59:17.155 [http-nio-9001-exec-3] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 122732 items.
+2020-05-16_09:59:29.352 [http-nio-9001-exec-5] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:59:29.353 [http-nio-9001-exec-5] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:59:29.723 [http-nio-9001-exec-5] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 2012 items.
+2020-05-16_09:59:32.956 [http-nio-9001-exec-6] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:59:32.957 [http-nio-9001-exec-6] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:59:33.054 [http-nio-9001-exec-6] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 122732 items.
+2020-05-16_09:59:38.101 [http-nio-9001-exec-7] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:59:38.102 [http-nio-9001-exec-7] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:59:38.450 [http-nio-9001-exec-7] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 14084 items.
+2020-05-16_09:59:51.135 [http-nio-9001-exec-8] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:59:51.138 [http-nio-9001-exec-8] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:59:51.246 [http-nio-9001-exec-8] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_09:59:54.853 [http-nio-9001-exec-10] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_09:59:54.854 [http-nio-9001-exec-10] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_09:59:55.190 [http-nio-9001-exec-10] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 14084 items.
+2020-05-16_10:00:03.766 [http-nio-9001-exec-2] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_10:00:03.766 [http-nio-9001-exec-2] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_10:00:04.392 [http-nio-9001-exec-2] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_10:00:06.588 [http-nio-9001-exec-3] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_10:00:06.589 [http-nio-9001-exec-3] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_10:00:06.930 [http-nio-9001-exec-3] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 14084 items.
+2020-05-16_10:00:10.519 [http-nio-9001-exec-4] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_10:00:10.520 [http-nio-9001-exec-4] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_10:00:10.840 [http-nio-9001-exec-4] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 14084 items.
+2020-05-16_10:00:18.500 [http-nio-9001-exec-5] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_10:00:18.501 [http-nio-9001-exec-5] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_10:00:18.506 [http-nio-9001-exec-5] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_10:00:26.988 [http-nio-9001-exec-7] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_10:00:26.989 [http-nio-9001-exec-7] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_10:00:26.995 [http-nio-9001-exec-7] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_10:00:34.973 [http-nio-9001-exec-8] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_10:00:34.974 [http-nio-9001-exec-8] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_10:00:34.981 [http-nio-9001-exec-8] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_10:00:40.734 [http-nio-9001-exec-10] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_10:00:40.735 [http-nio-9001-exec-10] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_10:00:41.019 [http-nio-9001-exec-10] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 14084 items.
+2020-05-16_10:00:48.452 [http-nio-9001-exec-2] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_10:00:48.453 [http-nio-9001-exec-2] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_10:00:48.527 [http-nio-9001-exec-2] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 102612 items.
+2020-05-16_10:00:59.885 [http-nio-9001-exec-4] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_10:00:59.886 [http-nio-9001-exec-4] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_10:00:59.894 [http-nio-9001-exec-4] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_10:02:04.994 [main] INFO  Application [StartupInfoLogger.java:55] - Starting Application v1.0-SNAPSHOT on Andrew-ПК with PID 6112 (D:\Stajirovka\ReadAvayaLogger\target\nonBlockingEchoServer.jar started by Andrew in D:\Stajirovka\ReadAvayaLogger)
+2020-05-16_10:02:04.998 [main] INFO  Application [SpringApplication.java:655] - The following profiles are active: dev
+2020-05-16_10:02:06.815 [main] INFO  Application [Application.java:36] - Running with Spring profile(s) : [dev]
+2020-05-16_10:02:08.125 [main] INFO  Application [StartupInfoLogger.java:61] - Started Application in 3.853 seconds (JVM running for 4.329)
+2020-05-16_10:02:08.127 [main] INFO  Application [Application.java:50] - Access URLs:
+----------------------------------------------------------
+	Local: 		http://127.0.0.1:9001
+	External: 	http://192.168.1.47:9001
+----------------------------------------------------------
+2020-05-16_10:02:08.131 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:56] - Server started on port >> 9000
+2020-05-16_10:02:08.131 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:83] - Start cycle in NonBlockingEchoServer
+
+2020-05-16_10:02:14.735 [http-nio-9001-exec-1] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_10:02:14.743 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_10:02:14.785 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_10:02:20.673 [http-nio-9001-exec-2] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_10:02:20.676 [http-nio-9001-exec-2] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_10:02:20.682 [http-nio-9001-exec-2] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_10:02:27.517 [http-nio-9001-exec-3] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_10:02:27.519 [http-nio-9001-exec-3] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_10:02:27.708 [http-nio-9001-exec-3] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 122732 items.
+2020-05-16_10:02:33.202 [http-nio-9001-exec-5] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_10:02:33.203 [http-nio-9001-exec-5] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_10:02:33.538 [http-nio-9001-exec-5] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 54324 items.
+2020-05-16_10:02:35.798 [http-nio-9001-exec-6] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_10:02:35.799 [http-nio-9001-exec-6] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_10:02:36.134 [http-nio-9001-exec-6] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 68408 items.

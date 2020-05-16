@@ -30,53 +30,18 @@ public class ServiceCalls {
 
 
     public static List listAll = new ArrayList<>(Arrays.asList("all","out","in"));
-    public static List listOut = new ArrayList<>(Arrays.asList("out","all","in"));
-    public static List listIn = new ArrayList<>(Arrays.asList("in","out","all"));
+  //  public static List listOut = new ArrayList<>(Arrays.asList("out","all","in"));
+ //   public static List listIn = new ArrayList<>(Arrays.asList("in","out","all"));
 
     public Page<CallsNew> buildReport(TO to){
+        to.setAll_out_in(listAll); ;
+      //  TOServiceToBase TOSTB = new TOServiceToBase ();
+       // get_date_start(to, TOSTB);
+
+
         return callsRepository.findBeetwDateAndWay(new TOServiceToBase(to));
     }
 
-    public List list (TO to){
-        String all_out_in = to.getAll_out_in();
-        if(all_out_in==null || all_out_in.equals("all")){
-            return listAll;
-        }
-        if(all_out_in.equals("out")){
-            return listOut;
-        }
-        if(all_out_in.equals("in")){
-            return listIn;
-        }
-        return listAll;
-    }
-    public LocalDateTime get_date_start(TO to){
-        LocalDateTime start;
-        if (to.getStart()==null || to.getStart().equals("")){
-            start = LocalDateTime.now().with(firstDayOfMonth()).minusMonths(1).withHour(0).withMinute(0).truncatedTo(ChronoUnit.MINUTES);
-        } else {
-           // start = LocalDateTime.parse(to.getStart());
-            start = LocalDateTime.of(LocalDate.parse(to.getStart()), LocalTime.of(00, 00));
-        }
-        return start;
-    }
 
-    public LocalDateTime get_date_end(TO to){
-        LocalDateTime end;
-        if (to.getEnd()==null || to.getEnd().equals("")){
-            end = LocalDateTime.now().with(lastDayOfMonth()).minusMonths(1).withHour(23).withMinute(59).truncatedTo(ChronoUnit.MINUTES);
-        } else {
-          //  end = LocalDateTime.parse(to.getEnd());
-            end = LocalDateTime.of(LocalDate.parse(to.getEnd()), LocalTime.of(23, 59));
 
-        }
-        return end;
-    }
-
-    public String CallStringToCallInt(TO to){
-        if(to == null){return "0";}
-        String number = to.getAnswer_all_out_in();
-        if(number==null || number.equals("0") || number.equals("")){return "0";}
-        return number;
-    }
 }

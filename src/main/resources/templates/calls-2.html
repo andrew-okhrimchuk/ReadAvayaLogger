@@ -22,7 +22,7 @@
 
  <!--   /*@thymesVar id="TO" type="main.web.TO.TO"*/-->
 <!--    /*@thymesVar id="callsPage" type="org.springframework.data.domain.Page<main.entity.CallsNew>"*/-->
-    <!--/*@thymesVar id="all_out_in" type="java.util.List<java.lang.String>"*/ -->
+
     <!--/*@thymesVar id="beginIndex" type="java.lang.Long"*/-->
 <!--    /*@thymesVar id="endIndex" type="java.lang.Long"*/-->
 <!--    /*@thymesVar id="currentIndex" type="java.lang.Long"*/-->
@@ -61,8 +61,8 @@
 
 
             <label >
-                <select class="form-control" th:field="*{answer_all_out_in}" >Направление звонков
-                    <option th:each="iter: ${all_out_in}" th:value="${{iter}}" th:text="${iter}"></option>
+                <select class="form-control" th:field="${TO.answer_all_out_in}" >Направление звонков
+                    <option th:each="iter: ${TO.all_out_in}" th:value="${{iter}}" th:text="${iter}"></option>
                 </select>
             </label>
             <i  class="xxx" >Найдено всего записей - <span

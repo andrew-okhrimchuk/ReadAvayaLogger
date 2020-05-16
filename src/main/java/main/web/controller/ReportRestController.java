@@ -37,8 +37,8 @@ public class ReportRestController  {
        // modelAndView.getModelMap().addAttribute("TO", new TOServiceToBase(to));
        // modelAndView.getModelMap().addAttribute("start", serviceCalls.get_date_start(to));
       //  modelAndView.getModelMap().addAttribute("end", serviceCalls.get_date_end(to));
-        modelAndView.getModelMap().addAttribute("all_out_in", serviceCalls.list(to));
-        modelAndView.getModelMap().addAttribute("answer_all_out_in", "");
+      //  modelAndView.getModelMap().addAttribute("all_out_in", serviceCalls.list(to));
+      //  modelAndView.getModelMap().addAttribute("answer_all_out_in", "");
       //  modelAndView.getModelMap().addAttribute("num", serviceCalls.CallStringToCallInt(to));
      //  modelAndView.getModelMap().addAttribute("numD", serviceCalls.CallStringToCallInt(to));
 
