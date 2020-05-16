@@ -5,6 +5,7 @@ import lombok.Setter;
 import main.entity.CallsNew;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.annotation.RequestScope;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -13,6 +14,7 @@ import java.util.List;
 @Service
 @Getter
 @Setter
+@RequestScope
 public class TO {
     String start;
     String end;
