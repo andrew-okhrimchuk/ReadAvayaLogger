@@ -8,6 +8,7 @@ import org.springframework.context.annotation.Scope;
 
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
+import org.springframework.web.context.annotation.RequestScope;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,7 +17,7 @@ import java.util.stream.IntStream;
 @Service
 @Getter
 @Setter
-//@Scope("prototype")
+@RequestScope
 public class TO_Padding {
 
     long totalPageCount;

@@ -5,7 +5,6 @@ import lombok.extern.slf4j.Slf4j;
 import main.entity.CallsNew;
 import main.service_web.ServiceCalls;
 import main.web.TO.TO;
-import main.web.TO.TOServiceToBase;
 import main.web.TO.TO_Padding;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
@@ -16,25 +15,24 @@ import org.springframework.web.servlet.ModelAndView;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
 
-import java.util.List;
-import java.util.stream.Collectors;
-import java.util.stream.IntStream;
-
 
 @Slf4j
 @Controller
 public class ReportRestController  {
     @Autowired
     ServiceCalls serviceCalls;
+    @Autowired
+    TO_Padding to_padding;
+
 
 
     @RequestMapping(value = { "/" }, method = RequestMethod.GET)
     @ResponseBody
     protected ModelAndView  doGet(@ModelAttribute @NonNull TO to, ModelAndView modelAndView) {
         log.info("Start doGet of '/servlets'");
-
-        modelAndView.getModelMap().addAttribute("callsPage", serviceCalls.buildReport(to));
-        modelAndView.getModelMap().addAttribute("TO_Padding", serviceCalls.getTO_Padding());
+        Page<CallsNew> callsPage = serviceCalls.buildReport(to);
+        modelAndView.getModelMap().addAttribute("TO", to);
+        modelAndView.getModelMap().addAttribute("TO_Padding", serviceCalls.getTO_Padding(callsPage, to_padding));
         modelAndView.setViewName("calls-2");
 
         return modelAndView;
@@ -47,7 +45,6 @@ public class ReportRestController  {
         secondaryTemplateResolver.setSuffix(".html");
         secondaryTemplateResolver.setTemplateMode(TemplateMode.HTML);
         secondaryTemplateResolver.setCharacterEncoding("UTF-8");
-      //  secondaryTemplateResolver.setOrder(1);
         secondaryTemplateResolver.setCheckExistence(true);
         return secondaryTemplateResolver;
     }

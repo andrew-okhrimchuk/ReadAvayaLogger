@@ -22,7 +22,7 @@
 
  <!--   /*@thymesVar id="TO" type="main.web.TO.TO"*/-->
 <!--    /*@thymesVar id="TO_Padding" type="main.web.TO.TO_Padding"*/-->
-<!--    /*@thymesVar id="callsPage" type="org.springframework.data.domain.Page<main.entity.CallsNew>"*/-->
+
 
 
 
@@ -77,7 +77,7 @@
                 <th width="8%">cond_code</th>
                 <th width="8%">date</th>
                 <th width="8%">time</th>
-                <th width="8%">sec_dur</th>
+                <th width="8%">sec_dur (длительность звонка)</th>
                 <th width="8%">code_dial</th>
                 <th width="8%">code_used</th>
                 <th width="8%">dialed_num (кому звонят)</th>
@@ -92,8 +92,8 @@
 
 
             <tbody>
-            <tr th:each="call, iter : ${callsPage}">
-                <td th:text="${iter.count} + ${callsPage.getPageable().getPageNumber()} * ${callsPage.getPageable().getPageSize()}"></td>
+            <tr th:each="call, iter : ${TO.getCallsPage()}">
+                <td th:text="${iter.count} + ${TO.getCallsPage().getPageable().getPageNumber()} * ${TO.getCallsPage().getPageable().getPageSize()}"></td>
                 <td th:text="${call.cond_code}"></td>
                 <td th:text="${#temporals.format(call.localDateTime, 'dd-MM-yyyy')}"></td>
                 <td th:text="${#temporals.format(call.localDateTime, 'HH:mm')}"></td>
