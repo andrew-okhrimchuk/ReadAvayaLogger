@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.Setter;
 
 import main.entity.CallsNew;
-import org.springframework.context.annotation.Scope;
 
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;

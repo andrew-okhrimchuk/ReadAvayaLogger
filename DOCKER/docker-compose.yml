@@ -1,0 +1,41 @@
+# Use root/example as user/password credentials
+
+version: '3.2'
+
+networks:
+  lan:
+    driver: bridge
+
+
+services: 
+  mongo: 
+    build: ./mongo
+   # restart: always 
+    container_name: springboot-mongo
+    ports:
+      - "27017:27017"
+ 
+    networks:
+      - lan
+    volumes:
+      - ./data/db:/data/db
+
+  java: 
+    build: ./java 
+   # restart: always 
+    container_name: AVAYA_LOGGER
+    links:
+      - mongo
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    depends_on:
+      - mongo
+    networks:
+      - lan
+
+  
+      
+
+
+    
