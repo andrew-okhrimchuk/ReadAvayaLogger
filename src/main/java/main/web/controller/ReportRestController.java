@@ -5,6 +5,8 @@ import lombok.extern.slf4j.Slf4j;
 import main.entity.CallsNew;
 import main.service_web.ServiceCalls;
 import main.web.TO.TO;
+import main.web.TO.TOServiceToBase;
+import main.web.TO.TO_Padding;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.data.domain.Page;
@@ -30,24 +32,27 @@ public class ReportRestController  {
     protected ModelAndView  doGet(@ModelAttribute @NonNull TO to, ModelAndView modelAndView) {
         log.info("Start doGet of '/servlets'");
         Page<CallsNew> callsPage = serviceCalls.buildReport(to);
-
+        new TO_Padding(callsPage);
         modelAndView.getModelMap().addAttribute("callsPage", callsPage);
-        modelAndView.getModelMap().addAttribute("start", serviceCalls.get_date_start(to));
-        modelAndView.getModelMap().addAttribute("end", serviceCalls.get_date_end(to));
+       // modelAndView.getModelMap().addAttribute("TO", new TOServiceToBase(to));
+       // modelAndView.getModelMap().addAttribute("start", serviceCalls.get_date_start(to));
+      //  modelAndView.getModelMap().addAttribute("end", serviceCalls.get_date_end(to));
         modelAndView.getModelMap().addAttribute("all_out_in", serviceCalls.list(to));
         modelAndView.getModelMap().addAttribute("answer_all_out_in", "");
-        modelAndView.getModelMap().addAttribute("num", serviceCalls.CallStringToCallInt(to));
-        modelAndView.getModelMap().addAttribute("numD", serviceCalls.CallStringToCallInt(to));
+      //  modelAndView.getModelMap().addAttribute("num", serviceCalls.CallStringToCallInt(to));
+     //  modelAndView.getModelMap().addAttribute("numD", serviceCalls.CallStringToCallInt(to));
+
+
 
         long totalPageCount = callsPage.getTotalPages();
-        long current = callsPage.getNumber() + 1;
-        long begin = Math.max(1, current - callsPage.getContent().size());
+        long currentIndex = callsPage.getNumber() + 1;
+        long begin = Math.max(1, currentIndex - callsPage.getContent().size());
         long end = Math.min(begin + 5, totalPageCount);
         long totalElements = callsPage.getTotalElements();
 
         modelAndView.getModelMap().addAttribute("beginIndex", begin);
         modelAndView.getModelMap().addAttribute("endIndex", end);
-        modelAndView.getModelMap().addAttribute("currentIndex", current);
+        modelAndView.getModelMap().addAttribute("currentIndex", currentIndex);
         modelAndView.getModelMap().addAttribute("totalPageCount", totalPageCount);
         modelAndView.getModelMap().addAttribute("totalElements", totalElements);
 

@@ -63,7 +63,7 @@ public class ServiceCalls {
 
     public LocalDateTime get_date_end(TO to){
         LocalDateTime end;
-        if (to.getEnd()==null || to.getStart().equals("")){
+        if (to.getEnd()==null || to.getEnd().equals("")){
             end = LocalDateTime.now().with(lastDayOfMonth()).minusMonths(1).withHour(23).withMinute(59).truncatedTo(ChronoUnit.MINUTES);
         } else {
           //  end = LocalDateTime.parse(to.getEnd());

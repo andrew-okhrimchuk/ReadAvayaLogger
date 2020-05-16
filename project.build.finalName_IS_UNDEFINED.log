@@ -1,0 +1,428 @@
+2020-05-16_07:49:18.938 [main] INFO  Application [StartupInfoLogger.java:55] - Starting Application v1.0-SNAPSHOT on Andrew-ПК with PID 856 (D:\Stajirovka\ReadAvayaLogger\target\nonBlockingEchoServer.jar started by Andrew in D:\Stajirovka\ReadAvayaLogger)
+2020-05-16_07:49:18.945 [main] INFO  Application [SpringApplication.java:655] - The following profiles are active: dev
+2020-05-16_07:49:22.868 [main] INFO  Application [Application.java:36] - Running with Spring profile(s) : [dev]
+2020-05-16_07:49:25.621 [main] INFO  Application [StartupInfoLogger.java:61] - Started Application in 7.997 seconds (JVM running for 9.897)
+2020-05-16_07:49:25.624 [main] INFO  Application [Application.java:50] - Access URLs:
+----------------------------------------------------------
+	Local: 		http://127.0.0.1:9001
+	External: 	http://192.168.1.47:9001
+----------------------------------------------------------
+2020-05-16_07:49:25.628 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:56] - Server started on port >> 9000
+2020-05-16_07:49:25.628 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:83] - Start cycle in NonBlockingEchoServer
+
+2020-05-16_07:49:35.418 [http-nio-9001-exec-1] INFO  ReportRestController [ReportRestController.java:32] - Start doGet of '/servlets'
+2020-05-16_08:04:12.159 [http-nio-9001-exec-2] INFO  ReportRestController [ReportRestController.java:32] - Start doGet of '/servlets'
+2020-05-16_08:04:12.216 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_08:04:12.353 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_08:06:45.694 [main] INFO  Application [StartupInfoLogger.java:55] - Starting Application v1.0-SNAPSHOT on Andrew-ПК with PID 3372 (D:\Stajirovka\ReadAvayaLogger\target\nonBlockingEchoServer.jar started by Andrew in D:\Stajirovka\ReadAvayaLogger)
+2020-05-16_08:06:45.698 [main] INFO  Application [SpringApplication.java:655] - The following profiles are active: dev
+2020-05-16_08:06:48.087 [main] INFO  Application [Application.java:36] - Running with Spring profile(s) : [dev]
+2020-05-16_08:06:49.715 [main] INFO  Application [StartupInfoLogger.java:61] - Started Application in 4.962 seconds (JVM running for 5.75)
+2020-05-16_08:06:49.718 [main] INFO  Application [Application.java:50] - Access URLs:
+----------------------------------------------------------
+	Local: 		http://127.0.0.1:9001
+	External: 	http://192.168.1.47:9001
+----------------------------------------------------------
+2020-05-16_08:06:49.722 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:56] - Server started on port >> 9000
+2020-05-16_08:06:49.722 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:83] - Start cycle in NonBlockingEchoServer
+
+2020-05-16_08:07:05.142 [http-nio-9001-exec-2] INFO  ReportRestController [ReportRestController.java:32] - Start doGet of '/servlets'
+2020-05-16_08:07:26.098 [http-nio-9001-exec-1] INFO  ReportRestController [ReportRestController.java:32] - Start doGet of '/servlets'
+2020-05-16_08:07:31.712 [http-nio-9001-exec-2] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_08:14:00.247 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_08:14:00.344 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_08:14:00.402 [http-nio-9001-exec-2] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_08:17:49.630 [main] INFO  Application [StartupInfoLogger.java:55] - Starting Application v1.0-SNAPSHOT on Andrew-ПК with PID 5576 (D:\Stajirovka\ReadAvayaLogger\target\nonBlockingEchoServer.jar started by Andrew in D:\Stajirovka\ReadAvayaLogger)
+2020-05-16_08:17:49.635 [main] INFO  Application [SpringApplication.java:655] - The following profiles are active: dev
+2020-05-16_08:17:51.861 [main] INFO  Application [Application.java:36] - Running with Spring profile(s) : [dev]
+2020-05-16_08:17:53.462 [main] INFO  Application [StartupInfoLogger.java:61] - Started Application in 4.714 seconds (JVM running for 5.443)
+2020-05-16_08:17:53.464 [main] INFO  Application [Application.java:50] - Access URLs:
+----------------------------------------------------------
+	Local: 		http://127.0.0.1:9001
+	External: 	http://192.168.1.47:9001
+----------------------------------------------------------
+2020-05-16_08:17:53.468 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:56] - Server started on port >> 9000
+2020-05-16_08:17:53.469 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:83] - Start cycle in NonBlockingEchoServer
+
+2020-05-16_08:17:57.568 [http-nio-9001-exec-2] INFO  ReportRestController [ReportRestController.java:32] - Start doGet of '/servlets'
+2020-05-16_08:18:00.495 [http-nio-9001-exec-2] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_08:18:00.567 [http-nio-9001-exec-2] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_08:18:11.054 [http-nio-9001-exec-8] INFO  ReportRestController [ReportRestController.java:32] - Start doGet of '/servlets'
+2020-05-16_08:18:13.492 [http-nio-9001-exec-8] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_08:18:13.797 [http-nio-9001-exec-8] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 122732 items.
+2020-05-16_08:18:57.484 [main] INFO  Application [StartupInfoLogger.java:55] - Starting Application v1.0-SNAPSHOT on Andrew-ПК with PID 5772 (D:\Stajirovka\ReadAvayaLogger\target\nonBlockingEchoServer.jar started by Andrew in D:\Stajirovka\ReadAvayaLogger)
+2020-05-16_08:18:57.487 [main] INFO  Application [SpringApplication.java:655] - The following profiles are active: dev
+2020-05-16_08:18:59.880 [main] INFO  Application [Application.java:36] - Running with Spring profile(s) : [dev]
+2020-05-16_08:19:01.246 [main] INFO  Application [StartupInfoLogger.java:61] - Started Application in 4.575 seconds (JVM running for 5.071)
+2020-05-16_08:19:01.248 [main] INFO  Application [Application.java:50] - Access URLs:
+----------------------------------------------------------
+	Local: 		http://127.0.0.1:9001
+	External: 	http://192.168.1.47:9001
+----------------------------------------------------------
+2020-05-16_08:19:01.251 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:56] - Server started on port >> 9000
+2020-05-16_08:19:01.252 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:83] - Start cycle in NonBlockingEchoServer
+
+2020-05-16_08:19:03.567 [http-nio-9001-exec-1] INFO  ReportRestController [ReportRestController.java:32] - Start doGet of '/servlets'
+2020-05-16_08:19:03.574 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_08:19:03.796 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 122732 items.
+2020-05-16_08:19:17.890 [http-nio-9001-exec-4] INFO  ReportRestController [ReportRestController.java:32] - Start doGet of '/servlets'
+2020-05-16_08:19:17.891 [http-nio-9001-exec-4] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_08:19:18.292 [http-nio-9001-exec-4] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 14084 items.
+2020-05-16_08:19:26.326 [http-nio-9001-exec-6] INFO  ReportRestController [ReportRestController.java:32] - Start doGet of '/servlets'
+2020-05-16_08:19:26.328 [http-nio-9001-exec-6] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_08:19:26.684 [http-nio-9001-exec-6] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 6036 items.
+2020-05-16_08:19:33.512 [http-nio-9001-exec-5] INFO  ReportRestController [ReportRestController.java:32] - Start doGet of '/servlets'
+2020-05-16_08:19:33.513 [http-nio-9001-exec-5] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_08:19:33.611 [http-nio-9001-exec-5] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 122732 items.
+2020-05-16_08:44:35.768 [main] INFO  Application [StartupInfoLogger.java:55] - Starting Application v1.0-SNAPSHOT on Andrew-ПК with PID 5516 (D:\Stajirovka\ReadAvayaLogger\target\nonBlockingEchoServer.jar started by Andrew in D:\Stajirovka\ReadAvayaLogger)
+2020-05-16_08:44:35.774 [main] INFO  Application [SpringApplication.java:655] - The following profiles are active: dev
+2020-05-16_08:44:37.658 [main] INFO  Application [Application.java:36] - Running with Spring profile(s) : [dev]
+2020-05-16_08:44:39.323 [main] INFO  Application [StartupInfoLogger.java:61] - Started Application in 4.428 seconds (JVM running for 4.941)
+2020-05-16_08:44:39.327 [main] INFO  Application [Application.java:50] - Access URLs:
+----------------------------------------------------------
+	Local: 		http://127.0.0.1:9001
+	External: 	http://192.168.1.47:9001
+----------------------------------------------------------
+2020-05-16_08:44:39.352 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:56] - Server started on port >> 9000
+2020-05-16_08:44:39.353 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:83] - Start cycle in NonBlockingEchoServer
+
+2020-05-16_08:44:41.731 [http-nio-9001-exec-3] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_08:44:41.738 [http-nio-9001-exec-3] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_08:44:41.962 [http-nio-9001-exec-3] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 122732 items.
+2020-05-16_08:44:42.905 [http-nio-9001-exec-3] ERROR TemplateEngine [TemplateEngine.java:1136] - [THYMELEAF][http-nio-9001-exec-3] Exception processing template "calls-2": Exception evaluating SpringEL expression: "TO_Padding.currentIndex == 1" (template: "calls-2" - line 119, col 21)
+org.thymeleaf.exceptions.TemplateProcessingException: Exception evaluating SpringEL expression: "TO_Padding.currentIndex == 1" (template: "calls-2" - line 119, col 21)
+	at org.thymeleaf.spring5.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:290)
+	at org.thymeleaf.standard.expression.VariableExpression.executeVariableExpression(VariableExpression.java:166)
+	at org.thymeleaf.standard.expression.SimpleExpression.executeSimple(SimpleExpression.java:66)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:109)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:138)
+	at org.thymeleaf.standard.expression.ConditionalExpression.executeConditional(ConditionalExpression.java:209)
+	at org.thymeleaf.standard.expression.ComplexExpression.executeComplex(ComplexExpression.java:77)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:112)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:138)
+	at org.thymeleaf.standard.processor.AbstractStandardExpressionAttributeTagProcessor.doProcess(AbstractStandardExpressionAttributeTagProcessor.java:144)
+	at org.thymeleaf.processor.element.AbstractAttributeTagProcessor.doProcess(AbstractAttributeTagProcessor.java:74)
+	at org.thymeleaf.processor.element.AbstractElementTagProcessor.process(AbstractElementTagProcessor.java:95)
+	at org.thymeleaf.util.ProcessorConfigurationUtils$ElementTagProcessorWrapper.process(ProcessorConfigurationUtils.java:633)
+	at org.thymeleaf.engine.ProcessorTemplateHandler.handleOpenElement(ProcessorTemplateHandler.java:1314)
+	at org.thymeleaf.engine.OpenElementTag.beHandled(OpenElementTag.java:205)
+	at org.thymeleaf.engine.TemplateModel.process(TemplateModel.java:136)
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:661)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1098)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1072)
+	at org.thymeleaf.spring5.view.ThymeleafView.renderFragment(ThymeleafView.java:362)
+	at org.thymeleaf.spring5.view.ThymeleafView.render(ThymeleafView.java:189)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1373)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1118)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1057)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:526)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:367)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:860)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1591)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.springframework.expression.spel.SpelEvaluationException: EL1007E: Property or field 'currentIndex' cannot be found on null
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.readProperty(PropertyOrFieldReference.java:213)
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.getValueInternal(PropertyOrFieldReference.java:104)
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.access$000(PropertyOrFieldReference.java:51)
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference$AccessorLValue.getValue(PropertyOrFieldReference.java:406)
+	at org.springframework.expression.spel.ast.CompoundExpression.getValueInternal(CompoundExpression.java:92)
+	at org.springframework.expression.spel.ast.OpEQ.getValueInternal(OpEQ.java:42)
+	at org.springframework.expression.spel.ast.OpEQ.getValueInternal(OpEQ.java:32)
+	at org.springframework.expression.spel.ast.SpelNodeImpl.getValue(SpelNodeImpl.java:112)
+	at org.springframework.expression.spel.standard.SpelExpression.getValue(SpelExpression.java:330)
+	at org.thymeleaf.spring5.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:263)
+	... 62 common frames omitted
+2020-05-16_08:44:42.990 [http-nio-9001-exec-3] ERROR [dispatcherServlet] [DirectJDKLog.java:175] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.thymeleaf.exceptions.TemplateProcessingException: Exception evaluating SpringEL expression: "TO_Padding.currentIndex == 1" (template: "calls-2" - line 119, col 21)] with root cause
+org.springframework.expression.spel.SpelEvaluationException: EL1007E: Property or field 'currentIndex' cannot be found on null
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.readProperty(PropertyOrFieldReference.java:213)
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.getValueInternal(PropertyOrFieldReference.java:104)
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.access$000(PropertyOrFieldReference.java:51)
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference$AccessorLValue.getValue(PropertyOrFieldReference.java:406)
+	at org.springframework.expression.spel.ast.CompoundExpression.getValueInternal(CompoundExpression.java:92)
+	at org.springframework.expression.spel.ast.OpEQ.getValueInternal(OpEQ.java:42)
+	at org.springframework.expression.spel.ast.OpEQ.getValueInternal(OpEQ.java:32)
+	at org.springframework.expression.spel.ast.SpelNodeImpl.getValue(SpelNodeImpl.java:112)
+	at org.springframework.expression.spel.standard.SpelExpression.getValue(SpelExpression.java:330)
+	at org.thymeleaf.spring5.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:263)
+	at org.thymeleaf.standard.expression.VariableExpression.executeVariableExpression(VariableExpression.java:166)
+	at org.thymeleaf.standard.expression.SimpleExpression.executeSimple(SimpleExpression.java:66)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:109)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:138)
+	at org.thymeleaf.standard.expression.ConditionalExpression.executeConditional(ConditionalExpression.java:209)
+	at org.thymeleaf.standard.expression.ComplexExpression.executeComplex(ComplexExpression.java:77)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:112)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:138)
+	at org.thymeleaf.standard.processor.AbstractStandardExpressionAttributeTagProcessor.doProcess(AbstractStandardExpressionAttributeTagProcessor.java:144)
+	at org.thymeleaf.processor.element.AbstractAttributeTagProcessor.doProcess(AbstractAttributeTagProcessor.java:74)
+	at org.thymeleaf.processor.element.AbstractElementTagProcessor.process(AbstractElementTagProcessor.java:95)
+	at org.thymeleaf.util.ProcessorConfigurationUtils$ElementTagProcessorWrapper.process(ProcessorConfigurationUtils.java:633)
+	at org.thymeleaf.engine.ProcessorTemplateHandler.handleOpenElement(ProcessorTemplateHandler.java:1314)
+	at org.thymeleaf.engine.OpenElementTag.beHandled(OpenElementTag.java:205)
+	at org.thymeleaf.engine.TemplateModel.process(TemplateModel.java:136)
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:661)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1098)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1072)
+	at org.thymeleaf.spring5.view.ThymeleafView.renderFragment(ThymeleafView.java:362)
+	at org.thymeleaf.spring5.view.ThymeleafView.render(ThymeleafView.java:189)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1373)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1118)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1057)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:526)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:367)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:860)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1591)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-16_08:44:43.017 [http-nio-9001-exec-3] ERROR ErrorMvcAutoConfiguration$StaticView [ErrorMvcAutoConfiguration.java:204] - Cannot render error page for request [/] and exception [Exception evaluating SpringEL expression: "TO_Padding.currentIndex == 1" (template: "calls-2" - line 119, col 21)] as the response has already been committed. As a result, the response may have the wrong status code.
+2020-05-16_08:45:49.943 [http-nio-9001-exec-8] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_08:45:49.944 [http-nio-9001-exec-8] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_08:45:50.045 [http-nio-9001-exec-8] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 122732 items.
+2020-05-16_08:45:50.654 [http-nio-9001-exec-8] ERROR TemplateEngine [TemplateEngine.java:1136] - [THYMELEAF][http-nio-9001-exec-8] Exception processing template "calls-2": Exception evaluating SpringEL expression: "TO_Padding.currentIndex == 1" (template: "calls-2" - line 119, col 21)
+org.thymeleaf.exceptions.TemplateProcessingException: Exception evaluating SpringEL expression: "TO_Padding.currentIndex == 1" (template: "calls-2" - line 119, col 21)
+	at org.thymeleaf.spring5.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:290)
+	at org.thymeleaf.standard.expression.VariableExpression.executeVariableExpression(VariableExpression.java:166)
+	at org.thymeleaf.standard.expression.SimpleExpression.executeSimple(SimpleExpression.java:66)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:109)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:138)
+	at org.thymeleaf.standard.expression.ConditionalExpression.executeConditional(ConditionalExpression.java:209)
+	at org.thymeleaf.standard.expression.ComplexExpression.executeComplex(ComplexExpression.java:77)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:112)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:138)
+	at org.thymeleaf.standard.processor.AbstractStandardExpressionAttributeTagProcessor.doProcess(AbstractStandardExpressionAttributeTagProcessor.java:144)
+	at org.thymeleaf.processor.element.AbstractAttributeTagProcessor.doProcess(AbstractAttributeTagProcessor.java:74)
+	at org.thymeleaf.processor.element.AbstractElementTagProcessor.process(AbstractElementTagProcessor.java:95)
+	at org.thymeleaf.util.ProcessorConfigurationUtils$ElementTagProcessorWrapper.process(ProcessorConfigurationUtils.java:633)
+	at org.thymeleaf.engine.ProcessorTemplateHandler.handleOpenElement(ProcessorTemplateHandler.java:1314)
+	at org.thymeleaf.engine.OpenElementTag.beHandled(OpenElementTag.java:205)
+	at org.thymeleaf.engine.TemplateModel.process(TemplateModel.java:136)
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:592)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1098)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1072)
+	at org.thymeleaf.spring5.view.ThymeleafView.renderFragment(ThymeleafView.java:362)
+	at org.thymeleaf.spring5.view.ThymeleafView.render(ThymeleafView.java:189)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1373)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1118)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1057)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:526)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:367)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:860)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1591)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+Caused by: org.springframework.expression.spel.SpelEvaluationException: EL1007E: Property or field 'currentIndex' cannot be found on null
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.readProperty(PropertyOrFieldReference.java:213)
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.getValueInternal(PropertyOrFieldReference.java:104)
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.access$000(PropertyOrFieldReference.java:51)
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference$AccessorLValue.getValue(PropertyOrFieldReference.java:406)
+	at org.springframework.expression.spel.ast.CompoundExpression.getValueInternal(CompoundExpression.java:92)
+	at org.springframework.expression.spel.ast.OpEQ.getValueInternal(OpEQ.java:42)
+	at org.springframework.expression.spel.ast.OpEQ.getValueInternal(OpEQ.java:32)
+	at org.springframework.expression.spel.ast.SpelNodeImpl.getValue(SpelNodeImpl.java:112)
+	at org.springframework.expression.spel.standard.SpelExpression.getValue(SpelExpression.java:330)
+	at org.thymeleaf.spring5.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:263)
+	... 62 common frames omitted
+2020-05-16_08:45:50.661 [http-nio-9001-exec-8] ERROR [dispatcherServlet] [DirectJDKLog.java:175] - Servlet.service() for servlet [dispatcherServlet] in context with path [] threw exception [Request processing failed; nested exception is org.thymeleaf.exceptions.TemplateProcessingException: Exception evaluating SpringEL expression: "TO_Padding.currentIndex == 1" (template: "calls-2" - line 119, col 21)] with root cause
+org.springframework.expression.spel.SpelEvaluationException: EL1007E: Property or field 'currentIndex' cannot be found on null
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.readProperty(PropertyOrFieldReference.java:213)
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.getValueInternal(PropertyOrFieldReference.java:104)
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference.access$000(PropertyOrFieldReference.java:51)
+	at org.springframework.expression.spel.ast.PropertyOrFieldReference$AccessorLValue.getValue(PropertyOrFieldReference.java:406)
+	at org.springframework.expression.spel.ast.CompoundExpression.getValueInternal(CompoundExpression.java:92)
+	at org.springframework.expression.spel.ast.OpEQ.getValueInternal(OpEQ.java:42)
+	at org.springframework.expression.spel.ast.OpEQ.getValueInternal(OpEQ.java:32)
+	at org.springframework.expression.spel.ast.SpelNodeImpl.getValue(SpelNodeImpl.java:112)
+	at org.springframework.expression.spel.standard.SpelExpression.getValue(SpelExpression.java:330)
+	at org.thymeleaf.spring5.expression.SPELVariableExpressionEvaluator.evaluate(SPELVariableExpressionEvaluator.java:263)
+	at org.thymeleaf.standard.expression.VariableExpression.executeVariableExpression(VariableExpression.java:166)
+	at org.thymeleaf.standard.expression.SimpleExpression.executeSimple(SimpleExpression.java:66)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:109)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:138)
+	at org.thymeleaf.standard.expression.ConditionalExpression.executeConditional(ConditionalExpression.java:209)
+	at org.thymeleaf.standard.expression.ComplexExpression.executeComplex(ComplexExpression.java:77)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:112)
+	at org.thymeleaf.standard.expression.Expression.execute(Expression.java:138)
+	at org.thymeleaf.standard.processor.AbstractStandardExpressionAttributeTagProcessor.doProcess(AbstractStandardExpressionAttributeTagProcessor.java:144)
+	at org.thymeleaf.processor.element.AbstractAttributeTagProcessor.doProcess(AbstractAttributeTagProcessor.java:74)
+	at org.thymeleaf.processor.element.AbstractElementTagProcessor.process(AbstractElementTagProcessor.java:95)
+	at org.thymeleaf.util.ProcessorConfigurationUtils$ElementTagProcessorWrapper.process(ProcessorConfigurationUtils.java:633)
+	at org.thymeleaf.engine.ProcessorTemplateHandler.handleOpenElement(ProcessorTemplateHandler.java:1314)
+	at org.thymeleaf.engine.OpenElementTag.beHandled(OpenElementTag.java:205)
+	at org.thymeleaf.engine.TemplateModel.process(TemplateModel.java:136)
+	at org.thymeleaf.engine.TemplateManager.parseAndProcess(TemplateManager.java:592)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1098)
+	at org.thymeleaf.TemplateEngine.process(TemplateEngine.java:1072)
+	at org.thymeleaf.spring5.view.ThymeleafView.renderFragment(ThymeleafView.java:362)
+	at org.thymeleaf.spring5.view.ThymeleafView.render(ThymeleafView.java:189)
+	at org.springframework.web.servlet.DispatcherServlet.render(DispatcherServlet.java:1373)
+	at org.springframework.web.servlet.DispatcherServlet.processDispatchResult(DispatcherServlet.java:1118)
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1057)
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:943)
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006)
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:634)
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883)
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:741)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:231)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201)
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:119)
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:193)
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:166)
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:202)
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:96)
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:526)
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:139)
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92)
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:74)
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:343)
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:367)
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65)
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:860)
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1591)
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624)
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61)
+	at java.lang.Thread.run(Thread.java:748)
+2020-05-16_08:45:50.665 [http-nio-9001-exec-8] ERROR ErrorMvcAutoConfiguration$StaticView [ErrorMvcAutoConfiguration.java:204] - Cannot render error page for request [/] and exception [Exception evaluating SpringEL expression: "TO_Padding.currentIndex == 1" (template: "calls-2" - line 119, col 21)] as the response has already been committed. As a result, the response may have the wrong status code.
+2020-05-16_08:48:27.075 [main] INFO  Application [StartupInfoLogger.java:55] - Starting Application v1.0-SNAPSHOT on Andrew-ПК with PID 5396 (D:\Stajirovka\ReadAvayaLogger\target\nonBlockingEchoServer.jar started by Andrew in D:\Stajirovka\ReadAvayaLogger)
+2020-05-16_08:48:27.078 [main] INFO  Application [SpringApplication.java:655] - The following profiles are active: dev
+2020-05-16_08:48:29.131 [main] INFO  Application [Application.java:36] - Running with Spring profile(s) : [dev]
+2020-05-16_08:48:30.470 [main] INFO  Application [StartupInfoLogger.java:61] - Started Application in 4.118 seconds (JVM running for 4.914)
+2020-05-16_08:48:30.472 [main] INFO  Application [Application.java:50] - Access URLs:
+----------------------------------------------------------
+	Local: 		http://127.0.0.1:9001
+	External: 	http://192.168.1.47:9001
+----------------------------------------------------------
+2020-05-16_08:48:30.475 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:56] - Server started on port >> 9000
+2020-05-16_08:48:30.475 [Thread-2] INFO  NonBlockingEchoServer_NEW [NonBlockingEchoServer_NEW.java:83] - Start cycle in NonBlockingEchoServer
+
+2020-05-16_08:48:33.835 [http-nio-9001-exec-1] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_08:48:33.845 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_08:48:34.089 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 122732 items.
+2020-05-16_08:48:41.396 [http-nio-9001-exec-3] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_08:48:41.397 [http-nio-9001-exec-3] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_08:48:41.748 [http-nio-9001-exec-3] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 54324 items.
+2020-05-16_08:48:47.733 [http-nio-9001-exec-5] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_08:48:47.735 [http-nio-9001-exec-5] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_08:48:48.093 [http-nio-9001-exec-5] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 14084 items.
+2020-05-16_08:48:51.708 [http-nio-9001-exec-2] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_08:48:51.710 [http-nio-9001-exec-2] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_08:48:52.323 [http-nio-9001-exec-2] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 0 items.
+2020-05-16_08:48:57.346 [http-nio-9001-exec-6] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_08:48:57.347 [http-nio-9001-exec-6] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_08:48:57.680 [http-nio-9001-exec-6] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 14084 items.
+2020-05-16_08:49:03.021 [http-nio-9001-exec-9] INFO  ReportRestController [ReportRestController.java:33] - Start doGet of '/servlets'
+2020-05-16_08:49:03.022 [http-nio-9001-exec-9] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:41] - start findBeetwDateAndWay
+2020-05-16_08:49:03.109 [http-nio-9001-exec-9] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:63] - Fined 122732 items.
