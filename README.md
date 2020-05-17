@@ -23,6 +23,11 @@ java -Dfile.encoding=windows-1251 -jar D:\Stajirovka\ReadAvayaLogger\target\nonB
 остальное просто повторяем как есть. 
 
 6. Добавлена возможность запуска в докер-контейнере. (написал /DOCKER/docker-compose.yml). Запуск всего приложения+база всего одной командой. Смотрим commands.txt
+ Или просто запустить образы (если у Вас стои Линух): 
+  - docker pull andrew456/docker_mongo:version1
+  - docker run andrew456/docker_mongo:version1
+  - docker pull andrew456/docker_java:version1
+  - docker run andrew456/docker_java:version1
 
 7. Программа работает как в винде так и в линухе (ей поф все равно крутится на VM :)
 
