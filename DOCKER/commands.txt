@@ -1,3 +1,6 @@
 
-cd /media/andrey/845A97DCB51B3D4F/Stajirovka/ReadAvayaLogger/DOCKER
-docker-compose up
+cd /home/andrey/Docker
+
+docker-compose up      // остановка приложений с закрытием терминала
+docker-compose up -d   // закрываем терминал смело, все будет работать
+docker-compose down    // остановка приложения - не забудь перед этой командой перейти в нужный каталог
