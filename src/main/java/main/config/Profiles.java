@@ -4,9 +4,9 @@ package main.config;
 /**
  * Application constants.
  */
-public final class Constants {
+public final class Profiles {
 
-    private Constants() {
+    private Profiles() {
     }
 
     public static final String SPRING_PROFILE_DEVELOPMENT = "dev";

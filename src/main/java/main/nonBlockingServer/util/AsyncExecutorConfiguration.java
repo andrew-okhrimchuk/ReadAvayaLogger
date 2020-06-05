@@ -1,4 +1,4 @@
-package main.nonBlockingEchoServer.util;
+package main.nonBlockingServer.util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,8 +12,8 @@ import java.util.concurrent.Executors;
 
 @Configuration
 @EnableAsync
-public class AsyncConfiguration {
-    private static final Logger LOGGER = LoggerFactory.getLogger(AsyncConfiguration.class);
+public class AsyncExecutorConfiguration {
+    private static final Logger LOGGER = LoggerFactory.getLogger(AsyncExecutorConfiguration.class);
     @Bean (name = "taskExecutor")
     public Executor taskExecutor() {
         LOGGER.debug("Creating Async Task Executor");

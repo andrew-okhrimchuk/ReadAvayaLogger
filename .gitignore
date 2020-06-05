@@ -7,7 +7,7 @@
 *.iml
 out
 gen
-/src/main/java/main/nonBlockingEchoServer/util/Texts.java
+/main/nonBlockingServer/util/Texts.java
 /src/test/java/server/TextsData.java
-/src/main/java/main/nonBlockingEchoServer/util/TextsOne.java
+/main/nonBlockingServer/util/TextsOne.java
 /avaya-logger-server-service.exe

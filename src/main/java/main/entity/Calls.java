@@ -10,11 +10,11 @@ import org.bson.types.ObjectId;
 
 @Slf4j
 @ToString
-@Document(collection = "calls")
+@Document(collection = "calls_depriceted")
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode
-
+@Deprecated
 public class Calls {
 
     @Id

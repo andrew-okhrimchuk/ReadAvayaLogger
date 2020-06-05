@@ -1,4 +1,4 @@
-package main.nonBlockingEchoServer.server;
+package main.nonBlockingServer.server;
 //https://github.com/teocci/NioSocketCodeSample/blob/master/src/com/github/teocci/nio/socket/nio/NonBlockingEchoServer.java
 
 import lombok.Setter;
@@ -28,7 +28,7 @@ import java.util.concurrent.*;
 
 @Slf4j
 @Component("nonBlockingEchoServer_NEW")
-public class NonBlockingEchoServer_NEW extends Thread
+public class NonBlockingServer extends Thread
 {
     public static String folder_name = "Loggers";
     public static int port = 9000;
@@ -39,7 +39,7 @@ public class NonBlockingEchoServer_NEW extends Thread
     private Map<SocketChannel, Long> myConcurrentSet = new ConcurrentHashMap<>();
 
     @Autowired
-    private ListenerAvayaReadNIO_NEW listenerAvayaReadNIO_new;
+    private ReadFromSocket readFromSocket;
 
     public void run() {
         crateFolder();
@@ -111,7 +111,7 @@ public class NonBlockingEchoServer_NEW extends Thread
                 else if (key.isReadable()) {
                     log.info("key.isReadable");
                     SocketChannel channel = (SocketChannel) key.channel();
-                    listenerAvayaReadNIO_new.run(channel);
+                    readFromSocket.run(channel);
                         key.cancel();
                 }
                 else {

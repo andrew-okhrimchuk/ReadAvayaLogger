@@ -1,17 +1,17 @@
-package main.nonBlockingEchoServer.util;
+package main.nonBlockingServer.util;
 
 import main.entity.CallsNew;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class UtilTextTest {
+public class UtilTextToCallsTest {
 
 
     @Test
     public void oldToNew() throws Exception {
-        UtilText utilText = new UtilText();
-        CallsNew expected = utilText.oldToNew(CallsData.calls);
+        UtilTextToCalls utilTextToCalls = new UtilTextToCalls();
+        CallsNew expected = utilTextToCalls.oldToNew(CallsData.calls);
         CallsNew actual = CallsData.callsNew;
         actual.setId(null);
         assertEquals(expected, actual);

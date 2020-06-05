@@ -1,4 +1,4 @@
-package main.mongo.calls;
+package main.mongo.calls_depriceted;
 import com.mongodb.client.result.DeleteResult;
 import com.mongodb.lang.NonNull;
 import lombok.extern.slf4j.Slf4j;

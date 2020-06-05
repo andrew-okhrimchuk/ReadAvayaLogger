@@ -1,4 +1,4 @@
-package main.nonBlockingEchoServer.util;
+package main.nonBlockingServer.util;
 
 import lombok.extern.slf4j.Slf4j;
 import main.entity.Calls;
@@ -18,7 +18,7 @@ import static java.util.stream.Collectors.toList;
 @Slf4j
 @Component
 @Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-public class UtilText {
+public class UtilTextToCalls {
 
     public List<CallsNew> StringToListToCalls(String str){
         return Stream.of(str.split("\n"))

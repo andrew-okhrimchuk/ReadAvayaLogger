@@ -1,4 +1,4 @@
-package main.nonBlockingEchoServer.server;
+package main.nonBlockingServer.server;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +15,10 @@ import java.nio.channels.SocketChannel;
 
 @Slf4j
 @Component("listenerAvayaReadNIO_new")
-public class ListenerAvayaReadNIO_NEW {
+public class ReadFromSocket {
 
     @Autowired
-    SaveData saveData;
+    SaveToBase saveToBase;
 
     @Async
     public void run(SocketChannel channel)  {
@@ -69,7 +69,7 @@ public class ListenerAvayaReadNIO_NEW {
 
             if (count <= 0) {
                 if (sb.length() > 0) {
-                    saveData.saveCalls(sb);
+                    saveToBase.saveCalls(sb);
                     sb = new StringBuilder();
                     log.info("Shannel.read(buffer) <= 0. Save to DB. " +"\n"+ channel.toString());
                 }

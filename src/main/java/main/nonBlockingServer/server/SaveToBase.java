@@ -1,9 +1,9 @@
-package main.nonBlockingEchoServer.server;
+package main.nonBlockingServer.server;
 
 import lombok.extern.slf4j.Slf4j;
 import main.entity.CallsNew;
-import main.mongo.callsNew.CallsNewRepositoryImpl;
-import main.nonBlockingEchoServer.util.UtilText;
+import main.mongo.CallsRepository.CallsNewRepositoryImpl;
+import main.nonBlockingServer.util.UtilTextToCalls;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
@@ -14,14 +14,14 @@ import java.util.List;
 
 @Slf4j
 @Service
-public class SaveData {
+public class SaveToBase {
     private final CallsNewRepositoryImpl callsRepository;
-    private final UtilText utilText;
+    private final UtilTextToCalls utilTextToCalls;
 
     @Autowired
-    public SaveData(CallsNewRepositoryImpl repo, UtilText utilText1) {
+    public SaveToBase(CallsNewRepositoryImpl repo, UtilTextToCalls utilTextToCalls1) {
         callsRepository = repo;
-        utilText = utilText1;
+        utilTextToCalls = utilTextToCalls1;
     }
     @Async
     public void sbToLog(String data){
@@ -32,7 +32,7 @@ public class SaveData {
         String text = sb.toString();
         sbToLog(text);
         log.info("Try save to DB.");
-        List<CallsNew> toSave = utilText.StringToListToCalls(sb.toString());
+        List<CallsNew> toSave = utilTextToCalls.StringToListToCalls(sb.toString());
 
         int result = 0;
         if (toSave.size() > 0){

@@ -1,7 +1,7 @@
 package main.service_web;
 
 import main.entity.CallsNew;
-import main.mongo.callsNew.CallsNewRepository;
+import main.mongo.CallsRepository.CallsNewRepository;
 import main.web.TO.TO;
 import main.web.TO.TOServiceToBase;
 import main.web.TO.TO_Padding;

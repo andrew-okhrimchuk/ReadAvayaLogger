@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
 
 @Slf4j
 @ToString
-@Document(collection = "callsNew")
+@Document(collection = "CallsRepository")
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode

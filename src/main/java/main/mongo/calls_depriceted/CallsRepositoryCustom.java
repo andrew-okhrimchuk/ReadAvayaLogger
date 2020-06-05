@@ -1,4 +1,4 @@
-package main.mongo.calls;
+package main.mongo.calls_depriceted;
 
 import com.mongodb.lang.NonNull;
 import main.entity.Calls;

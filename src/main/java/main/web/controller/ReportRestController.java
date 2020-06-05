@@ -33,7 +33,7 @@ public class ReportRestController  {
         Page<CallsNew> callsPage = serviceCalls.buildReport(to);
         modelAndView.getModelMap().addAttribute("TO", to);
         modelAndView.getModelMap().addAttribute("TO_Padding", serviceCalls.getTO_Padding(callsPage, to_padding));
-        modelAndView.setViewName("calls-2");
+        modelAndView.setViewName("calls_depriceted-2");
       // log.info(to.toString());
       //  log.info(to_padding.toString());
         return modelAndView;

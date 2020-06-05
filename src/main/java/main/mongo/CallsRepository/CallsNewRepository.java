@@ -1,5 +1,5 @@
-package main.mongo.calls;
-import main.entity.Calls;
+package main.mongo.CallsRepository;
+import main.entity.CallsNew;
 import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
@@ -10,8 +10,8 @@ import org.springframework.data.mongodb.core.index.Index;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 import javax.annotation.PostConstruct;
-@Deprecated
-public interface CallsRepository extends MongoRepository<Calls, ObjectId>, CallsRepositoryCustom  {
+
+public interface CallsNewRepository extends MongoRepository<CallsNew, ObjectId>, CallsNewRepositoryCustom {
 
 
     // https://stackoverflow.com/questions/47055743/spring-data-mongodb-where-to-create-an-index-programmatically-for-a-mongo-coll
@@ -25,8 +25,8 @@ public interface CallsRepository extends MongoRepository<Calls, ObjectId>, Calls
         @PostConstruct
         public void initIndexes() {
             mongoTemplate
-                    .indexOps("calls") // collection name string or .class
-                    .ensureIndex(new Index().on("years", Sort.Direction.ASC));
+                    .indexOps("CallsRepository") // collection name string or .class
+                    .ensureIndex(new Index().on("localDateTime", Sort.Direction.ASC));
         }
     }
 }

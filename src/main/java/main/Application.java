@@ -1,9 +1,8 @@
 package main;
 
 import lombok.extern.slf4j.Slf4j;
-import main.config.Constants;
-import main.nonBlockingEchoServer.server.NonBlockingEchoServer_NEW;
-import main.move_base.MoveBase;
+import main.config.Profiles;
+import main.nonBlockingServer.server.NonBlockingServer;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -54,8 +53,8 @@ public class Application {
                 InetAddress.getLocalHost().getHostAddress(),
                 env.getProperty("server.port"));
 
-        NonBlockingEchoServer_NEW nonBlockingEchoServer_new = (NonBlockingEchoServer_NEW) apx.getBean("nonBlockingEchoServer_NEW");
-        nonBlockingEchoServer_new.start();
+        NonBlockingServer nonBlockingServer_ = (NonBlockingServer) apx.getBean("nonBlockingEchoServer_NEW");
+        nonBlockingServer_.start();
 
 
        // @Deprecated
@@ -69,7 +68,7 @@ public class Application {
      */
     private static void addDefaultProfile(SpringApplication app, SimpleCommandLinePropertySource source) {
         if (!source.containsProperty("spring.profiles.active")) {
-            app.setAdditionalProfiles(Constants.SPRING_PROFILE_DEVELOPMENT);
+            app.setAdditionalProfiles(Profiles.SPRING_PROFILE_DEVELOPMENT);
         }
     }
 }
