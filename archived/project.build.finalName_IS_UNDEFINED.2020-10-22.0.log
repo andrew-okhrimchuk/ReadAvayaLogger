@@ -1,0 +1,15 @@
+2020-10-22_17:44:01.457 [main] INFO  Application [StartupInfoLogger.java:55] - Starting Application v1.0-SNAPSHOT on Andrew-ПК with PID 6840 (D:\Stajirovka\ReadAvayaLogger\target\nonBlockingEchoServer.jar started by Andrew in D:\Stajirovka\ReadAvayaLogger)
+2020-10-22_17:44:01.502 [main] INFO  Application [SpringApplication.java:655] - The following profiles are active: dev
+2020-10-22_17:44:09.654 [main] INFO  Application [Application.java:35] - Running with Spring profile(s) : [dev]
+2020-10-22_17:44:14.053 [main] INFO  Application [StartupInfoLogger.java:61] - Started Application in 19.18 seconds (JVM running for 30.745)
+2020-10-22_17:44:14.057 [main] INFO  Application [Application.java:49] - Access URLs:
+----------------------------------------------------------
+	Local: 		http://127.0.0.1:9001
+	External: 	http://192.168.1.52:9001
+----------------------------------------------------------
+2020-10-22_17:44:14.060 [Thread-2] INFO  NonBlockingServer [NonBlockingServer.java:56] - Server started on port >> 9000
+2020-10-22_17:44:14.061 [Thread-2] INFO  NonBlockingServer [NonBlockingServer.java:83] - Start cycle in NonBlockingEchoServer
+
+2020-10-22_17:44:25.660 [http-nio-9001-exec-1] INFO  ReportRestController [ReportRestController.java:32] - Start doGet of '/servlets'
+2020-10-22_17:44:25.686 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:40] - start findBeetwDateAndWay
+2020-10-22_17:44:26.910 [http-nio-9001-exec-1] INFO  CallsNewRepositoryImpl [CallsNewRepositoryImpl.java:62] - Fined 0 items.

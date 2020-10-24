@@ -42,7 +42,7 @@ public class NonBlockingServer extends Thread
     private ReadFromSocket readFromSocket;
 
     public void run() {
-        crateFolder();
+        crateFolderToLoggsFile();
         ServerSocketChannel serverChannel = null;
         try {
             serverChannel = ServerSocketChannel.open();
@@ -142,7 +142,7 @@ public class NonBlockingServer extends Thread
         }
     }
 
-    private static void crateFolder(){
+    private static void crateFolderToLoggsFile(){
 
         Path filePath = Paths.get(".\\" + folder_name);
         if(!Files.exists(Paths.get(filePath.toString()))){

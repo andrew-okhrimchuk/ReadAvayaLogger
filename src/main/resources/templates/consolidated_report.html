@@ -12,14 +12,14 @@
         .xx0 {padding-top: 10px}
         .xxx {padding-left: 20px}
         .xx1 {padding-left: 50px}
+        .xx2 {display: inline-block;}
 
     </style>
 
 </head>
 <body>
-<button ><a th:href="@{/consolidated_report}"}>Зведенний звіт</a></button>
-
-<h2>Отчет по всем звонкам <H5>(По умолчанию выдает данные за прошлый месяц)</H5></h2>
+<button ><a th:href="@{/}"}>Основний звіт</a></button>
+<h2>Зведений звіт по всім дзвінкам <H5>(По по замовчуванню видає дані за минулий місяць)</H5></h2>
 <div class="xx0">
 
 
@@ -27,11 +27,10 @@
     <!--    /*@thymesVar id="TO_Padding" type="main.web.DTO.DTO_Padding"*/-->
 
 
-
-    <form action="/" method="get"  th:object="${DTO}" >
+    <form  method="get"   th:object="${DTO}" id="form" >
 
       <b class="xxx">
-          <label class="control-label col-sm-3" >  Введите период : с
+          <label class="control-label col-sm-3" >  Введіть період : з
               <input type="date" name="start" id="start" class="form-control" th:field="*{{start}}" th:value="*{{start}}" placeholder="${TO.start}">
           </label><br/>
       </b>
@@ -45,24 +44,42 @@
 
       </p>
       <b>
-            <label for="numD" class="control-label col-sm-3"  th:field="*{numD}">Найти кому звонят :</label>
+            <label for="numD" class="control-label col-sm-3"  th:field="*{numD}">Знайти кому дзвонять :</label>
             <input type="number" class="form-control" id="numD"  th:field="*{numD}"  th:value="${{DTO.numD}}" placeholder="dialed_num"><br/>
       </b>
       <b>
-            <label for="num" class="control-label col-sm-3"  th:field="*{num}">или кто: </label>
+            <label for="num" class="control-label col-sm-3"  th:field="*{num}">або хто: </label>
             <input type="number" class="form-control" id="num"  th:field="*{num}"  th:value="${{DTO.num}}" placeholder="calling_num"><br/>
       </b>
 
+        <div class="xx2">
+            <label for="city" class="control-label col-sm-3"  th:field="*{city}">тільки в Ів-Франк. </label>
+            <input type="checkbox" th:checked="*{city} ? 'checked'" class="form-control" id="city"  th:field="*{city}"  th:value="${{DTO.city}}"><br/>
+        </div>
+        <div class="xx2">
+            <label for="mobil" class="control-label col-sm-3"  th:field="*{mobil}">на мобільні </label>
+            <input type="checkbox" th:checked="*{mobil} ? 'checked'" class="form-control" id="mobil"  th:field="*{mobil}"  th:value="${{DTO.mobil}}"><br/>
+        </div>
+        <div class="xx2">
+            <label for="city_other" class="control-label col-sm-3"  th:field="*{city_other}">в інші міста </label>
+            <input type="checkbox" th:checked="*{city_other} ? 'checked'" class="form-control" id="city_other"  th:field="*{city_other}"  th:value="${{DTO.city_other}}"><br/>
+        </div>
+        <div class="xx2">
+            <label for="county" class="control-label col-sm-3"  th:field="*{county}">інші країни </label>
+            <input type="checkbox" th:checked="*{county} ? 'checked'" class="form-control" id="county"  th:field="*{county}"  th:value="${{DTO.county}}"><br/>
+        </div>
+
+
         <div class="xx0"><b>
-            <input type="submit" value="Обновить отчет" name="submit" onclick="myFunction()">
+            <input type="submit"  value="Обновить отчет" name="submit" onclick="setDefoult()">
+            <button type="submit" onclick=setEXEL()>Download Excel</button>
 
-
-            <label >
+            <label hidden >
                 <select class="form-control" th:field="${DTO.answer_all_out_in}" >Направление звонков
                     <option th:each="iter: ${DTO.all_out_in}" th:value="${{iter}}" th:text="${iter}"></option>
                 </select>
             </label>
-            <i  class="xxx" >Найдено всего записей - <span
+            <i  class="xxx" >Знайдено всього записів - <span
                     th:text='${TO_Padding.getTotalElements()}'>(totalElements)
               </span></i>
 
@@ -71,19 +88,15 @@
         <table border="1" class="xx0">
             <thead>
             <tr>
-                <th>#</th>
-                <th width="8%">calling_num (кто звонит)</th>
-                <th width="8%">dialed_num (кому звонят)</th>
-                <th width="8%">date</th>
-                <th width="8%">time</th>
-                <th width="8%">sec_dur (длительность звонка)</th>
-                <th width="8%">cond_code</th>
-                <th width="8%">code_dial</th>
-                <th width="8%">code_used</th>
-                <th width="8%">acct_code</th>
-                <th width="8%">out_crt_id</th>
-                <th width="8%">in_crt_id</th>
-                <th width="8%">in_trk_code</th>
+                <th width="8%">#</th>
+                <th width="8%">Хто дзвонить</th>
+                <th width="8%">Куди дзвОнили</th>
+
+
+                <th width="8%">Дата</th>
+                <th width="8%">Коли дзвонили</th>
+                <th width="8%">Довжина дзвінка, сек</th>
+
             </tr>
             </thead>
 
@@ -97,13 +110,7 @@
                 <td th:text="${#temporals.format(call.localDateTime, 'dd-MM-yyyy')}"></td>
                 <td th:text="${#temporals.format(call.localDateTime, 'HH:mm')}"></td>
                 <td th:text="${call.getSec_dur()}"></td>
-                <td th:text="${call.cond_code}"></td>
-                <td th:text="${call.code_dial}"></td>
-                <td th:text="${call.code_used}"></td>
-                <td th:text="${call.acct_code}"></td>
-                <td th:text="${call.out_crt_id}"></td>
-                <td th:text="${call.in_crt_id}"></td>
-                <td th:text="${call.in_trk_code}"></td>
+
             </tr>
             </tbody>
         </table>
@@ -141,6 +148,8 @@
 
 
   </form>
+
+
 </div>
 
 
@@ -148,7 +157,7 @@
 
 <script type="text/javascript">
 
-    function myFunction() {
+    function chekValues() {
         var num = document.getElementById("num").value;
 
         if(num === null || num.length === 0 ){
@@ -164,6 +173,26 @@
             return false;
         }
         return  true;
+    }
+
+    function setEXEL() {
+        console.log("start setEXEL")
+        var action = document.getElementById("form");
+    //    action = "/download/calls.xlsx";
+        action.setAttribute("action", "/download/calls.xlsx" )
+        console.log("start setEXEL", document.getElementById("form") );
+
+      //  return chekValues();
+    }
+    function setDefoult() {
+        console.log("start setDefoult")
+        var action = document.getElementById("form");
+      //  action = "/consolidated_report";
+        console.log("start setDefoult", document.getElementById("form") );
+        action.setAttribute("action", "/consolidated_report" )
+        console.log(document.getElementById("form"))
+
+        return chekValues();
     }
 </script>
 </body>

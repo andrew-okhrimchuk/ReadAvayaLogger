@@ -1,32 +1,33 @@
 package main.entity;
 
 
-import lombok.*;
+import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
+import lombok.ToString;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.index.Indexed;
-import org.springframework.data.mongodb.core.mapping.Document;
 import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
+import org.springframework.format.annotation.DateTimeFormat;
+
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Slf4j
 @ToString
-@Document(collection = "calls_depriceted")
+@Document(collection = "CallsRepository")
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode
-@Deprecated
+
 public class Calls {
 
     @Id
     public ObjectId id;
     public  int cond_code;
- //   @Indexed
-    public  int day;
- //   @Indexed
-    public  int month;
-  //  @Indexed
-    public  int years;
-    public  int time;
+    @DateTimeFormat(pattern = "MM.dd.yyyy. HH:mm")
+    public LocalDateTime localDateTime;
     public  String sec_dur;
     public  String code_dial;
     public  String code_used;
@@ -40,10 +41,7 @@ public class Calls {
     public Calls(
             ObjectId id,
             int cond_code,
-            int day,
-            int month,
-            int years,
-            int time,
+            LocalDateTime localDateTime,
             String sec_dur,
             String code_dial,
             String code_used,
@@ -56,10 +54,7 @@ public class Calls {
     ) {
         this.id = id;
         this.cond_code = cond_code;
-        this.day = day;
-        this.month = month;
-        this.years = years;
-        this.time = time;
+        this.localDateTime = localDateTime;
         this.sec_dur = sec_dur;
         this.code_dial = code_dial;
         this.code_used = code_used;
@@ -70,5 +65,6 @@ public class Calls {
         this.in_crt_id = in_crt_id;
         this.in_trk_code = in_trk_code;
     }
+
 
 }

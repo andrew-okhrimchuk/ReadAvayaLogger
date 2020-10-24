@@ -1,8 +1,8 @@
 package main.nonBlockingServer.server;
 
 import lombok.extern.slf4j.Slf4j;
-import main.entity.CallsNew;
-import main.mongo.CallsRepository.CallsNewRepositoryImpl;
+import main.entity.Calls;
+import main.mongo.CallsRepository.CallsRepositoryImpl;
 import main.nonBlockingServer.util.UtilTextToCalls;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Async;
@@ -15,11 +15,11 @@ import java.util.List;
 @Slf4j
 @Service
 public class SaveToBase {
-    private final CallsNewRepositoryImpl callsRepository;
+    private final CallsRepositoryImpl callsRepository;
     private final UtilTextToCalls utilTextToCalls;
 
     @Autowired
-    public SaveToBase(CallsNewRepositoryImpl repo, UtilTextToCalls utilTextToCalls1) {
+    public SaveToBase(CallsRepositoryImpl repo, UtilTextToCalls utilTextToCalls1) {
         callsRepository = repo;
         utilTextToCalls = utilTextToCalls1;
     }
@@ -32,11 +32,11 @@ public class SaveToBase {
         String text = sb.toString();
         sbToLog(text);
         log.info("Try save to DB.");
-        List<CallsNew> toSave = utilTextToCalls.StringToListToCalls(sb.toString());
+        List<Calls> toSave = utilTextToCalls.StringToListToCalls(sb.toString());
 
         int result = 0;
         if (toSave.size() > 0){
-            Collection<CallsNew> resultCalls = callsRepository.insertManyDocuments(toSave);
+            Collection<Calls> resultCalls = callsRepository.insertManyDocuments(toSave);
             if (!resultCalls.isEmpty()){
                 result = resultCalls.size();
             }

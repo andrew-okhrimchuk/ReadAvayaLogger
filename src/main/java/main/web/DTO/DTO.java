@@ -1,8 +1,9 @@
-package main.web.TO;
+package main.web.DTO;
 
 import lombok.Getter;
 import lombok.Setter;
-import main.entity.CallsNew;
+import lombok.ToString;
+import main.entity.Calls;
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
 import org.springframework.web.context.annotation.RequestScope;
@@ -15,7 +16,7 @@ import java.util.List;
 @Getter
 @Setter
 @RequestScope
-public class TO {
+public class DTO {
     String start;
     String end;
     List<String> all_out_in = new ArrayList<>(Arrays.asList("all","out","in"));
@@ -23,5 +24,11 @@ public class TO {
     String num;
     String numD;
     String page;
-    Page<CallsNew> callsPage;
+    Page<Calls> callsPage;
+    boolean isShortReport;
+    String city; // null и on
+    String mobil; // null и on
+    String city_other; // null и on
+    String county; // null и on
+
 }

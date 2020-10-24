@@ -1,9 +1,9 @@
-package main.web.TO;
+package main.web.DTO;
 
 import lombok.Getter;
 import lombok.Setter;
 
-import main.entity.CallsNew;
+import main.entity.Calls;
 
 import org.springframework.data.domain.Page;
 import org.springframework.stereotype.Service;
@@ -17,7 +17,7 @@ import java.util.stream.IntStream;
 @Getter
 @Setter
 @RequestScope
-public class TO_Padding {
+public class DTO_Padding {
 
     long totalPageCount;
     long currentIndex;
@@ -27,7 +27,7 @@ public class TO_Padding {
     List<Integer> pageNumbers;
 
 
-    public void init(Page<CallsNew> callsPage) {
+    public void init(Page<Calls> callsPage) {
         this.totalPageCount = callsPage.getTotalPages();
         this.currentIndex = callsPage.getNumber() + 1;
         this.beginIndex = Math.max(1, currentIndex - callsPage.getContent().size());
@@ -36,7 +36,7 @@ public class TO_Padding {
         setPageNumbersList(callsPage);
     }
 
-    private void setPageNumbersList(Page<CallsNew> callsPage) {
+    private void setPageNumbersList(Page<Calls> callsPage) {
         int totalPages = callsPage.getTotalPages();
         if (totalPages > 0) {
             List<Integer> pageNumbers = IntStream.rangeClosed(1, totalPages)
